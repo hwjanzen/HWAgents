@@ -69,10 +69,13 @@ export async function configureSettings(): Promise<HwAgentsSettings | undefined>
   }
 
   const config = vscode.workspace.getConfiguration("hwagents");
-  await config.update("githubOwner", githubOwner.trim(), vscode.ConfigurationTarget.Workspace);
-  await config.update("githubRepo", githubRepo.trim(), vscode.ConfigurationTarget.Workspace);
-  await config.update("githubBranch", githubBranch.trim(), vscode.ConfigurationTarget.Workspace);
-  await config.update("officeManifestPath", officeManifestPath.trim(), vscode.ConfigurationTarget.Workspace);
+  const target = vscode.workspace.workspaceFolders?.length
+    ? vscode.ConfigurationTarget.Workspace
+    : vscode.ConfigurationTarget.Global;
+  await config.update("githubOwner", githubOwner.trim(), target);
+  await config.update("githubRepo", githubRepo.trim(), target);
+  await config.update("githubBranch", githubBranch.trim(), target);
+  await config.update("officeManifestPath", officeManifestPath.trim(), target);
 
   return getSettings();
 }
