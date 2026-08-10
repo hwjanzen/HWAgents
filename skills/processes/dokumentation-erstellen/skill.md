@@ -22,20 +22,23 @@ Verwende diese Struktur:
 13. Ergebnis
 14. Folgeprozess
 
-## Schritt 2 — Parameter-Mapping vor Tool-Aufruf
+## Schritt 2 — Verifikationsblock ausgeben
 
-Befülle die Flow-Eingaben exakt nach diesem Mapping:
+Bevor du das Tool aufrufst, gib **zwingend** diesen Block aus und befülle alle 4 Felder:
 
 ```
-FlowInputParameter  → AgentContent
-─────────────────────────────────────────────────────────────
-Dateiname           → Dateiname (z.B. Prozessdokumentation_Streckenbestellung.txt)
-DateiInhalt         → deinAufgenommenerProzess (vollständiger Text aus Schritt 1)
-Kategorie           → vonDirErfragteKategorie (z.B. BC Prozesse)
-Abteilung           → vonDirErfragteAbteilung (z.B. [{"Value":"Vertrieb"}])
+PARAMETER_VERIFIKATION:
+Dateiname   : [nur Dateiname.txt - max 80 Zeichen - kein Dokumentationstext]
+DateiInhalt : [vollständiger Dokumentationstext aus Schritt 1]
+Kategorie   : [ein zulässiger Kategorie-Wert]
+Abteilung   : [{"Value":"Abteilung1"}]
+ALLE_BEREIT : JA
 ```
 
-Fehlt ein Wert: jetzt erfragen — außer DateiInhalt, den generierst du selbst.
+Erst wenn ALLE_BEREIT = JA und alle 4 Zeilen befüllt sind: Tool aufrufen.
+Ist ein Feld leer oder ALLE_BEREIT = NEIN: fehlenden Wert zuerst beschaffen, dann Block erneut ausgeben.
+Dateiname darf maximal 80 Zeichen haben und endet auf .txt — ist er länger, enthält er den falschen Inhalt.
+
 
 
 
