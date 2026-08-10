@@ -1,0 +1,14 @@
+{
+  "$id": "https://hwagents.local/schemas/agent-manifest.schema.json",
+  "type": "object",
+  "required": ["agentId", "displayName", "routingConfig", "skillsManifest", "status"],
+  "properties": {
+    "agentId": { "type": "string" },
+    "displayName": { "type": "string" },
+    "manifestPath": { "type": "string" },
+    "routingConfig": { "type": "string" },
+    "skillsManifest": { "type": "string" },
+    "status": { "enum": ["draft", "active", "deprecated", "retired"] }
+  },
+  "additionalProperties": false
+}

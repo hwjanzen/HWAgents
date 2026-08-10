@@ -1,0 +1,9 @@
+{
+  "name": "copilot-agent-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Copilot agent platform monorepo",
+  "scripts": {
+    "validate:all": "node ./tools/cli/validate-all.js"
+  }
+}

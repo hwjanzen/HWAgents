@@ -1,0 +1,29 @@
+{
+  "name": "hwagents-vscode-extension",
+  "displayName": "HW Agents",
+  "version": "0.0.1",
+  "publisher": "hwjanzen",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "activationEvents": [
+    "onCommand:hwagents.hello"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hwagents.hello",
+        "title": "HW Agents: Hello"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "@types/vscode": "^1.90.0",
+    "@types/node": "^20.14.12"
+  }
+}

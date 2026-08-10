@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "communication.summarize_mail",
+  "name": "Summarize Mail",
+  "category": "Communication",
+  "capabilities": [
+    "E-Mail zusammenfassen",
+    "Aufgaben extrahieren"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$id": "https://hwagents.local/schemas/routing-config.schema.json",
+  "type": "object",
+  "required": ["version", "defaultThreshold", "globalFallbackSkill", "weights"],
+  "properties": {
+    "version": { "type": "string" },
+    "defaultThreshold": { "type": "number", "minimum": 0, "maximum": 1 },
+    "globalFallbackSkill": { "type": "string" },
+    "weights": {
+      "type": "object",
+      "required": ["intentMatch", "keywordMatch", "capabilityMatch", "priority", "recencyBoost"],
+      "properties": {
+        "intentMatch": { "type": "number", "minimum": 0, "maximum": 1 },
+        "keywordMatch": { "type": "number", "minimum": 0, "maximum": 1 },
+        "capabilityMatch": { "type": "number", "minimum": 0, "maximum": 1 },
+        "priority": { "type": "number", "minimum": 0, "maximum": 1 },
+        "recencyBoost": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "agentOverrides": { "type": "object" }
+  },
+  "additionalProperties": false
+}

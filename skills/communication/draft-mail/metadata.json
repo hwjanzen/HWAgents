@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "communication.draft_mail",
+  "name": "Draft Mail",
+  "category": "Communication",
+  "capabilities": [
+    "E-Mail entwerfen",
+    "Antwortmail erstellen"
+  ]
+}

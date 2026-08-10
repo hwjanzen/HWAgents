@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/routing-config.schema.json",
+  "version": "1.0.0",
+  "defaultThreshold": 0.72,
+  "globalFallbackSkill": "communication.ask_clarification",
+  "weights": {
+    "intentMatch": 0.45,
+    "keywordMatch": 0.2,
+    "capabilityMatch": 0.2,
+    "priority": 0.1,
+    "recencyBoost": 0.05
+  },
+  "agentOverrides": {
+    "office-agent": {
+      "threshold": 0.68,
+      "boostSkills": [
+        "communication.draft_mail",
+        "communication.summarize_mail"
+      ]
+    }
+  }
+}
