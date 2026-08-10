@@ -64,7 +64,7 @@
       },
       {
         "command": "hwagents.syncLooka",
-        "title": "HW Agents: Sync Looka Instruction"
+        "title": "HW Agents: Sync Agent Instruction"
       },
       {
         "command": "hwagents.runSkillTests",
