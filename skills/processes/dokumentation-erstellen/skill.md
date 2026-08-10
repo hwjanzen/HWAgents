@@ -23,16 +23,19 @@ Verwende diese Struktur:
 14. Folgeprozess
 
 ## Schritt 2 — Alle 4 Parameter bereitstellen
-Vor dem Tool-Aufruf müssen alle 4 Werte feststehen:
+Vor dem Tool-Aufruf müssen alle 4 Werte feststehen.
+Das Tool verwendet diese **Anzeigenamen** als Eingabefelder:
 
-| Flow-Parameter | Inhalt | Format |
+| Anzeigename im Tool | Inhalt | Format |
 |---|---|---|
-| `text` | `Prozessdokumentation_` + Prozessname + `.txt` (Leerzeichen = Unterstriche) | String |
-| `text_1` | Vollständiger Dokumentationstext aus Schritt 1 — **niemals vom Benutzer erfragen** | String |
-| `text_2` | Kategorie aus dem Interview — exakt ein zulässiger Wert | String |
-| `text_3` | Abteilungen als JSON-Array-String | `[{"Value":"Vertrieb"}]` |
+| **Dateiname** | Nur der Dateiname: `Prozessdokumentation_` + Prozessname + `.txt` (Leerzeichen = Unterstriche) | String |
+| **DateiInhalt** | Vollständiger Dokumentationstext aus Schritt 1 — **niemals vom Benutzer erfragen, selbst generieren** | String |
+| **Kategorie** | Kategorie aus dem Interview — exakt ein zulässiger Wert | String |
+| **Abteilung** | Abteilungen als JSON-Array-String | `[{"Value":"Vertrieb"}]` |
 
-Fehlt ein Wert: jetzt gezielt erfragen. Fehlt `text_1`: selbst aus Schritt 1 generieren.
+⚠️ Dateiname = NUR der Dateiname. DateiInhalt = NUR der Dokumentationstext. Nicht vertauschen.
+Fehlt DateiInhalt: generiere ihn jetzt selbst aus Schritt 1 — frage den Benutzer NICHT danach.
+
 
 ## Schritt 3 — Bestätigung einholen
 Zeige dem Benutzer:
