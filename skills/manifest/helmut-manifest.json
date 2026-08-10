@@ -1,14 +1,15 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "helmut",
+  "generatedAt": "2026-08-10T12:24:37.369Z",
   "skills": [
     {
-      "id": "processes.prozessaufnahme",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/prozessaufnahme/skill.md",
+      "id": "processes.dokumentation_erstellen",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/dokumentation-erstellen/skill.md",
       "capabilities": [
-        "Neuen Prozess aufnehmen",
-        "Prozessdokumentation vollst\u00e4ndig durchf\u00fchren",
-        "Interview, Validierung und SharePoint-Speicherung orchestrieren"
+        "Prozessdokumentation erstellen",
+        "Interview in Dokument überführen",
+        "Dokumentation in SharePoint anlegen"
       ]
     },
     {
@@ -21,21 +22,29 @@
       ]
     },
     {
-      "id": "processes.dokumentation_erstellen",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/dokumentation-erstellen/skill.md",
-      "capabilities": [
-        "Prozessdokumentation erstellen",
-        "Interview in Dokument überführen",
-        "Dokumentation in SharePoint anlegen"
-      ]
-    },
-    {
       "id": "processes.prozess_erklaeren",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/prozess-erklaeren/skill.md",
       "capabilities": [
         "Bestehenden Prozess erklären",
         "Prozessfragen beantworten",
         "Mitarbeiter zu Prozessen schulen"
+      ]
+    },
+    {
+      "id": "processes.prozessaufnahme",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/prozessaufnahme/skill.md",
+      "capabilities": [
+        "Neuen Prozess aufnehmen",
+        "Prozessdokumentation vollständig durchführen",
+        "Interview, Validierung und SharePoint-Speicherung orchestrieren"
+      ]
+    },
+    {
+      "id": "shared.ask_clarification",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/ask-clarification/skill.md",
+      "capabilities": [
+        "Rückfrage stellen wenn Anfrage unklar",
+        "Fehlende Informationen gezielt erfragen"
       ]
     }
   ]

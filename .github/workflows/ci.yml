@@ -13,5 +13,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Generate all manifests
+        run: node tools/cli/generate-manifest.js
       - name: Run manifest baseline validation
         run: node tools/cli/validate-all.js
+      - name: Check for uncommitted manifest changes
+        run: |
+          git diff --exit-code skills/manifest/ || \
+          (echo "Generated manifests differ from committed. Run 'npm run manifest:generate' and commit." && exit 1)

@@ -1,0 +1,28 @@
+{
+  "$schema": "./schemas/agent-registry.schema.json",
+  "version": "1.0.0",
+  "agents": [
+    {
+      "id": "looka",
+      "displayName": "Looka",
+      "type": "communication",
+      "status": "active",
+      "manifestFile": "skills/manifest/looka-manifest.json",
+      "cpsComponentName": "LOOKA",
+      "systemPrompt": "agents/looka-agent/prompts/system.md",
+      "skillCategories": ["communication"],
+      "additionalSkills": ["shared.ask_clarification"]
+    },
+    {
+      "id": "helmut",
+      "displayName": "HELMUT",
+      "type": "process-manager",
+      "status": "active",
+      "manifestFile": "skills/manifest/helmut-manifest.json",
+      "cpsComponentName": "HELMUT",
+      "systemPrompt": "agents/helmut-agent/prompts/system.md",
+      "skillCategories": ["processes"],
+      "additionalSkills": ["shared.ask_clarification"]
+    }
+  ]
+}

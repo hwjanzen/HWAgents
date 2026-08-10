@@ -1,0 +1,28 @@
+{
+  "$id": "https://hwagents.local/schemas/agent-registry.schema.json",
+  "type": "object",
+  "required": ["version", "agents"],
+  "properties": {
+    "version": { "type": "string" },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "displayName", "type", "status", "manifestFile", "skillCategories"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "displayName": { "type": "string" },
+          "type": { "type": "string" },
+          "status": { "enum": ["active", "draft", "deprecated"] },
+          "manifestFile": { "type": "string" },
+          "cpsComponentName": { "type": "string" },
+          "systemPrompt": { "type": "string" },
+          "skillCategories": { "type": "array", "items": { "type": "string" } },
+          "additionalSkills": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

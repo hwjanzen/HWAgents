@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "shared.ask_clarification",
+  "name": "Ask Clarification",
+  "category": "shared",
+  "capabilities": [
+    "Rückfrage stellen wenn Anfrage unklar",
+    "Fehlende Informationen gezielt erfragen"
+  ]
+}
