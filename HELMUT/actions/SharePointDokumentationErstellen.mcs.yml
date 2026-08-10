@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: SharePointDokumentationErstellen
+  description: Speichert ein bereits fertiggestelltes und vom Benutzer bestaeligtes Prozessdokument in SharePoint. Nur aufrufen nach vollstaendigem Interview und expliziter Benutzerbestaetigung. Niemals aufrufen wenn kein Interview stattgefunden hat.
 kind: TaskDialog
 action:
   kind: InvokeFlowTaskAction
