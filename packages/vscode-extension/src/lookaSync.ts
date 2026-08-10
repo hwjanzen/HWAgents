@@ -30,12 +30,25 @@ async function findAllAgentFiles(workspaceRoot: string): Promise<vscode.Uri[]> {
   );
 }
 
+// Line-based replacement ensures the full instructions block is overwritten, not prepended
 function patchInstructionsField(yaml: string, newInstruction: string): string {
+  const lines = yaml.split("\n");
+  const instrIdx = lines.findIndex((l) => /^instructions:/.test(l));
+  if (instrIdx === -1) { return yaml; }
+
+  // Collect all continuation lines (indented or empty) belonging to the block
+  let endIdx = instrIdx + 1;
+  while (endIdx < lines.length && (lines[endIdx].startsWith(" ") || lines[endIdx].startsWith("\t") || lines[endIdx] === "")) {
+    endIdx++;
+  }
+
   const indented = newInstruction.trimEnd().split("\n").map((l) => `  ${l}`).join("\n");
-  return yaml.replace(
-    /(instructions:[ \t]*)(\|[-+]?|>[-+]?)?[\s\S]*?(?=\n\S|\n*$)/m,
-    (_m, key) => `${key}|\n${indented}`
-  );
+  return [
+    ...lines.slice(0, instrIdx),
+    "instructions: |",
+    indented,
+    ...lines.slice(endIdx)
+  ].join("\n");
 }
 
 export async function syncAgentInstruction(): Promise<SyncResult> {
@@ -114,7 +127,12 @@ export async function syncAgentInstruction(): Promise<SyncResult> {
   if (confirm === "Ja, Apply") {
     await fs.writeFile(selectedFile, patched, { encoding: "utf8" });
     await vscode.commands.executeCommand(CPS_APPLY);
-    return { status: "applied", message: `${componentName} aktualisiert und Apply ausgefÃ¼hrt.` };
+    // Publish is a separate manual step — applyChanges does not publish
+    await vscode.window.showInformationMessage(
+      `${componentName}: Apply abgeschlossen.\nBitte in Copilot Studio manuell publizieren (Veröffentlichen-Button).`,
+      "OK"
+    );
+    return { status: "applied", message: `${componentName} aktualisiert. Manuelles Publizieren in CPS erforderlich.` };
   }
 
   return { status: "cancelled", message: "Abgebrochen." };
