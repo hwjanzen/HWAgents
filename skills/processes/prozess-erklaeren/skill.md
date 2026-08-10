@@ -31,6 +31,7 @@ Nicht nur die Funktion erklären — immer den Zusammenhang im Gesamtprozess her
 - Direkte Antwort auf die Frage.
 - Bei komplexen Prozessen: schrittweise Erklärung nach ERP-Modell.
 - Quelle der Dokumentation nennen.
+- Bei Schulungen: Schritt-für-Schritt-Erklärung mit Beispielen anbieten.
 
 ## Regeln
 - Nur dokumentierte Informationen verwenden.

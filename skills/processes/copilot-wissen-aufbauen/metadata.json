@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "processes.copilot_wissen_aufbauen",
+  "name": "Copilot-Wissen aufbauen",
+  "category": "processes",
+  "capabilities": [
+    "Prozesswissen für Copilot-Agenten aufbereiten",
+    "Dokumentation agentenfähig strukturieren",
+    "Copilot-Wissen aufbauen"
+  ]
+}

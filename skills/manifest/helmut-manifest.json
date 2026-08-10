@@ -1,8 +1,26 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "helmut",
-  "generatedAt": "2026-08-10T12:24:37.369Z",
+  "generatedAt": "2026-08-10T12:30:04.671Z",
   "skills": [
+    {
+      "id": "processes.copilot_wissen_aufbauen",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/copilot-wissen-aufbauen/skill.md",
+      "capabilities": [
+        "Prozesswissen für Copilot-Agenten aufbereiten",
+        "Dokumentation agentenfähig strukturieren",
+        "Copilot-Wissen aufbauen"
+      ]
+    },
+    {
+      "id": "processes.dokumentation_aktualisieren",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/dokumentation-aktualisieren/skill.md",
+      "capabilities": [
+        "Bestehende Prozessdokumentation aktualisieren",
+        "Dokumentation überarbeiten",
+        "Geänderten Prozess neu dokumentieren"
+      ]
+    },
     {
       "id": "processes.dokumentation_erstellen",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/dokumentation-erstellen/skill.md",

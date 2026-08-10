@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "processes.dokumentation_aktualisieren",
+  "name": "Dokumentation aktualisieren",
+  "category": "processes",
+  "capabilities": [
+    "Bestehende Prozessdokumentation aktualisieren",
+    "Dokumentation überarbeiten",
+    "Geänderten Prozess neu dokumentieren"
+  ]
+}
