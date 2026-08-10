@@ -1,0 +1,9 @@
+mcs.metadata:
+  componentName: BC Prozesse - Dokumentation
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in BC Prozesse - Dokumentation SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  triggerCondition: true
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/BC%20Prozesse%20%20Dokumentation
+  additionalSearchTerms: FileExtension = "txt"

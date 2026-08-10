@@ -1,0 +1,12 @@
+mcs.metadata:
+  componentName: SharePointDokumentationErstellen
+kind: TaskDialog
+action:
+  kind: InvokeFlowTaskAction
+  flowId: ce94c965-02d5-a1a5-192c-df375961c2d0
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

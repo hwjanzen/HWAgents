@@ -1,0 +1,22 @@
+mcs.metadata:
+  componentName: SharePoint - Alle Listen und Bibliotheken abrufen
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: dataset
+    value: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet
+
+modelDisplayName: Alle Listen und Bibliotheken abrufen
+modelDescription: Hiermit rufen Sie alle Listen und Bibliotheken ab.
+outputs:
+  - propertyName: value
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: crb27_HELMUT.shared_sharepointonline.shared-sharepointonl-7eda02fc-b31c-44d6-8d7f-b50c2906b4d1
+  connectionProperties:
+    mode: Invoker
+
+  operationId: GetAllTables
+
+outputMode: All

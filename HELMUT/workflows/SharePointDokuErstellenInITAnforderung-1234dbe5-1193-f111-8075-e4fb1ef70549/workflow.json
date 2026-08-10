@@ -1,0 +1,95 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsharepointonline_659f6"
+        },
+        "runtimeSource": "invoker"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "actions": {
+        "Datei_erstellen": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet",
+              "folderPath": "/IT Anforderungen",
+              "name": "@triggerBody()?[\u0027file\u0027]?[\u0027name\u0027]",
+              "body": "@triggerBody()?[\u0027file\u0027]?[\u0027contentBytes\u0027]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateFile",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {},
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "file": {
+                  "description": "W\u00E4hlen Sie eine Datei oder ein Bild aus.",
+                  "title": "Dateiinhalt",
+                  "type": "object",
+                  "properties": {
+                    "contentBytes": {
+                      "type": "string",
+                      "format": "byte"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "x-ms-content-hint": "FILE",
+                  "x-ms-dynamically-added": true
+                },
+                "text": {
+                  "description": "Geben Sie Ihre Eingabe ein.",
+                  "title": "txtDateiName",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "file",
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

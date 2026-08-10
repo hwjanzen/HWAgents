@@ -1,0 +1,394 @@
+mcs.metadata:
+  componentName: SharePoint - Dateien abrufen (nur Eigenschaften)
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: dataset
+    value: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet
+
+  - kind: ManualTaskInput
+    propertyName: table
+    value: e92d361a-9f48-4993-9c13-c8c8a1f87f71
+
+modelDisplayName: Dateien abrufen Doku
+modelDescription: Hier sind Dokumentationen gespeichert. Nutze das Tool um vorhandene Dokumentationen im zu Ermitteln. Der vollständige Pfad wird genutzt um den Dateiinhalt zu lesen
+outputs:
+  - propertyName: value
+    name: value
+    description: List of Items
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: crb27_HELMUT.shared_sharepointonline.shared-sharepointonl-1e95f100-a7c9-4da6-a4a1-7835a2970559
+  connectionProperties:
+    mode: Invoker
+
+  operationId: GetFileItems
+  dynamicOutputSchema:
+    kind: Record
+    properties:
+      value:
+        description: List of Items
+        order: 0
+        type:
+          kind: Table
+          properties:
+            "{ContentType}":
+              displayName: Inhaltstyp
+              description: Der Name des Inhaltstyps des Elements.
+              order: 23
+              type:
+                kind: Record
+                properties:
+                  Id:
+                    displayName: Id
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+                  Name:
+                    displayName: Name
+                    order: 1
+                    type: String
+
+            "{DriveId}":
+              displayName: Laufwerk-ID
+              description: Eindeutiger Bezeichner für die Dokumentenbibliothek in MS Graph
+              order: 25
+              type: String
+
+            "{DriveItemId}":
+              displayName: Laufwerkelement-ID
+              description: Eindeutiger Bezeichner für die Datei in MS Graph.
+              order: 26
+              type: String
+
+            "{FilenameWithExtension}":
+              displayName: Dateiname mit Erweiterung
+              description: Gibt bei Bibliotheken den Dateinamen mit Erweiterung zurück. Gibt bei Listen die "Title"-Eigenschaft zurück.
+              order: 18
+              type: String
+
+            "{FullPath}":
+              displayName: Vollständiger Pfad
+              description: Vollständiger Pfad eines Elements, Ordners oder einer Datei.
+              order: 20
+              type: String
+
+            "{Identifier}":
+              displayName: Bezeichner
+              description: Der Wert, der bei dateibezogenen Aktionen zum Auswählen einer Datei verwendet werden kann.
+              order: 13
+              type: String
+
+            "{IsCheckedOut}":
+              displayName: Ausgecheckt
+              description: "\"True\", wenn die Datei ausgecheckt ist, andernfalls \"false\"."
+              order: 24
+              type: Boolean
+
+            "{IsFolder}":
+              displayName: IstOrdner
+              description: Wahr, wenn das Element in einem Ordner ist, andernfalls falsch.
+              order: 14
+              type: Boolean
+
+            "{Link}":
+              displayName: Link zu Element
+              description: Ein Link, der verwendet werden kann, um zu der Datei oder dem Listenelement zu gelangen. Nur Personen mit Berechtigungen für das Element können den Link öffnen.
+              order: 16
+              type: String
+
+            "{ModerationComment}":
+              displayName: Die der Inhaltsgenehmigung dieses Listenelements zugeordnete Kommentare.
+              description: Die der Moderation des Listenelements zugeordnete Kommentare.
+              order: 22
+              type: String
+
+            "{ModerationStatus}":
+              displayName: Inhaltsgenehmigungsstatus
+              description: "Der inhaltsgenehmigungsstatus. Es kann eine der folgenden sein: Entwurf, Ausstehend, genehmigt oder abgelehnt"
+              order: 21
+              type: String
+
+            "{Name}":
+              displayName: Name
+              description: Der Dateiname des Elements in Dokumentbibliotheken, der Anzeigename des Elements in Listen.
+              order: 17
+              type: String
+
+            "{Path}":
+              displayName: Ordnerpfad
+              description: Der Pfad zu dem Ordner, indem sich das Element befindet, relativ zur Siteadresse.
+              order: 19
+              type: String
+
+            "{SensitivityLabelId}":
+              displayName: Vertraulichkeitsbezeichnungs-ID
+              description: Bezeichner der Datei-Vertraulichkeitsbezeichnung.
+              order: 27
+              type: String
+
+            "{SensitivityLabelName}":
+              displayName: Anzeigename der Vertraulichkeitsbezeichnung
+              description: Anzeigename der Datei-Vertraulichkeitsbezeichnung.
+              order: 28
+              type: String
+
+            "{Thumbnail}":
+              displayName: Miniaturansicht
+              description: URL zu den Miniaturansichten des Elements in 3 verschiedenen Größen, falls verfügbar.
+              order: 15
+              type:
+                kind: Record
+                properties:
+                  Large:
+                    displayName: Large
+                    description: URL zur größten Miniaturansicht des Elements, sofern verfügbar.
+                    order: 2
+                    type: String
+
+                  Medium:
+                    displayName: Medium
+                    description: URL zur Miniaturansicht des Elements in Standardgröße, sofern verfügbar.
+                    order: 1
+                    type: String
+
+                  Small:
+                    displayName: Small
+                    description: URL zur kleinen, stark komprimierten Miniaturansicht des Elements, sofern verfügbar.
+                    order: 0
+                    type: String
+
+            "{TriggerWindowEndToken}":
+              displayName: Token für Ende des Zeitfensters auslösen
+              description: Ein Token, das die Zeit des aktuellen Datenstroms überprüft. Verwenden Sie diese Option, wenn Sie überprüfen möchten, ob mindestens eine Spalte seit der letzten Überprüfung des Datenstroms geändert wurde.
+              order: 31
+              type: String
+
+            "{TriggerWindowStartToken}":
+              displayName: Token für Start des Zeitfensters auslösen
+              description: Ein Token, das die Zeit der letzten Überprüfung des Datenstroms ausdrückt. Verwenden Sie diese Option, wenn Sie überprüfen möchten, ob mindestens eine Spalte seit der letzten Überprüfung des Datenstroms geändert wurde.
+              order: 30
+              type: String
+
+            "{VersionNumber}":
+              displayName: Versionsnummer
+              description: Die Versionsnummer der Datei oder des Listenelements.
+              order: 29
+              type: String
+
+            Abteilung:
+              displayName: Abteilung
+              description: |-
+                Betroffene Abteilung
+                Vertrieb
+                Lager
+                Einkauf
+                Buchhaltung
+                IT
+                Produktion
+              order: 5
+              type:
+                kind: Table
+                properties:
+                  Value:
+                    displayName: Value
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+            Author:
+              displayName: Erstellt von
+              description: Der Benutzer, der dieses Element erstellt hat.
+              order: 10
+              type:
+                kind: Record
+                properties:
+                  Claims:
+                    displayName: Claims
+                    description: Interner Bezeichner für den Benutzer, der dieses Element erstellt hat.
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+                  Department:
+                    displayName: Department
+                    description: Der Abteilungsname des Benutzers, der dieses Element erstellt hat.
+                    order: 4
+                    type: String
+
+                  DisplayName:
+                    displayName: DisplayName
+                    description: Der Name des Benutzers, der dieses Element erstellt hat.
+                    order: 1
+                    type: String
+
+                  Email:
+                    displayName: Email
+                    description: Die E-Mail-Adresse des Benutzers, der dieses Element erstellt hat.
+                    order: 2
+                    type: String
+
+                  JobTitle:
+                    displayName: JobTitle
+                    description: Die berufliche Position des Benutzers, der dieses Element erstellt hat.
+                    order: 5
+                    type: String
+
+                  Picture:
+                    displayName: Picture
+                    description: Link zu einem Bild des Benutzers, der dieses Element erstellt hat.
+                    order: 3
+                    type: String
+
+            CheckoutUser:
+              displayName: Ausgecheckt von
+              order: 11
+              type:
+                kind: Record
+                properties:
+                  Claims:
+                    displayName: Claims
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+                  Department:
+                    displayName: Department
+                    order: 4
+                    type: String
+
+                  DisplayName:
+                    displayName: DisplayName
+                    order: 1
+                    type: String
+
+                  Email:
+                    displayName: Email
+                    order: 2
+                    type: String
+
+                  JobTitle:
+                    displayName: JobTitle
+                    order: 5
+                    type: String
+
+                  Picture:
+                    displayName: Picture
+                    order: 3
+                    type: String
+
+            ComplianceAssetId:
+              displayName: Complianceobjekt-ID
+              order: 7
+              type: String
+
+            Created:
+              displayName: Erstellt
+              description: Wann dieses Element erstellt wurde.
+              order: 9
+              type: DateTime
+
+            Editor:
+              displayName: Geändert von
+              description: Der Benutzer, der dieses Element zuletzt geändert hat.
+              order: 3
+              type:
+                kind: Record
+                properties:
+                  Claims:
+                    displayName: Claims
+                    description: Interner Bezeichner für den Benutzer, der dieses Element zuletzt geändert hat.
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+                  Department:
+                    displayName: Department
+                    description: Der Abteilungsname des Benutzers, der dieses Element zuletzt geändert hat.
+                    order: 4
+                    type: String
+
+                  DisplayName:
+                    displayName: DisplayName
+                    description: Der Name des Benutzers, der dieses Element zuletzt geändert hat.
+                    order: 1
+                    type: String
+
+                  Email:
+                    displayName: Email
+                    description: Die E-Mail-Adresse des Benutzers, der dieses Element zuletzt geändert hat.
+                    order: 2
+                    type: String
+
+                  JobTitle:
+                    displayName: JobTitle
+                    description: Berufliche Position des Benutzers, der dieses Element zuletzt geändert hat.
+                    order: 5
+                    type: String
+
+                  Picture:
+                    displayName: Picture
+                    description: Link zu einem Bild des Benutzers, der dieses Element zuletzt geändert hat.
+                    order: 3
+                    type: String
+
+            ID:
+              displayName: ID
+              description: Listenelement-ID. Verwenden Sie diesen Wert, um das Element anzugeben, das in anderen listenbezogenen Aktionen bearbeitet werden soll.
+              order: 0
+              type: Number
+
+            Kategorie:
+              displayName: Kategorie
+              description: Kategorie der Prozessdokumentation
+              order: 4
+              type:
+                kind: Record
+                properties:
+                  Value:
+                    displayName: Value
+                    order: 0
+                    dynamicValuesConfig:
+                      capability: List
+
+                    type: String
+
+            Modified:
+              displayName: Geändert
+              description: Wann dieses Element zuletzt geändert wurde.
+              order: 2
+              type: DateTime
+
+            OData__ColorTag:
+              displayName: Farbkennzeichnung
+              order: 6
+              type: String
+
+            OData__DisplayName:
+              displayName: Vertraulichkeit
+              order: 12
+              type: String
+
+            OData__ExtendedDescription:
+              displayName: Beschreibung
+              order: 8
+              type: String
+
+            Title:
+              displayName: Titel
+              order: 1
+              type: String
+
+outputMode: All

@@ -1,0 +1,11 @@
+mcs.metadata:
+  componentName: Aktuellen Prozess Beschreiben
+kind: AdaptiveDialog
+modelDescription: Suche nach Dokumentation zum angegebenen Prozess.
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+
+inputType: {}
+outputType: {}

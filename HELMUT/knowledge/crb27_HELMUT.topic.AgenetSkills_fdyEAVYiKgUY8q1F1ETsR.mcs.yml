@@ -1,0 +1,9 @@
+mcs.metadata:
+  componentName: Agent Skills
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in Agenet Skills SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  triggerCondition: true
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/Agenet%20Skills
+  additionalSearchTerms:

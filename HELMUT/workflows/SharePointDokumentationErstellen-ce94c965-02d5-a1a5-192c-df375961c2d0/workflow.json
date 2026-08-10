@@ -1,0 +1,149 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "api": {
+          "name": "shared_sharepointonline"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsharepointonline_659f6"
+        },
+        "runtimeSource": "invoker"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Prozessdokumentation_Verkaufsauftrag_erfassen.txt",
+                  "title": "Dateiname",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "# **Aktualisiertes Prozessverst\u00E4ndnis**  ## **Prozess** - Name: Verkaufsauftrag im ERP erstellen - Ziel: Erfassung, Preisfindung, Freigabe und optionale Kundenkommunikation f\u00FCr einen Verkaufsauftrag in Business Central. - Verantwortliche Rolle: Sachbearbeiter - Ergebnis: Freigegebener Verkaufsauftrag als Grundlage f\u00FCr die weitere Auftragsabwicklung.  ---  ## **Erg\u00E4nzte Erkenntnisse**  ### Debitorenauswahl  Benutzeraktion: - Debitor im Verkaufsauftrag ausw\u00E4hlen.  Systemautomatik: - Stammdaten des Debitors werden in den Verkaufsauftrag \u00FCbernommen. - Dazu geh\u00F6ren unter anderem:   - Zahlungsbedingungen   - W\u00E4hrung   - weitere relevante Debitorenstammdaten  ### Voraussetzungen f\u00FCr die Freigabe  Systempr\u00FCfung: - Es muss mindestens eine Verkaufszeile vorhanden sein. - Zul\u00E4ssige Zeilentypen:   - Artikel   - Ressource - Die Verkaufszeile muss einen Preis enthalten. - Pflichtfelder m\u00FCssen gef\u00FCllt sein. - Lieferadresscode muss vorhanden sein.  ### Folgeprozesse  #### Variante 1 \u2013 Verkaufsauftrag ab Lager  Voraussetzung: - Ausreichender Bestand verf\u00FCgbar.  Systemautomatik: - Der freigegebene Verkaufsauftrag wird automatisch in die Tourenplanung der Logistik eingeplant.  Folgeprozess: - Logistische Auslieferung.  #### Variante 2 \u2013 Streckenbestellung  Voraussetzung: - Auftrag wird als Streckenbestellung abgewickelt.  Systemautomatik: - Der Verkaufsauftrag wird automatisch beliefert, nachdem der Prozess \u201EStreckenlieferung\u201C abgeschlossen wurde.  Folgeprozess: - Streckenlieferung.  ---  # **Aktueller Vollst\u00E4ndigkeitscheck**  ### Prozess \u2705 Name bekannt  \u2705 Ziel bekannt  \u2705 Ausl\u00F6ser bekannt  \u2705 Ergebnis bekannt  ### Rollen \u2705 Verantwortliche Rolle bekannt  \u2705 Beteiligte Rollen bekannt  ### ERP-Objekte \u2705 Tabellen bekannt  \u2705 Listen bekannt  \u2705 Karten bekannt  \u2705 Aktionen bekannt  \u2705 Berichte bekannt  \u2705 Belege bekannt  ### Ablauf \u2705 Prozessschritte dokumentiert  \u2705 Benutzeraktionen dokumentiert  \u2705 Systemautomatiken dokumentiert  \u2705 Entscheidungen dokumentiert  ### Qualit\u00E4t \u2705 Fehlerf\u00E4lle dokumentiert  \u2705 Ausnahmen dokumentiert  \u2705 Folgeprozesse dokumentiert  ### Offene fachliche Hinweise - Das Vorgehen zur Preisfindung \u00FCber Kundenhistorie bzw. vergleichbare Kunden ist dokumentiert, sollte jedoch fachlich \u00FCberpr\u00FCft werden, da es laut Beschreibung aktuell als fraglicher Prozess gilt.",
+                  "title": "DateiInhalt",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_2": {
+                  "description": "",
+                  "title": "Kategorie",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_3": {
+                  "description": "",
+                  "title": "Abteilung",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Datei_erstellen": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet",
+              "folderPath": "/BC Prozesse  Dokumentation",
+              "name": "@triggerBody()?[\u0027text\u0027]",
+              "body": "@triggerBody()?[\u0027text_1\u0027]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "CreateFile",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {},
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Dateieigenschaften_aktualisieren": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "dataset": "https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet",
+              "table": "e92d361a-9f48-4993-9c13-c8c8a1f87f71",
+              "id": "@outputs(\u0027Datei_erstellen\u0027)?[\u0027body/ItemId\u0027]",
+              "item/Kategorie/Value": "@triggerBody()?[\u0027text_2\u0027]",
+              "item/Abteilung": "@body(\u0027JSON_analysieren\u0027)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+              "operationId": "PatchFileItem",
+              "connectionName": "shared_sharepointonline"
+            }
+          },
+          "runAfter": {
+            "JSON_analysieren": [
+              "SUCCEEDED"
+            ]
+          }
+        },
+        "JSON_analysieren": {
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()?[\u0027text_3\u0027]",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Value"
+                ]
+              }
+            }
+          },
+          "runAfter": {
+            "Datei_erstellen": [
+              "SUCCEEDED"
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

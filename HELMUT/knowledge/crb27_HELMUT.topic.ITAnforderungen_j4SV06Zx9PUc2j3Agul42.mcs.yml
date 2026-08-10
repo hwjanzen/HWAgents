@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: IT Anforderungen
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in IT Anforderungen SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/IT%20Anforderungen

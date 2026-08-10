@@ -1,0 +1,48 @@
+mcs.metadata:
+  componentName: neuen Prozess Dokumentieren
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName:
+    triggerQueries:
+      - neuen Prozess dokumentieren
+      - neuen Prozess erfassen
+      - Prozessdokumentation starten
+      - wie dokumentiere ich einen neuen Prozess
+      - Prozessbeschreibung hinzufügen
+      - neue Prozessdokumentation erstellen
+      - Dokumentation für neuen Prozess beginnen
+      - einen neuen Geschäftsprozess dokumentieren
+      - Prozess aufnehmen und dokumentieren
+
+  actions:
+    - kind: Question
+      id: Question_kaJG40
+      variable: Topic.ProzessErklaerung
+      prompt: Bitte erklären Sie den Prozess.
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: Question_NYpyaZ
+      variable: Topic.ProzessFragen
+      prompt: Könnten Sie einige Fragen zum Prozess beantworten?
+      entity: StringPrebuiltEntity
+
+    - kind: Question
+      id: Question_vF39iv
+      variable: Topic.ProzessScreenshots
+      prompt: Bitte posten Sie Screenshots zum Prozess zur besseren Visualisierung.
+      entity: StringPrebuiltEntity
+
+    - kind: SendActivity
+      id: SendActivity_n9vHoi
+      activity: |-
+        Vielen Dank für Ihre Informationen zum Prozess.
+        Prozess-Erklärung: {Topic.ProzessErklaerung}
+        Antworten auf Fragen: {Topic.ProzessFragen}
+        Screenshots: {Topic.ProzessScreenshots}
+
+inputType: {}
+outputType: {}
