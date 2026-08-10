@@ -30,19 +30,12 @@ beginDialog:
       prompt: Könnten Sie einige Fragen zum Prozess beantworten?
       entity: StringPrebuiltEntity
 
-    - kind: Question
-      id: Question_vF39iv
-      variable: Topic.ProzessScreenshots
-      prompt: Bitte posten Sie Screenshots zum Prozess zur besseren Visualisierung.
-      entity: StringPrebuiltEntity
-
     - kind: SendActivity
       id: SendActivity_n9vHoi
       activity: |-
         Vielen Dank für Ihre Informationen zum Prozess.
         Prozess-Erklärung: {Topic.ProzessErklaerung}
         Antworten auf Fragen: {Topic.ProzessFragen}
-        Screenshots: {Topic.ProzessScreenshots}
 
 inputType: {}
 outputType: {}
