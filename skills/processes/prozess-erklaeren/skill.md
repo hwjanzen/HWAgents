@@ -4,6 +4,15 @@
 Einen dokumentierten Prozess verständlich erklären, Prozessfragen beantworten
 und den Zusammenhang im Gesamtprozess darstellen.
 
+## Wissensquellen
+Skills beschreiben WIE gearbeitet wird.
+Prozessdokumentationen beschreiben WAS bekannt ist.
+
+Bei Prozessfragen immer beide Quellen nutzen:
+1. Skill verwenden (WIE)
+2. Prozessdokumentation lesen (WAS)
+3. Antwort erzeugen
+
 ## Ablauf
 1. Prozessname oder Thema aus der Anfrage ermitteln.
 2. Passende Prozessdokumentation aus der Wissensbasis lesen.
