@@ -7,6 +7,7 @@
     "vscode": "^1.90.0"
   },
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:hwagents.hello",
     "onCommand:hwagents.configureProject",
     "onCommand:hwagents.previewOfficeManifest",

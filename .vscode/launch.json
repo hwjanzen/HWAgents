@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run HW Agents Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "env": {
+        "NODE_OPTIONS": "--no-deprecation"
+      },
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/vscode-extension"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/packages/vscode-extension/dist/**/*.js"
+      ],
+      "preLaunchTask": "build-hwagents-extension"
+    }
+  ]
+}
