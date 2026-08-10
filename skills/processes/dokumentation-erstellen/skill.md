@@ -22,19 +22,21 @@ Verwende diese Struktur:
 13. Ergebnis
 14. Folgeprozess
 
-## Schritt 2 — Alle 4 Parameter bereitstellen
-Vor dem Tool-Aufruf müssen alle 4 Werte feststehen.
-Das Tool verwendet diese **Anzeigenamen** als Eingabefelder:
+## Schritt 2 — Parameter-Mapping vor Tool-Aufruf
 
-| Anzeigename im Tool | Inhalt | Format |
-|---|---|---|
-| **Dateiname** | Nur der Dateiname: `Prozessdokumentation_` + Prozessname + `.txt` (Leerzeichen = Unterstriche) | String |
-| **DateiInhalt** | Vollständiger Dokumentationstext aus Schritt 1 — **niemals vom Benutzer erfragen, selbst generieren** | String |
-| **Kategorie** | Kategorie aus dem Interview — exakt ein zulässiger Wert | String |
-| **Abteilung** | Abteilungen als JSON-Array-String | `[{"Value":"Vertrieb"}]` |
+Befülle die Flow-Eingaben exakt nach diesem Mapping:
 
-⚠️ Dateiname = NUR der Dateiname. DateiInhalt = NUR der Dokumentationstext. Nicht vertauschen.
-Fehlt DateiInhalt: generiere ihn jetzt selbst aus Schritt 1 — frage den Benutzer NICHT danach.
+```
+FlowInputParameter  → AgentContent
+─────────────────────────────────────────────────────────────
+Dateiname           → Dateiname (z.B. Prozessdokumentation_Streckenbestellung.txt)
+DateiInhalt         → deinAufgenommenerProzess (vollständiger Text aus Schritt 1)
+Kategorie           → vonDirErfragteKategorie (z.B. BC Prozesse)
+Abteilung           → vonDirErfragteAbteilung (z.B. [{"Value":"Vertrieb"}])
+```
+
+Fehlt ein Wert: jetzt erfragen — außer DateiInhalt, den generierst du selbst.
+
 
 
 ## Schritt 3 — Bestätigung einholen
