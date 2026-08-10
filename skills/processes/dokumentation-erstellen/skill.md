@@ -29,7 +29,7 @@ Bevor du SharePointDokumentationErstellen aufrufst, führe diesen Schritt zwinge
 
 **Zeige dem Benutzer die vier Werte zur Bestätigung:**
 > "Ich möchte die Dokumentation mit folgenden Angaben speichern:
-> - Dateiname: [Wert]
+> - Dateiname: [Wert] ← muss auf .txt enden
 > - Kategorie: [Wert]
 > - Abteilung: [Wert]
 > - Inhalt: [erste 3 Zeilen der Dokumentation]...
@@ -58,7 +58,8 @@ Zulässige Abteilungswerte: `Vertrieb`, `Lager`, `Einkauf`, `Buchhaltung`, `IT`,
 
 ## Regeln
 - Nur bestätigte Informationen aus dem Interview verwenden.
-- Dateiname: `Prozessdokumentation_<Prozessname>.txt` — Leerzeichen = Unterstriche, keine Sonderzeichen.
+- Dateiname: `Prozessdokumentation_<Prozessname>.txt` — Leerzeichen = Unterstriche, keine Sonderzeichen, Endung `.txt` ist Pflicht.
+- Dateiname niemals ohne `.txt` übergeben — der Flow kann die Datei sonst nicht korrekt anlegen.
 - Niemals Dateiinhalt vom Benutzer anfordern — aus dem Interview selbst erzeugen.
 - Offene Punkte und ungeklärte Informationen sichtbar in der Dokumentation kennzeichnen.
 - Vor der Erstellung prüfen ob eine Dokumentation zu diesem Prozess bereits existiert.
