@@ -1,6 +1,10 @@
 import * as vscode from "vscode";
 import { configureSettings, getSettings } from "./settings";
 import { loadOfficeManifest, manifestToMarkdown, validateOfficeManifest } from "./manifestLoader";
+import { syncLookaInstruction } from "./lookaSync";
+import { runSkillTests, testResultsToMarkdown } from "./skillTester";
+import { runSkillWizard } from "./skillWizard";
+
 
 export function registerCommands(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
@@ -114,6 +118,48 @@ export function registerCommands(context: vscode.ExtensionContext): void {
         content: lines.join("\n")
       });
       await vscode.window.showTextDocument(doc, { preview: false });
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hwagents.syncLooka", async () => {
+      const result = await syncLookaInstruction();
+      if (result.status === "applied") {
+        await vscode.window.showInformationMessage(`Looka Sync: ${result.message}`);
+      } else if (result.status === "cancelled") {
+        await vscode.window.showWarningMessage(`Looka Sync: ${result.message}`);
+      } else {
+        await vscode.window.showInformationMessage(`Looka Sync: ${result.message}`);
+      }
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hwagents.runSkillTests", async () => {
+      const settings = getSettings();
+      try {
+        const results = await runSkillTests(settings);
+        const doc = await vscode.workspace.openTextDocument({
+          language: "markdown",
+          content: testResultsToMarkdown(results)
+        });
+        await vscode.window.showTextDocument(doc, { preview: false });
+        const failed = results.filter((r) => r.status === "fail").length;
+        if (failed > 0) {
+          await vscode.window.showWarningMessage(`${failed} Skill(s) nicht erreichbar.`);
+        } else {
+          await vscode.window.showInformationMessage(`Alle ${results.length} Skills erfolgreich geladen.`);
+        }
+      } catch (e) {
+        await vscode.window.showErrorMessage(`Skill-Test fehlgeschlagen: ${e instanceof Error ? e.message : String(e)}`);
+      }
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hwagents.createSkillWizard", async () => {
+      const settings = getSettings();
+      await runSkillWizard(settings);
     })
   );
 

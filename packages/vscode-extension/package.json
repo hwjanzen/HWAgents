@@ -13,7 +13,10 @@
     "onCommand:hwagents.previewOfficeManifest",
     "onCommand:hwagents.checkCopilotStudio",
     "onCommand:hwagents.copyCpsManifestUrl",
-    "onCommand:hwagents.showCpsInstructions"
+    "onCommand:hwagents.showCpsInstructions",
+    "onCommand:hwagents.syncLooka",
+    "onCommand:hwagents.runSkillTests",
+    "onCommand:hwagents.createSkillWizard"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -58,6 +61,18 @@
       {
         "command": "hwagents.checkCopilotStudio",
         "title": "HW Agents: Check Copilot Studio Integration"
+      },
+      {
+        "command": "hwagents.syncLooka",
+        "title": "HW Agents: Sync Looka Instruction"
+      },
+      {
+        "command": "hwagents.runSkillTests",
+        "title": "HW Agents: Run Skill Tests"
+      },
+      {
+        "command": "hwagents.createSkillWizard",
+        "title": "HW Agents: Create New Skill"
       },
       {
         "command": "hwagents.copyCpsManifestUrl",
