@@ -24,20 +24,25 @@ Verwende diese Struktur:
 
 ## Schritt 2 — Verifikationsblock ausgeben
 
-Bevor du das Tool aufrufst, gib **zwingend** diesen Block aus und befülle alle 4 Felder:
+Alle 4 Parameter leitest du selbst ab — du fragst den Benutzer nach keinem davon:
+- `NurKurznameTxt` → du baust ihn aus dem Prozessnamen: `Prozessdokumentation_<Prozessname>.txt`
+- `AllerDokumentationstext` → du schreibst ihn selbst aus Schritt 1
+- `Kategorie` → du hast sie im Interview erfragt
+- `AbteilungJsonArray` → du hast sie im Interview erfragt
+
+Gib diesen Block aus und befülle alle 4 Felder selbst:
 
 ```
 PARAMETER_VERIFIKATION:
-NurKurznameTxt        : [nur Dateiname.txt - max 80 Zeichen - kein Dokumentationstext]
+NurKurznameTxt            : Prozessdokumentation_<Prozessname>.txt
 VollstaendigerProzesstext : [vollständiger Dokumentationstext aus Schritt 1]
-Kategorie             : [ein zulässiger Kategorie-Wert]
-Abteilung             : [{"Value":"Abteilung1"}]
-ALLE_BEREIT           : JA
+Kategorie                 : [Kategorie aus dem Interview]
+AbteilungJsonArray        : [{"Value":"Abteilung1"}]
+ALLE_BEREIT               : JA
 ```
 
-Erst wenn ALLE_BEREIT = JA und alle 4 Zeilen befüllt sind: Tool aufrufen.
-Ist ein Feld leer oder ALLE_BEREIT = NEIN: fehlenden Wert zuerst beschaffen, dann Block erneut ausgeben.
-Dateiname darf maximal 80 Zeichen haben und endet auf .txt — ist er länger, enthält er den falschen Inhalt.
+Erst wenn ALLE_BEREIT = JA: Tool aufrufen.
+Ist ein Feld leer: selbst generieren oder ableiten — NICHT den Benutzer fragen.
 
 
 
