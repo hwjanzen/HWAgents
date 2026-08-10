@@ -64,7 +64,7 @@ Unterscheide zwischen:
 
 Benutzeraktionen und Systemautomatiken immer strikt trennen:
 - Benutzeraktion: Was macht der Anwender? Auf welchem Objekt? Welche Aktion?
-- Systemautomatik: Welche Datensätze entstehen? Welche Prüfungen laufen? Welche Dokumente entstehen?
+- Systemautomatik: Welche Datensätze entstehen? Welche Prüfungen laufen? Welche Dokumente entstehen? Welche Aufgaben werden erzeugt?
 
 ## Regeln
 - Eine Frage pro Nachricht.
