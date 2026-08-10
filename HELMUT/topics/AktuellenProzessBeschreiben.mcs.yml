@@ -2,11 +2,14 @@ mcs.metadata:
   componentName: Aktuellen Prozess Beschreiben
   disabled: true
 kind: AdaptiveDialog
-modelDescription: Suche nach Dokumentation zum angegebenen Prozess.
 beginDialog:
   kind: OnRecognizedIntent
   id: main
-  intent: {}
-
+  intent:
+    triggerQueries: []
+  actions:
+    - kind: SendActivity
+      id: SendActivity_disabled
+      activity: Dieser Workflow ist deaktiviert.
 inputType: {}
 outputType: {}

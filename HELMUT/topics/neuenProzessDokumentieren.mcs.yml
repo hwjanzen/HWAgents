@@ -7,36 +7,10 @@ beginDialog:
   id: main
   intent:
     displayName:
-    triggerQueries:
-      - neuen Prozess dokumentieren
-      - neuen Prozess erfassen
-      - Prozessdokumentation starten
-      - wie dokumentiere ich einen neuen Prozess
-      - Prozessbeschreibung hinzufügen
-      - neue Prozessdokumentation erstellen
-      - Dokumentation für neuen Prozess beginnen
-      - einen neuen Geschäftsprozess dokumentieren
-      - Prozess aufnehmen und dokumentieren
-
+    triggerQueries: []
   actions:
-    - kind: Question
-      id: Question_kaJG40
-      variable: Topic.ProzessErklaerung
-      prompt: Bitte erklären Sie den Prozess.
-      entity: StringPrebuiltEntity
-
-    - kind: Question
-      id: Question_NYpyaZ
-      variable: Topic.ProzessFragen
-      prompt: Könnten Sie einige Fragen zum Prozess beantworten?
-      entity: StringPrebuiltEntity
-
     - kind: SendActivity
-      id: SendActivity_n9vHoi
-      activity: |-
-        Vielen Dank für Ihre Informationen zum Prozess.
-        Prozess-Erklärung: {Topic.ProzessErklaerung}
-        Antworten auf Fragen: {Topic.ProzessFragen}
-
+      id: SendActivity_disabled
+      activity: Dieser Workflow ist deaktiviert.
 inputType: {}
 outputType: {}
