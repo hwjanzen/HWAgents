@@ -38,6 +38,7 @@ Bevor du SpeichereVerifiziertesProzessdokument aufrufst, führe diesen Schritt z
 
 Rufe das Tool erst nach expliziter Bestätigung auf.
 Wenn Kategorie oder Abteilung noch nicht bekannt sind: **jetzt erfragen** — Tool-Aufruf ist gesperrt bis beide Werte vorliegen.
+**Den Dateiinhalt (text_1) niemals vom Benutzer erfragen.** Du erstellst ihn selbst aus dem Interview nach der Dokumentations-Struktur.
 
 
 
