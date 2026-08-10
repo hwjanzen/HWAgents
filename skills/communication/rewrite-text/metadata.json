@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "communication.rewrite_text",
+  "name": "Rewrite Text",
+  "category": "Communication",
+  "capabilities": [
+    "Text umformulieren",
+    "Stil anpassen",
+    "Text verbessern"
+  ]
+}

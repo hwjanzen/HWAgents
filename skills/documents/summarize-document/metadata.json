@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.summarize_document",
+  "name": "Summarize Document",
+  "category": "Documents",
+  "capabilities": [
+    "Dokument zusammenfassen",
+    "Kernaussagen extrahieren"
+  ]
+}

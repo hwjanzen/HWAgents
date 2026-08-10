@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "communication.translate_mail",
+  "name": "Translate Mail",
+  "category": "Communication",
+  "capabilities": [
+    "E-Mail übersetzen",
+    "Text in andere Sprache übertragen"
+  ]
+}

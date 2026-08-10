@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "communication.prepare_meeting",
+  "name": "Prepare Meeting",
+  "category": "Meetings",
+  "capabilities": [
+    "Meeting vorbereiten",
+    "Teilnehmerliste erstellen",
+    "Agenda entwerfen"
+  ]
+}

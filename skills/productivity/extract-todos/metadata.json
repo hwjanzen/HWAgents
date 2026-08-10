@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "productivity.extract_todos",
+  "name": "Extract Todos",
+  "category": "Productivity",
+  "capabilities": [
+    "Aufgaben extrahieren",
+    "To-dos aus Text ableiten",
+    "Aktionspunkte identifizieren"
+  ]
+}
