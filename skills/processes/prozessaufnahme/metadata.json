@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "processes.prozessaufnahme",
+  "name": "Prozessaufnahme",
+  "category": "processes",
+  "capabilities": [
+    "Neuen Prozess aufnehmen",
+    "Prozessdokumentation vollständig durchführen",
+    "Interview, Validierung und SharePoint-Speicherung orchestrieren"
+  ]
+}

@@ -39,14 +39,14 @@ Wenn ein Wert fehlt, frage gezielt nach — rufe das Tool NICHT auf bevor alle v
 
 ## Tool-Aufruf: SharePointDokumentationErstellen
 
-Parameter-Zuordnung — verwende ausschließlich Werte aus dem aktuellen Gespräch:
+⚠️ ACHTUNG: Reihenfolge der Parameter exakt einhalten — Verwechslung führt zu falschem Inhalt.
 
-| Flow-Parameter | Wert aus Gespräch | Format | Beispiel |
-|---|---|---|---|
-| `text` | Prozessname aus dem Interview | `Prozessdokumentation_<Name>.txt` — Leerzeichen = Unterstriche | `Prozessdokumentation_Verkaufsauftrag_erfassen.txt` |
-| `text_1` | Vollständiger Dokumentationstext | Markdown-Text | (gesamter Dokumentationsinhalt) |
-| `text_2` | Kategorie aus dem Interview | Exakt ein zulässiger String | `BC Prozesse` |
-| `text_3` | Abteilungen aus dem Interview | JSON-Array-String — mehrere möglich | `[{"Value":"Vertrieb"},{"Value":"Buchhaltung"}]` |
+| Flow-Parameter | Inhalt | Was es NICHT ist |
+|---|---|---|
+| `text` | Nur der Dateiname — z.B. `Prozessdokumentation_Streckenbestellung.txt` | Nicht der Dokumentationstext |
+| `text_1` | Der vollständige Dokumentationstext (alle 14 Felder) | Nicht die Kategorie |
+| `text_2` | Nur die Kategorie — ein einzelner zulässiger Wert, z.B. `BC Prozesse` | Nicht der Dokumentationstext |
+| `text_3` | Abteilungen als JSON-Array-String — z.B. `[{"Value":"Vertrieb"},{"Value":"Einkauf"}]` | Nicht als einfacher Text |
 
 Zulässige Kategoriewerte: `BC Prozesse`, `IT Infrastruktur`, `Onlineshop`, `Qualitätsmanagement`, `Geschäftsprozess`, `Unternehmensbeschreibung`, `Sonstige`
 

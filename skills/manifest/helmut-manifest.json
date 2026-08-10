@@ -3,6 +3,15 @@
   "manifestId": "helmut",
   "skills": [
     {
+      "id": "processes.prozessaufnahme",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/prozessaufnahme/skill.md",
+      "capabilities": [
+        "Neuen Prozess aufnehmen",
+        "Prozessdokumentation vollst\u00e4ndig durchf\u00fchren",
+        "Interview, Validierung und SharePoint-Speicherung orchestrieren"
+      ]
+    },
+    {
       "id": "processes.interview_fuehren",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/processes/interview-fuehren/skill.md",
       "capabilities": [
