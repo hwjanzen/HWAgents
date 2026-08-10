@@ -28,11 +28,11 @@ Bevor du das Tool aufrufst, gib **zwingend** diesen Block aus und befülle alle 
 
 ```
 PARAMETER_VERIFIKATION:
-Dateiname   : [nur Dateiname.txt - max 80 Zeichen - kein Dokumentationstext]
-DateiInhalt : [vollständiger Dokumentationstext aus Schritt 1]
-Kategorie   : [ein zulässiger Kategorie-Wert]
-Abteilung   : [{"Value":"Abteilung1"}]
-ALLE_BEREIT : JA
+NurKurznameTxt        : [nur Dateiname.txt - max 80 Zeichen - kein Dokumentationstext]
+VollstaendigerProzesstext : [vollständiger Dokumentationstext aus Schritt 1]
+Kategorie             : [ein zulässiger Kategorie-Wert]
+Abteilung             : [{"Value":"Abteilung1"}]
+ALLE_BEREIT           : JA
 ```
 
 Erst wenn ALLE_BEREIT = JA und alle 4 Zeilen befüllt sind: Tool aufrufen.
