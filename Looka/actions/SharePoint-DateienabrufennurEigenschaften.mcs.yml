@@ -1,0 +1,42 @@
+mcs.metadata:
+  componentName: SharePoint - Dateien abrufen (nur Eigenschaften)
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: dataset
+    value: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet
+
+  - kind: AutomaticTaskInput
+    propertyName: table
+
+modelDisplayName: Dateien abrufen (nur Eigenschaften)
+modelDescription: |-
+  Hiermit werden die in den Spalten der Bibliothek enthaltenen Eigenschaften für alle Ordner und Dateien abgerufen, die in der Bibliothek gespeichert sind.
+              Sie können auch nach Elementen filtern, die eine bestimmte Bedingung erfüllen. Ein „Auf alle anwenden“-Bereich wird üblicherweise dazu verwendet, um mit der Ausgabe dieser Aktion zu arbeiten.
+              Bei Einsatz mit dem lokalen Datengateway muss der Name der Bibliothek für die Verbindungsherstellung möglicherweise manuell eingegeben werden.
+outputs:
+  - propertyName: value
+    name: value
+    description: List of Items
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: crb27_Looka.shared_sharepointonline.shared-sharepointonl-f126a241-52e7-4fe2-bc6d-b1012a6e9138
+  connectionProperties:
+    mode: Invoker
+
+  operationId: GetFileItems
+  dynamicOutputSchema:
+    kind: Record
+    properties:
+      value:
+        description: List of Items
+        order: 0
+        type:
+          kind: Table
+          properties:
+            dynamicProperties:
+              order: 0
+              type: Any
+
+outputMode: All

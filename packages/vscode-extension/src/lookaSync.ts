@@ -16,44 +16,39 @@ async function readSystemMd(workspaceRoot: string): Promise<string> {
   return fs.readFile(p, "utf8");
 }
 
-// Finds the agent.sync.yaml root file - CPS extension activates on this file
-async function findAgentSyncRoot(workspaceRoot: string): Promise<string | undefined> {
-  const pattern = new vscode.RelativePattern(workspaceRoot, "**/agent.sync.yaml");
-  const files = await vscode.workspace.findFiles(pattern, "**/node_modules/**", 5);
-  return files[0]?.fsPath;
+// Finds agent.mcs.yml (CPS primary format) or agent.sync.yaml as fallback
+async function findAgentRootFile(workspaceRoot: string): Promise<string | undefined> {
+  const mcsFiles = await vscode.workspace.findFiles(
+    new vscode.RelativePattern(workspaceRoot, "**/agent.mcs.yml"), "**/node_modules/**", 5
+  );
+  if (mcsFiles.length > 0) { return mcsFiles[0].fsPath; }
+  const syncFiles = await vscode.workspace.findFiles(
+    new vscode.RelativePattern(workspaceRoot, "**/agent.sync.yaml"), "**/node_modules/**", 5
+  );
+  return syncFiles[0]?.fsPath;
 }
 
-// Finds the .mcs.yaml file that contains the instructions field
-async function findInstructionFile(agentDir: string): Promise<string | undefined> {
-  const files = await vscode.workspace.findFiles(
-    new vscode.RelativePattern(agentDir, "**/*.mcs.yaml"), undefined, 20
+// Returns the agent.mcs.yml itself if it has instructions, otherwise searches siblings
+async function findInstructionFile(agentRootFile: string): Promise<string | undefined> {
+  const content = await fs.readFile(agentRootFile, "utf8");
+  if (content.includes("instructions:")) { return agentRootFile; }
+  const agentDir = path.dirname(agentRootFile);
+  const siblings = await vscode.workspace.findFiles(
+    new vscode.RelativePattern(agentDir, "*.mcs.yml"), undefined, 10
   );
-  for (const f of files) {
-    const content = await fs.readFile(f.fsPath, "utf8");
-    if (content.includes("instructions:")) {
-      return f.fsPath;
-    }
-  }
-  // Fallback: any yaml with instructions
-  const yamlFiles = await vscode.workspace.findFiles(
-    new vscode.RelativePattern(agentDir, "**/*.yaml"), undefined, 20
-  );
-  for (const f of yamlFiles) {
-    const content = await fs.readFile(f.fsPath, "utf8");
-    if (content.includes("instructions:")) {
-      return f.fsPath;
-    }
+  for (const f of siblings) {
+    const c = await fs.readFile(f.fsPath, "utf8");
+    if (c.includes("instructions:")) { return f.fsPath; }
   }
   return undefined;
 }
 
-// Replaces the instructions block value, preserving the key and YAML block scalar style
+// Replaces the instructions block scalar; always writes as literal block (|)
 function patchInstructionsField(yaml: string, newInstruction: string): string {
   const indented = newInstruction.trimEnd().split("\n").map((l) => `  ${l}`).join("\n");
-  // Matches: instructions: | or instructions: >- or instructions: "..." etc.
   return yaml.replace(
-    /(^|\n)([ \t]*instructions:[ \t]*)(\|[-]?|>[-]?|"[^"]*"|'[^']*'|[^\n]*)((\n[ \t]+[^\n]*)*)/,
-    (_m, pre, key) => `${pre}${key}|\n${indented}`
+    /(instructions:[ \t]*)(\|[-+]?|>[-+]?)?([\s\S]*?)(?=\n\S|\n*$)/m,
+    (_m, key) => `${key}|\n${indented}`
   );
 }
 
@@ -64,58 +59,57 @@ export async function syncLookaInstruction(): Promise<SyncResult> {
   }
 
   const instruction = await readSystemMd(workspace.uri.fsPath);
-  const agentSyncFile = await findAgentSyncRoot(workspace.uri.fsPath);
+  const agentRootFile = await findAgentRootFile(workspace.uri.fsPath);
 
-  if (!agentSyncFile) {
+  if (!agentRootFile) {
     await vscode.env.clipboard.writeText(instruction);
     const action = await vscode.window.showWarningMessage(
-      "Kein geklonter CPS-Agent (agent.sync.yaml) im Workspace gefunden.\nInstruction in Zwischenablage kopiert.",
+      "Kein geklonter CPS-Agent (agent.mcs.yml) im Workspace gefunden.\nInstruction in Zwischenablage kopiert.",
       "Agent klonen"
     );
     if (action === "Agent klonen") {
       await vscode.commands.executeCommand(CPS_CLONE);
     }
-    return { status: "copied", message: "Instruction in Zwischenablage. Nach dem Klonen erneut ausfÃ¼hren." };
+    return { status: "copied", message: "Instruction in Zwischenablage. Nach dem Klonen erneut ausführen." };
   }
 
-  const agentDir = path.dirname(agentSyncFile);
-  const instructionFile = await findInstructionFile(agentDir);
+  const instructionFile = await findInstructionFile(agentRootFile);
 
   if (!instructionFile) {
-    // Agent found but no instructions field - open agent dir for manual inspection
-    await vscode.commands.executeCommand("revealFileInOS", vscode.Uri.file(agentDir));
+    await vscode.commands.executeCommand("revealFileInOS", vscode.Uri.file(path.dirname(agentRootFile)));
     await vscode.env.clipboard.writeText(instruction);
     return {
       status: "copied",
-      message: `agent.sync.yaml gefunden in ${path.basename(agentDir)}, aber kein instructions-Feld. Verzeichnis geÃ¶ffnet. Instruction in Zwischenablage.`
+      message: `agent.mcs.yml gefunden, aber kein instructions-Feld. Verzeichnis geöffnet. Instruction in Zwischenablage.`
     };
   }
 
-  // Show diff before patching
   const original = await fs.readFile(instructionFile, "utf8");
   const patched = patchInstructionsField(original, instruction);
 
   const relPath = path.relative(workspace.uri.fsPath, instructionFile);
   const confirm = await vscode.window.showInformationMessage(
-    `Instructions-Datei: ${relPath}\nInstruction aus system.md einspielen und Apply ausfÃ¼hren?`,
-    { modal: true }, "Ja, Apply", "Nur Vorschau", "Datei Ã¶ffnen"
+    `Instructions-Datei: ${relPath}\nInstruction aus system.md einspielen und Apply ausführen?`,
+    { modal: true }, "Ja, Apply", "Nur Vorschau", "Datei öffnen"
   );
 
-  if (confirm === "Datei Ã¶ffnen") {
+  if (confirm === "Datei öffnen") {
     const doc = await vscode.workspace.openTextDocument(instructionFile);
     await vscode.window.showTextDocument(doc);
-    return { status: "cancelled", message: "Datei geÃ¶ffnet." };
+    return { status: "cancelled", message: "Datei geöffnet." };
   }
 
   if (confirm === "Nur Vorschau") {
     await vscode.commands.executeCommand(CPS_PREVIEW);
-    return { status: "copied", message: "Vorschau geÃ¶ffnet." };
+    return { status: "copied", message: "Vorschau geöffnet." };
   }
 
   if (confirm === "Ja, Apply") {
-    await fs.writeFile(instructionFile, patched, "utf8");
+    // Write BOM-free UTF-8 so CPS extension reads it correctly
+    const { writeFile } = await import("fs/promises");
+    await writeFile(instructionFile, patched, { encoding: "utf8" });
     await vscode.commands.executeCommand(CPS_APPLY);
-    return { status: "applied", message: `${relPath} aktualisiert und Apply ausgefÃ¼hrt.` };
+    return { status: "applied", message: `${relPath} aktualisiert und Apply ausgeführt.` };
   }
 
   return { status: "cancelled", message: "Abgebrochen." };

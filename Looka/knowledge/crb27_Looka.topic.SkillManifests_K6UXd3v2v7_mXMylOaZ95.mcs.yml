@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Skill Manifests
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in Skill Manifests SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/Skill%20Manifests

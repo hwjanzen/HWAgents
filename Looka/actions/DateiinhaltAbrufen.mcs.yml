@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: DateiinhaltAbrufen
+kind: TaskDialog
+outputs:
+  - propertyName: deine_datei
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 88c231c7-e88b-f111-ab0f-70a8a57b298c
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

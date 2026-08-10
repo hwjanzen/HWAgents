@@ -1,0 +1,5 @@
+﻿connectionReferences:
+  - connectionReferenceLogicalName: crb27_Looka.shared_sharepointonline.shared-sharepointonl-f126a241-52e7-4fe2-bc6d-b1012a6e9138
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline
+  - connectionReferenceLogicalName: hw_sharedsharepointonline_659f6
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_sharepointonline

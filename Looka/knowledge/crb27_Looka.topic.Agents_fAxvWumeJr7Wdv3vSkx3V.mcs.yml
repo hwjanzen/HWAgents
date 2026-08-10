@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Agents
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in Agents SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/Agents

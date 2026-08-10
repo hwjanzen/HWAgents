@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Knowledge
+  description: Diese Wissensquelle stellt Informationen bereit, die sich in Knowledge SharePoint befinden.
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/Knowledge

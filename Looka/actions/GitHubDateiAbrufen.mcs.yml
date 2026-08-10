@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: GitHubDateiAbrufen
+kind: TaskDialog
+outputs:
+  - propertyName: geturl
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7b649503-9294-f111-8075-e4fb1ef70549
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All
