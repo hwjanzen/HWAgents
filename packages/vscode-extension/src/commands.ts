@@ -113,13 +113,13 @@ export function registerCommands(context: vscode.ExtensionContext): void {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("hwagents.checkCopilotStudio", async () => {
+      const installed = vscode.extensions.all.find(
         (ext) =>
           ext.id.toLowerCase().includes("copilot-studio") ||
           ext.packageJSON?.displayName?.toLowerCase?.().includes("copilot studio")
       );
-
       const settings = getSettings();
-      const lines = [
+      const content = [
         "# Copilot Studio Readiness",
         "",
         `- Copilot Studio Extension: ${installed ? "Installed" : "Not detected"}`,
@@ -131,15 +131,10 @@ export function registerCommands(context: vscode.ExtensionContext): void {
         "## Next Test",
         "1. Run: HW Agents: Preview Office Manifest",
         "2. Verify loaded skills match Office baseline",
-        "3. Execute first Office Agent test in Copilot Studio"
-      ];
-
-      const doc = await vscode.workspace.openTextDocument({
-        language: "markdown",
-        content: lines.join("\n")
-      });
+        "3. Execute first Office Agent test in Copilot Studio",
+      ].join("\n");
+      const doc = await vscode.workspace.openTextDocument({ language: "markdown", content });
       await vscode.window.showTextDocument(doc, { preview: false });
-
       if (installed) {
         await vscode.window.showInformationMessage("Copilot Studio Extension erkannt. Ready fuer Office-Agent-Test.");
       } else {
