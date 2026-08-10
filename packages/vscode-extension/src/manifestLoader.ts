@@ -15,12 +15,14 @@ export interface OfficeManifest {
 }
 
 async function downloadText(url: string): Promise<string> {
-  const res = await fetch(url);
+  // no-cache ensures GitHub CDN doesn't serve stale content
+  const res = await fetch(url, { headers: { "Cache-Control": "no-cache", "Pragma": "no-cache" } });
   if (!res.ok) {
     throw new Error(`GitHub returned HTTP ${res.status} for: ${url}`);
   }
-  const text = await res.text();
-  // Sanity check: GitHub auth pages return HTML when the repo is private or the URL is wrong
+  const raw = await res.text();
+  // strip UTF-8 BOM if present
+  const text = raw.charCodeAt(0) === 0xFEFF ? raw.slice(1) : raw;
   if (text.trimStart().startsWith("<")) {
     throw new Error(`GitHub returned HTML instead of JSON. Check that the repo is public and the path is correct.\nURL: ${url}`);
   }

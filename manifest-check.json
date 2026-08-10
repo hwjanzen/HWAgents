@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "../../schemas/skill-manifest-list.schema.json",
+  "manifestId": "office",
+  "skills": [
+    {
+      "id": "communication.summarize_mail",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/summarize-mail/skill.md",
+      "capabilities": [
+        "E-Mail zusammenfassen",
+        "Aufgaben extrahieren"
+      ]
+    },
+    {
+      "id": "communication.draft_mail",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/draft-mail/skill.md",
+      "capabilities": [
+        "E-Mail entwerfen",
+        "Antwortmail erstellen"
+      ]
+    },
+    {
+      "id": "communication.translate_mail",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/translate-mail/skill.md",
+      "capabilities": [
+        "E-Mail übersetzen",
+        "Text in andere Sprache übertragen"
+      ]
+    },
+    {
+      "id": "communication.rewrite_text",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/rewrite-text/skill.md",
+      "capabilities": [
+        "Text umformulieren",
+        "Stil anpassen",
+        "Text verbessern"
+      ]
+    },
+    {
+      "id": "communication.prepare_meeting",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/meetings/prepare-meeting/skill.md",
+      "capabilities": [
+        "Meeting vorbereiten",
+        "Teilnehmerliste erstellen",
+        "Agenda entwerfen"
+      ]
+    },
+    {
+      "id": "meetings.create_meeting_agenda",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/meetings/create-meeting-agenda/skill.md",
+      "capabilities": [
+        "Meeting-Agenda erstellen",
+        "Tagesordnungspunkte strukturieren"
+      ]
+    },
+    {
+      "id": "documents.summarize_document",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/summarize-document/skill.md",
+      "capabilities": [
+        "Dokument zusammenfassen",
+        "Kernaussagen extrahieren"
+      ]
+    },
+    {
+      "id": "productivity.extract_todos",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/productivity/extract-todos/skill.md",
+      "capabilities": [
+        "Aufgaben extrahieren",
+        "To-dos aus Text ableiten",
+        "Aktionspunkte identifizieren"
+      ]
+    }
+  ]
+}
