@@ -1,0 +1,50 @@
+{
+  "agent": "HELMUT",
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "id": "T01",
+      "title": "Neuen Prozess dokumentieren",
+      "intent": "Ich moechte einen neuen Prozess dokumentieren",
+      "expectedSkill": "processes.prozessaufnahme",
+      "expectedBehavior": "HELMUT laedt Manifest, waehlt prozessaufnahme, startet Interview",
+      "mustNOT": "SharePointDokumentationErstellen direkt aufrufen",
+      "passCondition": "HELMUT stellt erste Interviewfrage ohne nach Abteilung zu fragen"
+    },
+    {
+      "id": "T02",
+      "title": "Prozess erklaeren",
+      "intent": "Erklaere mir den Prozess Verkaufsauftrag erfassen",
+      "expectedSkill": "processes.prozess_erklaeren",
+      "expectedBehavior": "HELMUT laedt Manifest, waehlt prozess_erklaeren, liest Prozessdokumentation aus SharePoint",
+      "mustNOT": "Interview starten",
+      "passCondition": "HELMUT fragt nach oder liest direkt die Dokumentation"
+    },
+    {
+      "id": "T03",
+      "title": "Dokumentation aktualisieren",
+      "intent": "Der Prozess Streckenbestellung hat sich geaendert, bitte aktualisiere die Dokumentation",
+      "expectedSkill": "processes.dokumentation_aktualisieren",
+      "expectedBehavior": "HELMUT laedt Manifest, waehlt dokumentation_aktualisieren, fragt nach Aenderungen",
+      "mustNOT": "Neue Dokumentation ohne Rueckfrage erstellen",
+      "passCondition": "HELMUT fragt was sich geaendert hat"
+    },
+    {
+      "id": "T04",
+      "title": "Interview mit vollstaendiger Speicherung",
+      "intent": "Neuen Prozess aufnehmen: Bestellanforderung erstellen",
+      "steps": [
+        { "step": 1, "action": "Intent senden", "expected": "HELMUT startet Interview" },
+        { "step": 2, "action": "Prozessbeschreibung liefern", "expected": "HELMUT fragt nach Kategorie" },
+        { "step": 3, "action": "Kategorie: BC Prozesse", "expected": "HELMUT fragt nach Abteilung" },
+        { "step": 4, "action": "Abteilung: Einkauf", "expected": "HELMUT fragt nach Prozessschritten" },
+        { "step": 5, "action": "Prozessschritte beschreiben", "expected": "HELMUT validiert Verstaendnis" },
+        { "step": 6, "action": "Bestaetigung: Ja", "expected": "HELMUT zeigt 4 Parameter zur Bestaetigung" },
+        { "step": 7, "action": "Bestaetigung: Speichern", "expected": "SharePointDokumentationErstellen wird aufgerufen" }
+      ],
+      "expectedFilename": "Prozessdokumentation_Bestellanforderung_erstellen.txt",
+      "expectedKategorie": "BC Prozesse",
+      "expectedAbteilung": "[{\"Value\":\"Einkauf\"}]"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## Zweck
 Ein bestätigtes Interview in eine vollständige Prozessdokumentation überführen
-und über das Tool **SharePointDokumentationErstellen** in SharePoint speichern.
+und über das Tool **SpeichereVerifiziertesProzessdokument** in SharePoint speichern.
 
 ## Voraussetzung
 Der Prozessverantwortliche hat das Prozessverständnis bestätigt.
@@ -25,7 +25,7 @@ Jede Dokumentation enthält:
 14. Folgeprozess
 
 ## Pflicht-Checkliste vor Tool-Aufruf
-Bevor du SharePointDokumentationErstellen aufrufst, führe diesen Schritt zwingend aus:
+Bevor du SpeichereVerifiziertesProzessdokument aufrufst, führe diesen Schritt zwingend aus:
 
 **Zeige dem Benutzer die vier Werte zur Bestätigung:**
 > "Ich möchte die Dokumentation mit folgenden Angaben speichern:
@@ -41,7 +41,7 @@ Wenn Kategorie oder Abteilung noch nicht bekannt sind: **jetzt erfragen** — To
 
 
 
-## Tool-Aufruf: SharePointDokumentationErstellen
+## Tool-Aufruf: SpeichereVerifiziertesProzessdokument
 
 ⚠️ ACHTUNG: Reihenfolge der Parameter exakt einhalten — Verwechslung führt zu falschem Inhalt.
 
