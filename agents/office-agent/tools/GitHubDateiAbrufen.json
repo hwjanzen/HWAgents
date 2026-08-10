@@ -1,0 +1,46 @@
+{
+  "toolName": "GitHubDateiAbrufen",
+  "type": "PowerAutomateFlow",
+  "description": "Laedt den Inhalt einer Datei aus einem oeffentlichen GitHub-Repository ueber die Raw-URL.",
+  "trigger": "NachAufforderung",
+  "inputs": [
+    {
+      "name": "RawUrl",
+      "type": "String",
+      "required": true,
+      "description": "Vollstaendige GitHub Raw-URL der Datei, z.B. https://raw.githubusercontent.com/owner/repo/branch/path/file.md"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Dateiinhalt",
+      "type": "String",
+      "description": "Textinhalt der angeforderten Datei."
+    }
+  ],
+  "flowSteps": [
+    {
+      "step": 1,
+      "action": "HTTP GET",
+      "description": "Sendet GET-Request an RawUrl",
+      "config": {
+        "method": "GET",
+        "uri": "@{triggerBody()?['RawUrl']}",
+        "authentication": "None"
+      }
+    },
+    {
+      "step": 2,
+      "action": "Respond to Copilot",
+      "description": "Gibt den Body des HTTP-Responses als Dateiinhalt zurueck",
+      "config": {
+        "Dateiinhalt": "@{body('HTTP_GET')}"
+      }
+    }
+  ],
+  "notes": [
+    "Das Repository muss oeffentlich sein (kein PAT erforderlich).",
+    "Fuer private Repos: Authorization-Header mit Bearer-Token in HTTP-Action ergaenzen.",
+    "Timeout-Standard des HTTP-Konnektors: 60 Sekunden."
+  ]
+}

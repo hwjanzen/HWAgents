@@ -21,9 +21,13 @@ function main() {
     }
     ids.add(skill.id);
 
-    const skillFile = path.resolve(path.dirname(manifestPath), skill.file);
-    if (!fs.existsSync(skillFile)) {
-      throw new Error(`Missing skill file: ${skill.file}`);
+    // absolute URLs are resolved at runtime by the agent; only check local paths
+    const isAbsoluteUrl = skill.file.startsWith("http://") || skill.file.startsWith("https://");
+    if (!isAbsoluteUrl) {
+      const skillFile = path.resolve(path.dirname(manifestPath), skill.file);
+      if (!fs.existsSync(skillFile)) {
+        throw new Error(`Missing skill file: ${skill.file}`);
+      }
     }
   }
 
