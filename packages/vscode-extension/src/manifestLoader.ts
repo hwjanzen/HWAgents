@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import * as fs from "fs/promises";
 import * as path from "path";
-import * as https from "https";
 import { HwAgentsSettings } from "./settings";
 
 export interface OfficeManifestSkill {
@@ -15,24 +14,17 @@ export interface OfficeManifest {
   skills: OfficeManifestSkill[];
 }
 
-function downloadText(url: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        if (!res.statusCode || res.statusCode < 200 || res.statusCode >= 300) {
-          reject(new Error(`GitHub request failed (${res.statusCode ?? "unknown"}). URL: ${url}`));
-          return;
-        }
-
-        let data = "";
-        res.setEncoding("utf8");
-        res.on("data", (chunk) => {
-          data += chunk;
-        });
-        res.on("end", () => resolve(data));
-      })
-      .on("error", reject);
-  });
+async function downloadText(url: string): Promise<string> {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`GitHub returned HTTP ${res.status} for: ${url}`);
+  }
+  const text = await res.text();
+  // Sanity check: GitHub auth pages return HTML when the repo is private or the URL is wrong
+  if (text.trimStart().startsWith("<")) {
+    throw new Error(`GitHub returned HTML instead of JSON. Check that the repo is public and the path is correct.\nURL: ${url}`);
+  }
+  return text;
 }
 
 function toRawGithubUrl(settings: HwAgentsSettings): string {
