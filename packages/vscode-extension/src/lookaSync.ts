@@ -75,7 +75,7 @@ export async function syncLookaInstruction(): Promise<SyncResult> {
     if (action === "Agent klonen") {
       await vscode.commands.executeCommand(CPS_CLONE);
     }
-    return { status: "copied", message: "Instruction in Zwischenablage. Nach dem Klonen erneut ausführen." };
+    return { status: "copied", message: "Instruction in Zwischenablage. Nach dem Klonen erneut ausfÃ¼hren." };
   }
 
   const agentDir = path.dirname(agentSyncFile);
@@ -87,7 +87,7 @@ export async function syncLookaInstruction(): Promise<SyncResult> {
     await vscode.env.clipboard.writeText(instruction);
     return {
       status: "copied",
-      message: `agent.sync.yaml gefunden in ${path.basename(agentDir)}, aber kein instructions-Feld. Verzeichnis geöffnet. Instruction in Zwischenablage.`
+      message: `agent.sync.yaml gefunden in ${path.basename(agentDir)}, aber kein instructions-Feld. Verzeichnis geÃ¶ffnet. Instruction in Zwischenablage.`
     };
   }
 
@@ -97,100 +97,26 @@ export async function syncLookaInstruction(): Promise<SyncResult> {
 
   const relPath = path.relative(workspace.uri.fsPath, instructionFile);
   const confirm = await vscode.window.showInformationMessage(
-    `Instructions-Datei: ${relPath}\nInstruction aus system.md einspielen und Apply ausführen?`,
-    { modal: true }, "Ja, Apply", "Nur Vorschau", "Datei öffnen"
+    `Instructions-Datei: ${relPath}\nInstruction aus system.md einspielen und Apply ausfÃ¼hren?`,
+    { modal: true }, "Ja, Apply", "Nur Vorschau", "Datei Ã¶ffnen"
   );
 
-  if (confirm === "Datei öffnen") {
+  if (confirm === "Datei Ã¶ffnen") {
     const doc = await vscode.workspace.openTextDocument(instructionFile);
     await vscode.window.showTextDocument(doc);
-    return { status: "cancelled", message: "Datei geöffnet." };
+    return { status: "cancelled", message: "Datei geÃ¶ffnet." };
   }
 
   if (confirm === "Nur Vorschau") {
     await vscode.commands.executeCommand(CPS_PREVIEW);
-    return { status: "copied", message: "Vorschau geöffnet." };
+    return { status: "copied", message: "Vorschau geÃ¶ffnet." };
   }
 
   if (confirm === "Ja, Apply") {
     await fs.writeFile(instructionFile, patched, "utf8");
     await vscode.commands.executeCommand(CPS_APPLY);
-    return { status: "applied", message: `${relPath} aktualisiert und Apply ausgeführt.` };
+    return { status: "applied", message: `${relPath} aktualisiert und Apply ausgefÃ¼hrt.` };
   }
 
   return { status: "cancelled", message: "Abgebrochen." };
-}
-
-const CPS_CLONE = "microsoft-copilot-studio.cloneAgent";
-const CPS_PREVIEW = "microsoft-copilot-studio.previewChanges";
-
-export interface SyncResult {
-  status: "applied" | "copied" | "cancelled";
-  message: string;
-}
-
-async function readSystemMd(workspaceRoot: string): Promise<string> {
-  const p = path.join(workspaceRoot, "agents", "office-agent", "prompts", "system.md");
-  return fs.readFile(p, "utf8");
-}
-
-// Searches workspace for CPS-cloned agent YAML (instruction file contains "kind: AdaptiveDialog")
-async function findCpsInstructionFile(workspaceRoot: string): Promise<string | undefined> {
-  const pattern = new vscode.RelativePattern(workspaceRoot, "**/*.yaml");
-  const files = await vscode.workspace.findFiles(pattern, "**/node_modules/**", 20);
-  for (const f of files) {
-    const content = await fs.readFile(f.fsPath, "utf8");
-    if (content.includes("kind: AdaptiveDialog") || content.includes("instructions:")) {
-      return f.fsPath;
-    }
-  }
-  return undefined;
-}
-
-async function patchInstructionInYaml(yamlPath: string, newInstruction: string): Promise<void> {
-  const original = await fs.readFile(yamlPath, "utf8");
-  // Replace the instructions block: covers single and multi-line values
-  const updated = original.replace(
-    /^(\s*instructions:\s*)(['"][\s\S]*?['"]|>-[\s\S]*?(?=\n\S|\n$)|\|[\s\S]*?(?=\n\S|\n$)|[^\n]*)/m,
-    (_match, key) => `${key}|\n${newInstruction.split("\n").map((l) => `  ${l}`).join("\n")}`
-  );
-  await fs.writeFile(yamlPath, updated, "utf8");
-}
-
-export async function syncLookaInstruction(): Promise<SyncResult> {
-  const workspace = vscode.workspace.workspaceFolders?.[0];
-  if (!workspace) {
-    return { status: "cancelled", message: "Kein Workspace geoeffnet." };
-  }
-
-  const instruction = await readSystemMd(workspace.uri.fsPath);
-  const yamlFile = await findCpsInstructionFile(workspace.uri.fsPath);
-
-  if (yamlFile) {
-    const confirm = await vscode.window.showInformationMessage(
-      `CPS-Agent-Datei gefunden: ${path.basename(path.dirname(yamlFile))}/${path.basename(yamlFile)}\nInstruction aktualisieren und Apply ausfuehren?`,
-      { modal: true }, "Ja, Apply", "Nur Vorschau"
-    );
-    if (confirm === "Ja, Apply") {
-      await patchInstructionInYaml(yamlFile, instruction);
-      await vscode.commands.executeCommand(CPS_APPLY);
-      return { status: "applied", message: "Instruction aktualisiert und Apply ausgefuehrt." };
-    }
-    if (confirm === "Nur Vorschau") {
-      await vscode.commands.executeCommand(CPS_PREVIEW);
-      return { status: "copied", message: "Vorschau geoeffnet." };
-    }
-    return { status: "cancelled", message: "Abgebrochen." };
-  }
-
-  // Fallback: clipboard + guidance
-  await vscode.env.clipboard.writeText(instruction);
-  const action = await vscode.window.showWarningMessage(
-    "Kein geklonter CPS-Agent im Workspace gefunden. Instruction in Zwischenablage kopiert.",
-    "Agent klonen"
-  );
-  if (action === "Agent klonen") {
-    await vscode.commands.executeCommand(CPS_CLONE);
-  }
-  return { status: "copied", message: "Instruction in Zwischenablage. Bitte in CPS einfuegen." };
 }
