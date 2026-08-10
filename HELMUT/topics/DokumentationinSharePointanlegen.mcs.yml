@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: Dokumentation in SharePoint anlegen
+  disabled: true
 kind: AdaptiveDialog
 beginDialog:
   kind: OnRecognizedIntent

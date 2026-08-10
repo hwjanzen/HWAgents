@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: neuen Prozess Dokumentieren
+  disabled: true
 kind: AdaptiveDialog
 beginDialog:
   kind: OnRecognizedIntent

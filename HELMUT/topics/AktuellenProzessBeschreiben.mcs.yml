@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: Aktuellen Prozess Beschreiben
+  disabled: true
 kind: AdaptiveDialog
 modelDescription: Suche nach Dokumentation zum angegebenen Prozess.
 beginDialog:
