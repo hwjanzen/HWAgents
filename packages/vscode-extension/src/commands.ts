@@ -57,7 +57,60 @@ export function registerCommands(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("hwagents.checkCopilotStudio", async () => {
+    vscode.commands.registerCommand("hwagents.copyCpsManifestUrl", async () => {
+      const settings = getSettings();
+      const url = `https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/${settings.officeManifestPath}`;
+      await vscode.env.clipboard.writeText(url);
+      await vscode.window.showInformationMessage(`In Zwischenablage kopiert: ${url}`);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hwagents.showCpsInstructions", async () => {
+      const settings = getSettings();
+      const manifestUrl = `https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/${settings.officeManifestPath}`;
+      const lines = [
+        "# CPS Office Agent – Konfigurationsanleitung",
+        "",
+        "## 1. Manifest-URL",
+        "```",
+        manifestUrl,
+        "```",
+        "",
+        "## 2. Agent Instruction (ersetze SharePoint-Referenz)",
+        "```",
+        "Du bist der Office Agent.",
+        "",
+        "Lade beim Sitzungsstart das Office Manifest:",
+        manifestUrl,
+        "",
+        "Nutze ausschliesslich dort definierte Skills.",
+        "",
+        "Arbeite in Schritten:",
+        "1. Anfrage analysieren.",
+        "2. Besten Skill ueber Capabilities waehlen.",
+        "3. Skill-Inhalt laden.",
+        "4. Antwort gemaess Skill erzeugen.",
+        "```",
+        "",
+        "## 3. Skill-Raw-URLs (fuer DateiinhaltAbrufen)",
+        ...settings.officeManifestPath ? [
+          `Base: https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/skills/`
+        ] : [],
+        "",
+        "## 4. Testablauf",
+        "1. Office Agent in CPS oeffnen",
+        "2. Instruction ersetzen (siehe Abschnitt 2)",
+        "3. Testen: 'Bitte formuliere eine professionelle Antwort auf die Kundenanfrage'",
+        "4. Erwartetes Ergebnis: Agent laedt Manifest und waehlt draft_mail",
+      ];
+      const doc = await vscode.workspace.openTextDocument({
+        language: "markdown",
+        content: lines.join("\n")
+      });
+      await vscode.window.showTextDocument(doc, { preview: false });
+    })
+  );
       const installed = vscode.extensions.all.find(
         (ext) =>
           ext.id.toLowerCase().includes("copilot-studio") ||

@@ -11,7 +11,9 @@
     "onCommand:hwagents.hello",
     "onCommand:hwagents.configureProject",
     "onCommand:hwagents.previewOfficeManifest",
-    "onCommand:hwagents.checkCopilotStudio"
+    "onCommand:hwagents.checkCopilotStudio",
+    "onCommand:hwagents.copyCpsManifestUrl",
+    "onCommand:hwagents.showCpsInstructions"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -56,6 +58,14 @@
       {
         "command": "hwagents.checkCopilotStudio",
         "title": "HW Agents: Check Copilot Studio Integration"
+      },
+      {
+        "command": "hwagents.copyCpsManifestUrl",
+        "title": "HW Agents: Copy CPS Manifest URL"
+      },
+      {
+        "command": "hwagents.showCpsInstructions",
+        "title": "HW Agents: Show CPS Setup Instructions"
       }
     ]
   },
