@@ -69,6 +69,7 @@ export function registerCommands(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand("hwagents.showCpsInstructions", async () => {
       const settings = getSettings();
       const manifestUrl = `https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/${settings.officeManifestPath}`;
+      const baseSkillUrl = `https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/skills/`;
       const lines = [
         "# CPS Office Agent – Konfigurationsanleitung",
         "",
@@ -94,9 +95,7 @@ export function registerCommands(context: vscode.ExtensionContext): void {
         "```",
         "",
         "## 3. Skill-Raw-URLs (fuer DateiinhaltAbrufen)",
-        ...settings.officeManifestPath ? [
-          `Base: https://raw.githubusercontent.com/${settings.githubOwner}/${settings.githubRepo}/${settings.githubBranch}/skills/`
-        ] : [],
+        `Base: ${baseSkillUrl}`,
         "",
         "## 4. Testablauf",
         "1. Office Agent in CPS oeffnen",
@@ -111,7 +110,9 @@ export function registerCommands(context: vscode.ExtensionContext): void {
       await vscode.window.showTextDocument(doc, { preview: false });
     })
   );
-      const installed = vscode.extensions.all.find(
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("hwagents.checkCopilotStudio", async () => {
         (ext) =>
           ext.id.toLowerCase().includes("copilot-studio") ||
           ext.packageJSON?.displayName?.toLowerCase?.().includes("copilot studio")
