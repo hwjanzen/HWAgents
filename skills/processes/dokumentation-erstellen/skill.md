@@ -1,11 +1,11 @@
 # Dokumentation erstellen
 
 ## Zweck
-Aus den Interview-Antworten eine vollständige Prozessdokumentation aufbauen
-und über das Tool **SpeichereVerifiziertesProzessdokument** in SharePoint speichern.
+Aus den Interview-Antworten eine vollstaendige Prozessdokumentation aufbauen
+und ueber das Tool **SpeichereVerifiziertesProzessdokument** in SharePoint speichern.
 
-## Schritt 1 — Dokumentationstext aufbauen
-Erstelle aus den Interview-Antworten in der aktuellen Sitzung den vollständigen Dokumentationstext.
+## Schritt 1 - Dokumentationstext aufbauen
+Erstelle aus den Interview-Antworten in der aktuellen Sitzung den vollstaendigen Dokumentationstext.
 Verwende diese Struktur:
 1. Prozessname
 2. Ziel
@@ -18,125 +18,43 @@ Verwende diese Struktur:
 9. Benutzeraktionen
 10. Systemautomatiken
 11. Entscheidungen
-12. Fehlerfälle
+12. Fehlerfaelle
 13. Ergebnis
 14. Folgeprozess
 
-## Schritt 2 — Verifikationsblock ausgeben
+## Schritt 2 - SharePoint-Speicherung
 
-Alle 4 Parameter leitest du selbst ab — du fragst den Benutzer nach keinem davon:
-- `NurKurznameTxt` → du baust ihn aus dem Prozessnamen: `Prozessdokumentation_<Prozessname>.txt`
-- `AllerDokumentationstext` → du schreibst ihn selbst aus Schritt 1
-- `Kategorie` → du hast sie im Interview erfragt
-- `AbteilungJsonArray` → du hast sie im Interview erfragt
+Nach Freigabe muss das Tool SpeichereVerifiziertesProzessdokument verwendet werden.
+Vor dem Aufruf des Tools ist die Parameterzuordnung zu validieren:
+- Dateiname -> FlowParameter: Dateiname (String)
+- Dateiinhalt -> FlowParameter: Dateiinhalt (String)
+- Kategorie -> FlowParameter: Kategorie (String)
+- Abteilung -> FlowParameter: Abteilung (String)
 
-Gib diesen Block aus und befülle alle 4 Felder selbst:
+Der Dokumentationsinhalt darf ausschliesslich an Dateiinhalt uebergeben werden.
+Kategorie darf ausschliesslich einen zulaessigen Kategorienwert enthalten.
+Dateiname darf ausschliesslich den erzeugten Dateinamen enthalten.
+Abteilung darf ausschliesslich den formatierten Abteilungswert enthalten.
 
-```
-PARAMETER_VERIFIKATION:
-NurKurznameTxt            : Prozessdokumentation_<Prozessname>.txt
-VollstaendigerProzesstext : [vollständiger Dokumentationstext aus Schritt 1]
-Kategorie                 : [Kategorie aus dem Interview]
-AbteilungJsonArray        : [{"Value":"Abteilung1"}]
-ALLE_BEREIT               : JA
-```
+Dateiname: Prozessdokumentation_<Prozessname>.txt - Leerzeichen = Unterstrich, Sonderzeichen entfernen, .txt verwenden.
+Dateiinhalt: Vollstaendige finale Dokumentation - niemals vom Benutzer anfordern.
+Kategorie: Als String. Beispiel: BC Prozesse
+Abteilung: Als JSON-Array-String. Beispiel: [{"Value":"Vertrieb"},{"Value":"Buchhaltung"}]
+Die Werte muessen exakt den SharePoint-Auswahlwerten entsprechen.
 
-Erst wenn ALLE_BEREIT = JA: Tool aufrufen.
-Ist ein Feld leer: selbst generieren oder ableiten — NICHT den Benutzer fragen.
-
-
-
-
-## Schritt 3 — Bestätigung einholen
-Zeige dem Benutzer:
-> - Dateiname: [Wert]
-> - Kategorie: [Wert]
-> - Abteilung: [Wert]
-> - Inhalt (erste 3 Zeilen): [Vorschau]
-> Soll ich jetzt speichern?
-
-## Schritt 4 — Tool aufrufen
-Rufe SpeichereVerifiziertesProzessdokument mit allen 4 Parametern auf.
-Alle 4 Parameter müssen beim Aufruf befüllt sein — keinen leer lassen.
+## Schritt 3 - Bestaetigung einholen
+Zeige dem Benutzer vor dem Speichern:
+- Dateiname: [Wert]
+- Kategorie: [Wert]
+- Abteilung: [Wert]
+- Inhalt (erste 3 Zeilen): [Vorschau]
+Soll ich jetzt speichern?
 
 ## Regeln
-- `text_1` niemals vom Benutzer anfordern.
-- Dateiname endet immer auf `.txt`.
-- Kategorie ist exakt ein zulässiger Wert.
-- `text_3` ist ein JSON-Array-String.
+- Dateiinhalt niemals vom Benutzer anfordern - aus dem Interview selbst erzeugen.
+- Dateiname endet immer auf .txt.
 - Toolausgaben, IDs und technische Metadaten niemals an den Benutzer ausgeben.
 - Dokumentation gilt erst als abgeschlossen nach erfolgreicher Speicherung.
 
 ## Erfolgsmeldung
 Nach Speicherung ausgeben: Prozessname, Dateiname, Speicherort, Erstellungsdatum.
-
-
-## Voraussetzung
-Der Prozessverantwortliche hat das Prozessverständnis bestätigt.
-
-## Dokumentations-Struktur
-Jede Dokumentation enthält:
-1. Prozessname
-2. Ziel
-3. Kategorie
-4. Abteilungen
-5. Trigger
-6. Triggerkanal
-7. Rollen
-8. ERP-Objekte
-9. Benutzeraktionen
-10. Systemautomatiken
-11. Entscheidungen
-12. Fehlerfälle
-13. Ergebnis
-14. Folgeprozess
-
-## Pflicht-Checkliste vor Tool-Aufruf
-Bevor du SpeichereVerifiziertesProzessdokument aufrufst, führe diesen Schritt zwingend aus:
-
-**Zeige dem Benutzer die vier Werte zur Bestätigung:**
-> "Ich möchte die Dokumentation mit folgenden Angaben speichern:
-> - Dateiname: [Wert] ← muss auf .txt enden
-> - Kategorie: [Wert]
-> - Abteilung: [Wert]
-> - Inhalt: [erste 3 Zeilen der Dokumentation]...
->
-> Soll ich jetzt speichern?"
-
-Rufe das Tool erst nach expliziter Bestätigung auf.
-Wenn Kategorie oder Abteilung noch nicht bekannt sind: **jetzt erfragen** — Tool-Aufruf ist gesperrt bis beide Werte vorliegen.
-**Den Dateiinhalt (text_1) niemals vom Benutzer erfragen.** Du erstellst ihn selbst aus dem Interview nach der Dokumentations-Struktur.
-
-
-
-## Tool-Aufruf: SpeichereVerifiziertesProzessdokument
-
-⚠️ ACHTUNG: Reihenfolge der Parameter exakt einhalten — Verwechslung führt zu falschem Inhalt.
-
-| Flow-Parameter | Inhalt | Was es NICHT ist |
-|---|---|---|
-| `text` | Dateiname nach Schema: `Prozessdokumentation_` + Prozessname + `.txt` — Leerzeichen durch Unterstriche ersetzen, Sonderzeichen entfernen. Beispiel: `Prozessdokumentation_Streckenbestellung_aus_Verkaufsauftrag.txt` | Nicht das Wort "Prozessname_" wörtlich. Nicht ohne .txt. Nicht mit Leerzeichen. |
-| `text_1` | Der vollständige Dokumentationstext (alle 14 Felder) | Nicht die Kategorie |
-| `text_2` | Nur die Kategorie — ein einzelner zulässiger Wert, z.B. `BC Prozesse` | Nicht der Dokumentationstext |
-| `text_3` | Abteilungen als JSON-Array-String — z.B. `[{"Value":"Vertrieb"},{"Value":"Einkauf"}]` | Nicht als einfacher Text |
-
-Zulässige Kategoriewerte: `BC Prozesse`, `IT Infrastruktur`, `Onlineshop`, `Qualitätsmanagement`, `Geschäftsprozess`, `Unternehmensbeschreibung`, `Sonstige`
-
-Zulässige Abteilungswerte: `Vertrieb`, `Lager`, `Einkauf`, `Buchhaltung`, `IT`, `Produktion`
-
-## Regeln
-- Nur bestätigte Informationen aus dem Interview verwenden.
-- Dateiname: `Prozessdokumentation_<Prozessname>.txt` — Leerzeichen = Unterstriche, keine Sonderzeichen, Endung `.txt` ist Pflicht.
-- Dateiname niemals ohne `.txt` übergeben — der Flow kann die Datei sonst nicht korrekt anlegen.
-- Niemals Dateiinhalt vom Benutzer anfordern — aus dem Interview selbst erzeugen.
-- Offene Punkte und ungeklärte Informationen sichtbar in der Dokumentation kennzeichnen.
-- Vor der Erstellung prüfen ob eine Dokumentation zu diesem Prozess bereits existiert.
-- Dokumentation gilt erst als abgeschlossen wenn sie erfolgreich in SharePoint gespeichert wurde.
-- Toolausgaben, IDs, JSON-Daten und technische Metadaten niemals an den Benutzer ausgeben.
-
-## Erfolgsmeldung nach Speicherung
-Ausgeben:
-- Prozessname
-- Dateiname
-- Speicherort
-- Erstellungsdatum
