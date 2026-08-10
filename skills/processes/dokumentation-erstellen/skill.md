@@ -47,7 +47,7 @@ Wenn Kategorie oder Abteilung noch nicht bekannt sind: **jetzt erfragen** — To
 
 | Flow-Parameter | Inhalt | Was es NICHT ist |
 |---|---|---|
-| `text` | Nur der Dateiname — z.B. `Prozessdokumentation_Streckenbestellung.txt` | Nicht der Dokumentationstext |
+| `text` | Dateiname nach Schema: `Prozessdokumentation_` + Prozessname + `.txt` — Leerzeichen durch Unterstriche ersetzen, Sonderzeichen entfernen. Beispiel: `Prozessdokumentation_Streckenbestellung_aus_Verkaufsauftrag.txt` | Nicht das Wort "Prozessname_" wörtlich. Nicht ohne .txt. Nicht mit Leerzeichen. |
 | `text_1` | Der vollständige Dokumentationstext (alle 14 Felder) | Nicht die Kategorie |
 | `text_2` | Nur die Kategorie — ein einzelner zulässiger Wert, z.B. `BC Prozesse` | Nicht der Dokumentationstext |
 | `text_3` | Abteilungen als JSON-Array-String — z.B. `[{"Value":"Vertrieb"},{"Value":"Einkauf"}]` | Nicht als einfacher Text |
