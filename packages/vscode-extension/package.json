@@ -7,14 +7,54 @@
     "vscode": "^1.90.0"
   },
   "activationEvents": [
-    "onCommand:hwagents.hello"
+    "onCommand:hwagents.hello",
+    "onCommand:hwagents.configureProject",
+    "onCommand:hwagents.previewOfficeManifest",
+    "onCommand:hwagents.checkCopilotStudio"
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "HW Agents",
+      "properties": {
+        "hwagents.githubOwner": {
+          "type": "string",
+          "default": "hwjanzen",
+          "description": "GitHub owner or organization name."
+        },
+        "hwagents.githubRepo": {
+          "type": "string",
+          "default": "HWAgents",
+          "description": "GitHub repository name."
+        },
+        "hwagents.githubBranch": {
+          "type": "string",
+          "default": "main",
+          "description": "Branch used to resolve skill and agent files."
+        },
+        "hwagents.officeManifestPath": {
+          "type": "string",
+          "default": "skills/manifest/office-manifest.json",
+          "description": "Path to the Office skill manifest inside the repository."
+        }
+      }
+    },
     "commands": [
       {
         "command": "hwagents.hello",
         "title": "HW Agents: Hello"
+      },
+      {
+        "command": "hwagents.configureProject",
+        "title": "HW Agents: Configure Project"
+      },
+      {
+        "command": "hwagents.previewOfficeManifest",
+        "title": "HW Agents: Preview Office Manifest"
+      },
+      {
+        "command": "hwagents.checkCopilotStudio",
+        "title": "HW Agents: Check Copilot Studio Integration"
       }
     ]
   },
