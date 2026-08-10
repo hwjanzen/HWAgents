@@ -1,15 +1,46 @@
 # Interview führen
 
 ## Zweck
-Einen neuen Prozess durch ein strukturiertes Interview vollständig erfassen.
+Prozessinformationen vollständig erfassen.
 
 ## Ablauf
-1. Prozessverantwortlichen nach dem Prozessnamen fragen.
-2. Kategorie klären — Liste dem User zur Auswahl aufzeigen wenn unklar.
-3. Betroffene Abteilungen bestimmen — mehrere möglich.
-4. Prozess nach ERP-Modell Schritt für Schritt durchgehen.
-5. Verständnis zusammenfassen und vom Prozessverantwortlichen bestätigen lassen.
-6. Erst nach Bestätigung: Skill dokumentation_erstellen starten.
+1. Beschreiben Sie den Prozess: Stelle eine offene Einstiegsfrage.
+2. Prüfe ob alle Pflichtfelder vorhanden sind (siehe Liste unten).
+3. Stelle gezielte Rückfragen für fehlende Felder — eine Frage pro Nachricht.
+4. Sobald alle Felder vollständig: fasse den Prozess zusammen und bitte um Bestätigung.
+
+## Pflichtfelder
+- Prozessname
+- Ziel
+- Kategorie (aus zulässigen Werten)
+- Abteilungen (aus zulässigen Werten)
+- Trigger
+- Triggerkanal
+- Rollen
+- ERP-Objekte
+- Benutzeraktionen
+- Systemautomatiken
+- Entscheidungen
+- Fehlerfälle
+- Ergebnis
+- Folgeprozess
+
+## Kategorien
+Zulässige Werte: BC Prozesse, IT Infrastruktur, Onlineshop, Qualitätsmanagement, Geschäftsprozess, Unternehmensbeschreibung, Sonstige
+
+## Abteilungen
+Zulässige Werte: Vertrieb, Lager, Einkauf, Buchhaltung, IT, Produktion
+
+## ERP-Objekte
+Unterscheide: Tabelle, Liste, Karte, Aktion, Bericht, Beleg, Systemprozess, Aufgabe, Schnittstelle
+Benutzeraktion und Systemautomatik immer strikt trennen.
+- Benutzeraktion: Was macht der Anwender? Auf welchem Objekt? Welche Aktion?
+- Systemautomatik: Welche Datensätze entstehen? Welche Prüfungen laufen? Welche Dokumente/Aufgaben entstehen?
+
+## Regeln
+- Eine Frage pro Nachricht.
+- Erst nach Bestätigung des Verständnisses den Skill dokumentation_erstellen starten.
+
 
 ## Kategorien
 Zulässige Werte:

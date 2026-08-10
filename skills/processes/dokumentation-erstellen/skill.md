@@ -1,8 +1,62 @@
 # Dokumentation erstellen
 
 ## Zweck
-Ein bestätigtes Interview in eine vollständige Prozessdokumentation überführen
+Aus den Interview-Antworten eine vollständige Prozessdokumentation aufbauen
 und über das Tool **SpeichereVerifiziertesProzessdokument** in SharePoint speichern.
+
+## Schritt 1 — Dokumentationstext aufbauen
+Erstelle aus den Interview-Antworten in der aktuellen Sitzung den vollständigen Dokumentationstext.
+Verwende diese Struktur:
+1. Prozessname
+2. Ziel
+3. Kategorie
+4. Abteilungen
+5. Trigger
+6. Triggerkanal
+7. Rollen
+8. ERP-Objekte
+9. Benutzeraktionen
+10. Systemautomatiken
+11. Entscheidungen
+12. Fehlerfälle
+13. Ergebnis
+14. Folgeprozess
+
+## Schritt 2 — Alle 4 Parameter bereitstellen
+Vor dem Tool-Aufruf müssen alle 4 Werte feststehen:
+
+| Flow-Parameter | Inhalt | Format |
+|---|---|---|
+| `text` | `Prozessdokumentation_` + Prozessname + `.txt` (Leerzeichen = Unterstriche) | String |
+| `text_1` | Vollständiger Dokumentationstext aus Schritt 1 — **niemals vom Benutzer erfragen** | String |
+| `text_2` | Kategorie aus dem Interview — exakt ein zulässiger Wert | String |
+| `text_3` | Abteilungen als JSON-Array-String | `[{"Value":"Vertrieb"}]` |
+
+Fehlt ein Wert: jetzt gezielt erfragen. Fehlt `text_1`: selbst aus Schritt 1 generieren.
+
+## Schritt 3 — Bestätigung einholen
+Zeige dem Benutzer:
+> - Dateiname: [Wert]
+> - Kategorie: [Wert]
+> - Abteilung: [Wert]
+> - Inhalt (erste 3 Zeilen): [Vorschau]
+> Soll ich jetzt speichern?
+
+## Schritt 4 — Tool aufrufen
+Rufe SpeichereVerifiziertesProzessdokument mit allen 4 Parametern auf.
+Alle 4 Parameter müssen beim Aufruf befüllt sein — keinen leer lassen.
+
+## Regeln
+- `text_1` niemals vom Benutzer anfordern.
+- Dateiname endet immer auf `.txt`.
+- Kategorie ist exakt ein zulässiger Wert.
+- `text_3` ist ein JSON-Array-String.
+- Toolausgaben, IDs und technische Metadaten niemals an den Benutzer ausgeben.
+- Dokumentation gilt erst als abgeschlossen nach erfolgreicher Speicherung.
+
+## Erfolgsmeldung
+Nach Speicherung ausgeben: Prozessname, Dateiname, Speicherort, Erstellungsdatum.
+
 
 ## Voraussetzung
 Der Prozessverantwortliche hat das Prozessverständnis bestätigt.
