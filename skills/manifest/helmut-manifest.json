@@ -1,0 +1,5 @@
+{
+  "$schema": "../../schemas/skill-manifest-list.schema.json",
+  "manifestId": "helmut",
+  "skills": []
+}
