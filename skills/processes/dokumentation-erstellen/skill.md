@@ -5,39 +5,55 @@ Aus den Interview-Antworten eine vollstaendige Prozessdokumentation aufbauen
 und ueber das Tool **SpeichereVerifiziertesProzessdokument** in SharePoint speichern.
 
 ## Schritt 1 - Dokumentationstext aufbauen
-Erstelle aus den Interview-Antworten in der aktuellen Sitzung den vollstaendigen Dokumentationstext.
-Verwende diese Struktur:
-1. Prozessname
-2. Ziel
-3. Kategorie
-4. Abteilungen
-5. Trigger
-6. Triggerkanal
-7. Rollen
-8. ERP-Objekte
-9. Benutzeraktionen
-10. Systemautomatiken
-11. Entscheidungen
-12. Fehlerfaelle
-13. Ergebnis
-14. Folgeprozess
+Erstelle aus den Interview-Antworten einen fliessenden Dokumentationstext ohne Prefix-Labels.
+Nicht: "Prozessname: Streckenbestellung" — sondern direkt den Inhalt beschreiben.
+Verwende Abschnitte mit Markdown-Ueberschriften:
+
+## Prozessname
+[Name]
+## Ziel
+[Ziel]
+## Kategorie
+[Kategorie]
+## Abteilungen
+[Abteilungen]
+## Trigger
+[Trigger]
+## Triggerkanal
+[Triggerkanal]
+## Rollen
+[Rollen]
+## ERP-Objekte
+[ERP-Objekte]
+## Benutzeraktionen
+[Benutzeraktionen]
+## Systemautomatiken
+[Systemautomatiken]
+## Entscheidungen
+[Entscheidungen]
+## Fehlerfaelle
+[Fehlerfaelle]
+## Ergebnis
+[Ergebnis]
+## Folgeprozess
+[Folgeprozess]
 
 ## Schritt 2 - SharePoint-Speicherung
 
 Nach Freigabe muss das Tool SpeichereVerifiziertesProzessdokument verwendet werden.
 Vor dem Aufruf des Tools ist die Parameterzuordnung zu validieren:
-- Dateiname -> FlowParameter: Dateiname (String)
-- Dateiinhalt -> FlowParameter: Dateiinhalt (String)
+- Dateiname -> FlowParameter: FileName (String)
+- Dateiinhalt -> FlowParameter: Inhalt (String)
 - Kategorie -> FlowParameter: Kategorie (String)
 - Abteilung -> FlowParameter: Abteilung (String)
 
-Der Dokumentationsinhalt darf ausschliesslich an Dateiinhalt uebergeben werden.
+Der Dokumentationsinhalt darf ausschliesslich an Inhalt uebergeben werden.
 Kategorie darf ausschliesslich einen zulaessigen Kategorienwert enthalten.
-Dateiname darf ausschliesslich den erzeugten Dateinamen enthalten.
+FileName darf ausschliesslich den erzeugten Dateinamen enthalten.
 Abteilung darf ausschliesslich den formatierten Abteilungswert enthalten.
 
-Dateiname: Prozessdokumentation_<Prozessname>.txt - Leerzeichen = Unterstrich, Sonderzeichen entfernen, .txt verwenden.
-Dateiinhalt: Vollstaendige finale Dokumentation - niemals vom Benutzer anfordern.
+FileName: Prozessdokumentation_<Prozessname>.txt - Leerzeichen = Unterstrich, Sonderzeichen entfernen, .txt verwenden.
+Inhalt: Vollstaendige finale Dokumentation - niemals vom Benutzer anfordern.
 Kategorie: Als String. Beispiel: BC Prozesse
 Abteilung: Als JSON-Array-String. Beispiel: [{"Value":"Vertrieb"},{"Value":"Buchhaltung"}]
 Die Werte muessen exakt den SharePoint-Auswahlwerten entsprechen.
