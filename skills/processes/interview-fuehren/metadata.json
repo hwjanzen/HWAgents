@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "processes.interview_fuehren",
+  "name": "Interview führen",
+  "category": "processes",
+  "capabilities": [
+    "Prozessinterview durchführen",
+    "Neuen Prozess aufnehmen",
+    "Prozesswissen strukturiert erfassen"
+  ]
+}

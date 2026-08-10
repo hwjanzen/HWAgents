@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "processes.dokumentation_erstellen",
+  "name": "Dokumentation erstellen",
+  "category": "processes",
+  "capabilities": [
+    "Prozessdokumentation erstellen",
+    "Interview in Dokument überführen",
+    "Dokumentation in SharePoint anlegen"
+  ]
+}
