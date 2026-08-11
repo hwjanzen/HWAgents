@@ -35,6 +35,10 @@ Artika bleibt funktional stark, wechselt aber auf den gleichen GitHub/Manifest-B
    - Positivfall (Debitor/Artikel eindeutig)
    - Negativfall (Kunde oder Artikel unklar)
 
+Aktueller Teststatus:
+- [x] Negativfall validiert (GetItem ohne Match -> negativer Ruecklauf an Ingo).
+- [ ] Positivfall mit gueltigem Debitor/Artikel bis Erkan-Belegnummer noch offen.
+
 ## V0.1 Guardrails fuer Artika
 - Keine freie fachliche Expansion ausserhalb V0.1.
 - Ergebnis nur strukturiert an Ingo, keine impliziten Entscheidungen.

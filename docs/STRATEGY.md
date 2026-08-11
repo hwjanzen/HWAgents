@@ -170,6 +170,12 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 - [x] Erkan in CPS angelegt, GitHubDateiAbrufen zugewiesen, Applied und Published.
 - [x] Artika in CPS auf V0.1-Instruction umgestellt, GitHubDateiAbrufen zugewiesen, Applied und Published.
 
+### Smoke-Test Status (Stand 2026-08-11)
+- [x] Technischer Startpunkt auf Ingo umgestellt (Orchestrator als Entry-Agent).
+- [x] Routing Ingo -> Artika funktioniert ohne Agent-Chaining-Fehler.
+- [x] Negativpfad fachlich bestaetigt: Artika prueft reale Artikeldaten via GetItem und liefert bei fehlendem Match korrekt negativ.
+- [ ] Positivpfad mit real gueltiger Debitor/Artikel-Kombination bis Erkan-Belegnummer (completed) noch offen.
+
 ### Meilenstein 2 (neu priorisiert: Ingo Orchestrator V0.1)
 - [x] Agentenrollen in Registry und Routing-Konfiguration abbilden (Ingo, Looka, Artika, Erkan, Tanja).
 - [x] Einheitliches Vorgangsobjekt (Case-ID, Dokumentart, Status, Fehlergrund) definieren (Schema: schemas/v01-agent-case-contract.schema.json).
@@ -185,6 +191,11 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 - [ ] T03: Dokumentation aktualisieren testen
 - [ ] HELMUT: SharePoint-Wissensquellen-Anbindung verfeinern
 - [ ] Looka: Restliche 6 Office-Skills mit echten Testdaten validieren
+
+### Next Step (kurzfristig)
+- [ ] Referenzdatensatz fuer Positivpfad festlegen (valides DebitorNo + valides ItemNo in BC).
+- [ ] E2E Positivlauf ueber Ingo durchfuehren: Looka -> Artika -> Erkan -> completed.
+- [ ] Contract-Fehlergrundmapping schaerfen: wenn Artikel fehlt, bevorzugt item_not_found statt manual_clarification_required.
 
 ### Skalierung (Phase 2, 5-20 Agenten)
 - [ ] Manifest-Generator auf alle Agenten-Typen erweitern
