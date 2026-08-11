@@ -1,0 +1,35 @@
+displayName: Artika - Produkt Managerin
+schemaName: crb27_ArtikaProduktManagerin
+accessControlPolicy: GroupMembership
+authenticationMode: Integrated
+authenticationTrigger: Always
+configuration:
+  channels:
+    - channelId: MsTeams
+
+    - channelId: Microsoft365Copilot
+
+  settings:
+    GenerativeActionsEnabled: true
+
+  isAgentConnectable: true
+  publishOnImport: true
+  gPTSettings:
+    defaultSchemaName: crb27_ArtikaProduktManagerin.gpt.default
+
+  isLightweightBot: false
+  aISettings:
+    useModelKnowledge: true
+    isFileAnalysisEnabled: true
+    isSemanticSearchEnabled: true
+    contentModeration: Low
+    optInUseLatestModels: false
+
+  recognizer:
+    kind: GenerativeAIRecognizer
+
+  deferredProvisioning: false
+
+publishedOn: 2026-08-11T20:26:57.0000000Z
+template: default-2.1.0
+language: 1031

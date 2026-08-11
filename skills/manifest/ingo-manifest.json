@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/skill-manifest-list.schema.json",
+  "manifestId": "ingo",
+  "generatedAt": "2026-08-11T20:18:42.916Z",
+  "skills": [
+    {
+      "id": "orchestration.route_case_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/route-case-v01/skill.md",
+      "capabilities": [
+        "V0.1-Fallstatus zustandsbasiert fortschreiben",
+        "Deterministisch zwischen Looka, Artika, Erkan und Tanja routen",
+        "Fruehen Abbruch bei negativen Statusgruenden erzwingen"
+      ]
+    },
+    {
+      "id": "shared.ask_clarification",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/ask-clarification/skill.md",
+      "capabilities": [
+        "Rückfrage stellen wenn Anfrage unklar",
+        "Fehlende Informationen gezielt erfragen"
+      ]
+    }
+  ]
+}

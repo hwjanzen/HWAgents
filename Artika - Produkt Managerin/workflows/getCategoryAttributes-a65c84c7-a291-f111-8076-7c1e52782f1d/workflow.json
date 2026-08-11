@@ -1,0 +1,167 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "api": {
+          "name": "shared_sql"
+        }
+      }
+    },
+    "definition": {
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      },
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "a561cc03-9316-4658-9ac2-38587d208425",
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Geben Sie Ihre Eingabe ein.",
+                  "title": "txtCatCode",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "initParameterForStoredProcedure": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "64beba15-61d2-4207-8416-2b6567ffb740"
+          },
+          "type": "Compose",
+          "inputs": "@json(concat(\u0027{\u0022CatCode\u0022: \u0022\u0027, triggerBody()?[\u0027text\u0027], \u0027\u0022}\u0027))"
+        },
+        "Condition": {
+          "actions": {
+            "Respond_to_the_agent": {
+              "runAfter": {
+                "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "429bf234-8efa-492f-a6ae-a9d014e32e71"
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonsqlbody": {
+                      "title": "jsonSQLBody",
+                      "x-ms-dynamically-added": true,
+                      "type": "string",
+                      "format": "byte",
+                      "description": "The Result to your Request"
+                    }
+                  },
+                  "additionalProperties": {}
+                },
+                "statusCode": 200,
+                "body": {
+                  "jsonsqlbody": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+                }
+              }
+            },
+            "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "server": "srv-sql03",
+                  "database": "Live",
+                  "procedure": "[dbo].[sp_GetCategoryAttributesFromPath]",
+                  "parameters/CatCode": "@triggerBody()?[\u0027text\u0027]"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+                  "operationId": "ExecuteProcedure_V2",
+                  "connectionName": "shared_sql"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "txtStoredProcedurenam": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "and": [
+              {
+                "greater": [
+                  "@length(triggerBody()?[\u0027text\u0027])",
+                  3
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3264c52f-5dba-4f3a-ace9-54bca6a60f56"
+          },
+          "type": "If"
+        },
+        "txtStoredProcedurenam": {
+          "runAfter": {
+            "initParameterForStoredProcedure": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4d32416a-c991-4591-b53a-3d59e4b8a455"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "txtSP",
+                "type": "string",
+                "value": "[dbo].[sp_GetCategoryAttributesFromPath]"
+              }
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

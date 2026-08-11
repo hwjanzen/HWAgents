@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schemas/agent-manifest.schema.json",
+  "agentId": "looka-agent",
+  "displayName": "Looka",
+  "manifestPath": "./agent-manifest.json",
+  "routingConfig": "../../routing/global-routing.json",
+  "skillsManifest": "../../skills/manifest/looka-manifest.json",
+  "status": "active"
+}

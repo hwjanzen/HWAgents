@@ -1,7 +1,0 @@
-{
-  "threshold": 0.68,
-  "boostSkills": [
-    "communication.draft_mail",
-    "communication.summarize_mail"
-  ]
-}

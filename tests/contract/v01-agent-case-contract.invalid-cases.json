@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schemas/v01-agent-case-contract-invalid-examples.schema.json",
+  "cases": [
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-9001",
+      "source": {
+        "channel": "email",
+        "messageId": "<invalid-001@customer>",
+        "receivedAt": "2026-08-11T11:00:00Z"
+      },
+      "classification": "order_item_clear",
+      "documentType": "sales_order",
+      "status": "completed",
+      "lookaResult": {
+        "status": "positive",
+        "classification": "order_item_clear"
+      },
+      "artikaResult": {
+        "status": "positive",
+        "debitorNo": "10000",
+        "items": [
+          {
+            "itemNo": "1896-S",
+            "quantity": 2
+          }
+        ]
+      },
+      "erkanResult": {
+        "status": "positive"
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "failed",
+        "message": "Beleg wurde angelegt.",
+        "documentType": "sales_order"
+      },
+      "updatedBy": "erkan",
+      "updatedAt": "2026-08-11T11:01:15Z"
+    },
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-9002",
+      "source": {
+        "channel": "email",
+        "messageId": "<invalid-002@customer>",
+        "receivedAt": "2026-08-11T11:20:00Z"
+      },
+      "classification": "quote_item_clear",
+      "documentType": "sales_order",
+      "status": "failed_by_artika",
+      "lookaResult": {
+        "status": "positive",
+        "classification": "quote_item_clear"
+      },
+      "artikaResult": {
+        "status": "positive",
+        "debitorNo": "20000",
+        "items": [
+          {
+            "itemNo": "A-4400",
+            "quantity": 5
+          }
+        ]
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "success",
+        "message": "Bitte manuell pruefen."
+      },
+      "updatedBy": "artika",
+      "updatedAt": "2026-08-11T11:21:04Z"
+    }
+  ]
+}

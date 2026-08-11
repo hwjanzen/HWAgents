@@ -1,0 +1,135 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "api": {
+          "name": "shared_sql"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Geben Sie Ihre Eingabe ein.",
+                  "title": "txtItemCatgory",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "initParameterForStoredProcedure": {
+          "runAfter": {},
+          "type": "Compose",
+          "inputs": "@json(concat(\u0027{\u0022CategoryCode\u0022: \u0022\u0027, triggerBody()?[\u0027text\u0027], \u0027\u0022}\u0027))"
+        },
+        "Len_gt_3": {
+          "actions": {
+            "Execute_stored_procedure_(V2)": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "server": "SRV-SQL03",
+                  "database": "Live",
+                  "procedure": "@\u0027[dbo].[GetItemsByCategory]\u0027",
+                  "parameters": "@outputs(\u0027initParameterForStoredProcedure\u0027)"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+                  "operationId": "ExecuteProcedure_V2",
+                  "connectionName": "shared_sql"
+                }
+              }
+            },
+            "Respond_to_the_agent": {
+              "runAfter": {
+                "Execute_stored_procedure_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Response",
+              "kind": "Skills",
+              "inputs": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonsqlbody": {
+                      "title": "jsonSQLBody",
+                      "description": "The Result to your Request",
+                      "type": "string",
+                      "format": "byte",
+                      "x-ms-content-hint": "FILE",
+                      "x-ms-dynamically-added": true
+                    }
+                  },
+                  "additionalProperties": {}
+                },
+                "statusCode": 200,
+                "body": {
+                  "jsonsqlbody": "@{outputs(\u0027Execute_stored_procedure_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "initParameterForStoredProcedure": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "and": [
+              {
+                "greater": [
+                  "@length(triggerBody()?[\u0027text\u0027])",
+                  3
+                ]
+              }
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -4,9 +4,14 @@
   "version": "0.1.0",
   "description": "Copilot agent platform monorepo",
   "scripts": {
-    "validate:all": "node ./tools/cli/validate-all.js",
+    "validate:all": "node ./tools/cli/validate-all.js && node ./tools/cli/validate-contract.js",
+    "validate:contract": "node ./tools/cli/validate-contract.js",
     "manifest:generate": "node ./tools/cli/generate-manifest.js",
     "manifest:generate:looka": "node ./tools/cli/generate-manifest.js looka",
     "manifest:generate:helmut": "node ./tools/cli/generate-manifest.js helmut"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
   }
 }

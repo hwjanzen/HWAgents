@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.datenqualitaet",
+  "name": "Datenqualitaet",
+  "category": "products",
+  "capabilities": [
+    "Vollstaendigkeit von Produktstammdaten bewerten",
+    "Fehlende Pflichtinformationen identifizieren",
+    "Qualitaetsrisiken fuer Folgeprozesse kennzeichnen"
+  ]
+}

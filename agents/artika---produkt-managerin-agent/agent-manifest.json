@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schemas/agent-manifest.schema.json",
+  "agentId": "artika-agent",
+  "displayName": "Artika",
+  "manifestPath": "./agent-manifest.json",
+  "routingConfig": "../../routing/global-routing.json",
+  "skillsManifest": "../../skills/manifest/artika-manifest.json",
+  "status": "draft"
+}

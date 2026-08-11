@@ -1,39 +1,15 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "looka",
-  "generatedAt": "2026-08-10T12:24:37.366Z",
+  "generatedAt": "2026-08-11T20:18:42.913Z",
   "skills": [
     {
-      "id": "communication.draft_mail",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/draft-mail/skill.md",
+      "id": "intake.classify_sales_request_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/intake/classify-sales-request-v01/skill.md",
       "capabilities": [
-        "E-Mail entwerfen",
-        "Antwortmail erstellen"
-      ]
-    },
-    {
-      "id": "communication.rewrite_text",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/rewrite-text/skill.md",
-      "capabilities": [
-        "Text umformulieren",
-        "Stil anpassen",
-        "Text verbessern"
-      ]
-    },
-    {
-      "id": "communication.summarize_mail",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/summarize-mail/skill.md",
-      "capabilities": [
-        "E-Mail zusammenfassen",
-        "Aufgaben extrahieren"
-      ]
-    },
-    {
-      "id": "communication.translate_mail",
-      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/translate-mail/skill.md",
-      "capabilities": [
-        "E-Mail übersetzen",
-        "Text in andere Sprache übertragen"
+        "Kunden-E-Mail fuer V0.1 in genau eine von vier Klassen einordnen",
+        "Dokumentart Auftrag oder Angebot eindeutig ableiten",
+        "Unklare Artikel direkt als unklar klassifizieren"
       ]
     },
     {

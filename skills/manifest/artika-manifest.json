@@ -1,0 +1,80 @@
+{
+  "$schema": "../../schemas/skill-manifest-list.schema.json",
+  "manifestId": "artika",
+  "generatedAt": "2026-08-11T20:18:42.919Z",
+  "skills": [
+    {
+      "id": "products.artikelanalyse",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelanalyse/skill.md",
+      "capabilities": [
+        "Artikeldetails strukturiert analysieren",
+        "Kategoriekontext eines Artikels einordnen",
+        "Eigenschaften und Textbausteine bewerten",
+        "Fachliche Zusammenfassung fuer Folgeagenten erstellen"
+      ]
+    },
+    {
+      "id": "products.artikelattribute",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelattribute/skill.md",
+      "capabilities": [
+        "Attribute lesen und interpretieren",
+        "Pflichtattribute pro Kategorie pruefen",
+        "Fehlende Merkmale transparent benennen"
+      ]
+    },
+    {
+      "id": "products.artikelnummern",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelnummern/skill.md",
+      "capabilities": [
+        "Artikelnummernlogik plausibilisieren",
+        "Kategorierueckschluesse aus Nummern pruefen",
+        "Nummernbezogene Inkonsistenzen markieren"
+      ]
+    },
+    {
+      "id": "products.datenqualitaet",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/datenqualitaet/skill.md",
+      "capabilities": [
+        "Vollstaendigkeit von Produktstammdaten bewerten",
+        "Fehlende Pflichtinformationen identifizieren",
+        "Qualitaetsrisiken fuer Folgeprozesse kennzeichnen"
+      ]
+    },
+    {
+      "id": "products.kategorienavigation",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/kategorienavigation/skill.md",
+      "capabilities": [
+        "Produktkategorien und Hierarchien erklaeren",
+        "Passende Kategoriepfade fuer Suchanfragen bestimmen",
+        "Kategorie-zu-Artikel-Kontext herstellen"
+      ]
+    },
+    {
+      "id": "products.montageartikel",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/montageartikel/skill.md",
+      "capabilities": [
+        "Stuecklisten und Komponenten einordnen",
+        "Variantenlogik in Montageartikeln erklaeren",
+        "Rohstoff-Endprodukt-Beziehungen bewerten"
+      ]
+    },
+    {
+      "id": "products.produktsuche",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/produktsuche/skill.md",
+      "capabilities": [
+        "Artikel suchen",
+        "Produktkandidaten aus Freitext ermitteln",
+        "Alternativen und aehnliche Artikel auflisten",
+        "Kategoriebasierte Produktauswahl unterstuetzen"
+      ]
+    },
+    {
+      "id": "shared.ask_clarification",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/ask-clarification/skill.md",
+      "capabilities": [
+        "Rückfrage stellen wenn Anfrage unklar",
+        "Fehlende Informationen gezielt erfragen"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/getCategoryAttributes-a65c84c7-a291-f111-8076-7c1e52782f1d/workflow.json
+workflowId: a65c84c7-a291-f111-8076-7c1e52782f1d
+name: getCategoryAttributes
+type: 1
+description: This flow starts when a manual trigger receives a text input. It checks if the input text is longer than three characters. If so, it prepares parameters and calls a stored procedure in a SQL database to retrieve category attributes based on the input. The results from the database are then returned as a response. If the input text does not meet the length requirement, the flow does not proceed further.
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a

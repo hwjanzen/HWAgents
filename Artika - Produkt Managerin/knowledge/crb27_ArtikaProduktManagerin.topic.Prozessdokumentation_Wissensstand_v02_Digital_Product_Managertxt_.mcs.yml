@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Prozessdokumentation_Wissensstand_v0.2_Digital_Product_Manager.txt
+  description: Diese Wissensquelle ist deine Stellenbeschreibung und Grundlage für deine Anstellung in unserm Unternehmen
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/BC%20Prozesse%20%20Dokumentation/Prozessdokumentation_Wissensstand_v0.2_Digital_Product_Manager.txt

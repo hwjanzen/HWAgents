@@ -1,0 +1,98 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "api": {
+          "name": "shared_sql"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Execute_stored_procedure_(V2)": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "server": "SRV-SQL03",
+              "database": "Live",
+              "procedure": "[dbo].[GetCategories]",
+              "parameters": {}
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+              "operationId": "ExecuteProcedure_V2",
+              "connectionName": "shared_sql"
+            }
+          }
+        },
+        "Respond_to_the_agent": {
+          "runAfter": {
+            "Execute_stored_procedure_(V2)": [
+              "Succeeded"
+            ]
+          },
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "jsonsqlbody": {
+                  "title": "jsonSQLBody",
+                  "description": "The Result to your Request",
+                  "type": "string",
+                  "format": "byte",
+                  "x-ms-content-hint": "FILE",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "jsonsqlbody": "@{outputs(\u0027Execute_stored_procedure_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

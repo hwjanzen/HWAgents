@@ -11,7 +11,7 @@
     "recencyBoost": 0.05
   },
   "agentOverrides": {
-    "office-agent": {
+    "looka-agent": {
       "threshold": 0.68,
       "boostSkills": [
         "communication.draft_mail",

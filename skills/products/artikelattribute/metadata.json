@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.artikelattribute",
+  "name": "Artikelattribute",
+  "category": "products",
+  "capabilities": [
+    "Attribute lesen und interpretieren",
+    "Pflichtattribute pro Kategorie pruefen",
+    "Fehlende Merkmale transparent benennen"
+  ]
+}

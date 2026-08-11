@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schemas/agent-manifest.schema.json",
+  "agentId": "ingo-agent",
+  "displayName": "Ingo",
+  "manifestPath": "./agent-manifest.json",
+  "routingConfig": "../../routing/global-routing.json",
+  "skillsManifest": "../../skills/manifest/ingo-manifest.json",
+  "status": "draft"
+}

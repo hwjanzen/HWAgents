@@ -1,0 +1,144 @@
+{
+  "$schema": "../../schemas/v01-agent-case-contract-examples.schema.json",
+  "cases": [
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-0001",
+      "source": {
+        "channel": "email",
+        "messageId": "<mail-001@customer>",
+        "receivedAt": "2026-08-11T08:30:00Z"
+      },
+      "classification": "order_item_clear",
+      "documentType": "sales_order",
+      "status": "completed",
+      "lookaResult": {
+        "status": "positive",
+        "classification": "order_item_clear",
+        "extractedItems": [
+          {
+            "rawText": "2x 1896-S",
+            "quantity": 2
+          }
+        ]
+      },
+      "artikaResult": {
+        "status": "positive",
+        "debitorNo": "10000",
+        "items": [
+          {
+            "itemNo": "1896-S",
+            "quantity": 2
+          }
+        ]
+      },
+      "erkanResult": {
+        "status": "positive",
+        "documentNo": "SO-102945"
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "success",
+        "message": "Verkaufsauftrag erfolgreich angelegt.",
+        "documentType": "sales_order",
+        "documentNo": "SO-102945"
+      },
+      "updatedBy": "erkan",
+      "updatedAt": "2026-08-11T08:32:10Z"
+    },
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-0002",
+      "source": {
+        "channel": "email",
+        "messageId": "<mail-002@customer>",
+        "receivedAt": "2026-08-11T08:44:00Z"
+      },
+      "classification": "order_item_unclear",
+      "documentType": "sales_order",
+      "status": "failed_by_artika",
+      "failureReason": "item_not_found",
+      "lookaResult": {
+        "status": "negative",
+        "classification": "order_item_unclear"
+      },
+      "artikaResult": {
+        "status": "negative",
+        "failureReason": "item_not_found",
+        "notes": "Kundenbezeichnung konnte keinem BC-Artikel zugeordnet werden."
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "failed",
+        "message": "Prozess an Tanja uebergeben, Artikel nicht eindeutig identifizierbar.",
+        "failureReason": "item_not_found"
+      },
+      "updatedBy": "artika",
+      "updatedAt": "2026-08-11T08:46:55Z"
+    },
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-0003",
+      "source": {
+        "channel": "email",
+        "messageId": "<mail-003@customer>",
+        "receivedAt": "2026-08-11T09:11:00Z"
+      },
+      "classification": "quote_item_clear",
+      "documentType": "sales_quote",
+      "status": "completed",
+      "lookaResult": {
+        "status": "positive",
+        "classification": "quote_item_clear"
+      },
+      "artikaResult": {
+        "status": "positive",
+        "debitorNo": "20000",
+        "items": [
+          {
+            "itemNo": "A-4400",
+            "quantity": 5
+          }
+        ]
+      },
+      "erkanResult": {
+        "status": "positive",
+        "documentNo": "SQ-88017"
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "success",
+        "message": "Verkaufsangebot erfolgreich angelegt.",
+        "documentType": "sales_quote",
+        "documentNo": "SQ-88017"
+      },
+      "updatedBy": "erkan",
+      "updatedAt": "2026-08-11T09:13:05Z"
+    },
+    {
+      "contractVersion": "v0.1",
+      "caseId": "CASE-20260811-0004",
+      "source": {
+        "channel": "email",
+        "messageId": "<mail-004@customer>",
+        "receivedAt": "2026-08-11T09:27:00Z"
+      },
+      "classification": "quote_item_unclear",
+      "documentType": "sales_quote",
+      "status": "rejected_by_ingo",
+      "failureReason": "missing_required_information",
+      "lookaResult": {
+        "status": "negative",
+        "classification": "quote_item_unclear"
+      },
+      "tanjaOutput": {
+        "recipient": "tanja",
+        "outcome": "failed",
+        "message": "Prozess an Tanja uebergeben, da Pflichtangaben in der E-Mail fehlen.",
+        "failureReason": "missing_required_information"
+      },
+      "updatedBy": "ingo",
+      "updatedAt": "2026-08-11T09:28:14Z"
+    }
+  ]
+}

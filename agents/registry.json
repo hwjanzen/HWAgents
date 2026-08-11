@@ -1,5 +1,5 @@
 {
-  "$schema": "./schemas/agent-registry.schema.json",
+  "$schema": "../schemas/agent-registry.schema.json",
   "version": "1.0.0",
   "agents": [
     {
@@ -10,7 +10,7 @@
       "manifestFile": "skills/manifest/looka-manifest.json",
       "cpsComponentName": "LOOKA",
       "systemPrompt": "agents/looka-agent/prompts/system.md",
-      "skillCategories": ["communication"],
+      "skillCategories": ["intake"],
       "additionalSkills": ["shared.ask_clarification"]
     },
     {
@@ -22,6 +22,39 @@
       "cpsComponentName": "HELMUT",
       "systemPrompt": "agents/helmut-agent/prompts/system.md",
       "skillCategories": ["processes"],
+      "additionalSkills": ["shared.ask_clarification"]
+    },
+    {
+      "id": "ingo",
+      "displayName": "Ingo",
+      "type": "orchestrator",
+      "status": "active",
+      "manifestFile": "skills/manifest/ingo-manifest.json",
+      "cpsComponentName": "INGO",
+      "systemPrompt": "agents/ingo-agent/prompts/system.md",
+      "skillCategories": ["orchestration", "shared"],
+      "additionalSkills": ["shared.ask_clarification"]
+    },
+    {
+      "id": "artika",
+      "displayName": "Artika",
+      "type": "product-manager",
+      "status": "active",
+      "manifestFile": "skills/manifest/artika-manifest.json",
+      "cpsComponentName": "Artika - Produkt Managerin",
+      "systemPrompt": "agents/artika---produkt-managerin-agent/prompts/system.md",
+      "skillCategories": ["products", "shared"],
+      "additionalSkills": ["shared.ask_clarification"]
+    },
+    {
+      "id": "erkan",
+      "displayName": "Erkan",
+      "type": "erp-operator",
+      "status": "active",
+      "manifestFile": "skills/manifest/erkan-manifest.json",
+      "cpsComponentName": "ERKAN",
+      "systemPrompt": "agents/erkan-agent/prompts/system.md",
+      "skillCategories": ["shared"],
       "additionalSkills": ["shared.ask_clarification"]
     }
   ]

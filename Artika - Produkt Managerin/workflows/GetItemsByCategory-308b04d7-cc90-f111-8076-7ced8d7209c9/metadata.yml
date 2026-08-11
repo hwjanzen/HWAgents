@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/GetItemsByCategory-308b04d7-cc90-f111-8076-7ced8d7209c9/workflow.json
+workflowId: 308b04d7-cc90-f111-8076-7ced8d7209c9
+name: GetItemsByCategory
+type: 1
+description: This flow starts when a user manually provides a text input. If the input is longer than three characters, it prepares a parameter and calls a database stored procedure to retrieve items by category. The results from the database are then sent back to the user as a response. If the input is three characters or less, no further actions are taken. The flow uses conditional logic to ensure only valid inputs trigger the database query and response.
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.montageartikel",
+  "name": "Montageartikel",
+  "category": "products",
+  "capabilities": [
+    "Stuecklisten und Komponenten einordnen",
+    "Variantenlogik in Montageartikeln erklaeren",
+    "Rohstoff-Endprodukt-Beziehungen bewerten"
+  ]
+}

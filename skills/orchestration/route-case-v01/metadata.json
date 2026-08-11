@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.route_case_v01",
+  "name": "Route Case V0.1",
+  "category": "orchestration",
+  "capabilities": [
+    "V0.1-Fallstatus zustandsbasiert fortschreiben",
+    "Deterministisch zwischen Looka, Artika, Erkan und Tanja routen",
+    "Fruehen Abbruch bei negativen Statusgruenden erzwingen"
+  ]
+}

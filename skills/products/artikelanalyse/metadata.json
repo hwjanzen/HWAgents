@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.artikelanalyse",
+  "name": "Artikelanalyse",
+  "category": "products",
+  "capabilities": [
+    "Artikeldetails strukturiert analysieren",
+    "Kategoriekontext eines Artikels einordnen",
+    "Eigenschaften und Textbausteine bewerten",
+    "Fachliche Zusammenfassung fuer Folgeagenten erstellen"
+  ]
+}

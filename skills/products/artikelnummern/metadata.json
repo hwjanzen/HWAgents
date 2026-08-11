@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.artikelnummern",
+  "name": "Artikelnummern",
+  "category": "products",
+  "capabilities": [
+    "Artikelnummernlogik plausibilisieren",
+    "Kategorierueckschluesse aus Nummern pruefen",
+    "Nummernbezogene Inkonsistenzen markieren"
+  ]
+}

@@ -1,0 +1,11 @@
+mcs.metadata:
+  componentName: Erkan
+  description: Erkan
+kind: TaskDialog
+modelDisplayName: Erkan
+modelDescription: Erkan
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_Erkan
+  historyType:
+    kind: ConversationHistory

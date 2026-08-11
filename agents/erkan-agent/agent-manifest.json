@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schemas/agent-manifest.schema.json",
+  "agentId": "erkan-agent",
+  "displayName": "Erkan",
+  "manifestPath": "./agent-manifest.json",
+  "routingConfig": "../../routing/global-routing.json",
+  "skillsManifest": "../../skills/manifest/erkan-manifest.json",
+  "status": "draft"
+}

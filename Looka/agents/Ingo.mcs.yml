@@ -1,0 +1,11 @@
+mcs.metadata:
+  componentName: Ingo
+  description: Ingo
+kind: TaskDialog
+modelDisplayName: Ingo
+modelDescription: Ingo
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_Ingo
+  historyType:
+    kind: ConversationHistory

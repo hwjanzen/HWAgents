@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Stammdaten
+  description: Skills zu Stammdaten
+kind: KnowledgeSourceConfiguration
+source:
+  kind: SharePointSearchSource
+  site: https://hanfwolf.sharepoint.com/sites/HanfwolfIntranet/Agenet%20Skills/Stammdaten

@@ -1,0 +1,286 @@
+{
+  "$id": "https://hwagents.local/schemas/v01-agent-case-contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V0.1 Agent Case Contract",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "caseId",
+    "source",
+    "classification",
+    "documentType",
+    "status",
+    "updatedAt"
+  ],
+  "properties": {
+    "contractVersion": {
+      "type": "string",
+      "const": "v0.1"
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^CASE-[0-9]{8}-[0-9]{4}$"
+    },
+    "source": {
+      "type": "object",
+      "required": ["channel"],
+      "properties": {
+        "channel": { "type": "string", "enum": ["email"] },
+        "messageId": { "type": "string" },
+        "receivedAt": { "type": "string", "format": "date-time" },
+        "customerText": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "order_item_clear",
+        "order_item_unclear",
+        "quote_item_clear",
+        "quote_item_unclear"
+      ]
+    },
+    "documentType": {
+      "type": "string",
+      "enum": ["sales_order", "sales_quote"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "initiated",
+        "rejected_by_ingo",
+        "routed_to_artika",
+        "failed_by_artika",
+        "routed_to_erkan",
+        "failed_by_erkan",
+        "completed",
+        "handover_tanja"
+      ]
+    },
+    "failureReason": {
+      "type": "string",
+      "enum": [
+        "missing_required_information",
+        "unusable_email_content",
+        "customer_not_found",
+        "item_not_found",
+        "bc_creation_failed",
+        "manual_clarification_required"
+      ]
+    },
+    "lookaResult": {
+      "type": "object",
+      "required": ["status", "classification"],
+      "properties": {
+        "status": { "type": "string", "enum": ["positive", "negative"] },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "order_item_clear",
+            "order_item_unclear",
+            "quote_item_clear",
+            "quote_item_unclear"
+          ]
+        },
+        "extractedItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rawText"],
+            "properties": {
+              "rawText": { "type": "string" },
+              "quantity": { "type": "number" },
+              "unit": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "artikaResult": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["positive", "negative"] },
+        "debitorNo": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["itemNo"],
+            "properties": {
+              "itemNo": { "type": "string" },
+              "quantity": { "type": "number" },
+              "unit": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "failureReason": {
+          "type": "string",
+          "enum": ["customer_not_found", "item_not_found", "manual_clarification_required"]
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "erkanResult": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["positive", "negative"] },
+        "documentNo": { "type": "string" },
+        "failureReason": {
+          "type": "string",
+          "enum": ["bc_creation_failed", "manual_clarification_required"]
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "tanjaOutput": {
+      "type": "object",
+      "required": ["recipient", "outcome", "message"],
+      "properties": {
+        "recipient": { "type": "string", "const": "tanja" },
+        "outcome": { "type": "string", "enum": ["success", "failed"] },
+        "message": { "type": "string" },
+        "documentType": { "type": "string", "enum": ["sales_order", "sales_quote"] },
+        "documentNo": { "type": "string" },
+        "failureReason": {
+          "type": "string",
+          "enum": [
+            "missing_required_information",
+            "unusable_email_content",
+            "customer_not_found",
+            "item_not_found",
+            "bc_creation_failed",
+            "manual_clarification_required"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "updatedBy": {
+      "type": "string",
+      "enum": ["looka", "ingo", "artika", "erkan", "tanja"]
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "enum": ["order_item_clear", "order_item_unclear"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "documentType": { "const": "sales_order" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "classification": {
+            "enum": ["quote_item_clear", "quote_item_unclear"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "documentType": { "const": "sales_quote" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "failed_by_artika" }
+        }
+      },
+      "then": {
+        "required": ["artikaResult"],
+        "properties": {
+          "artikaResult": {
+            "required": ["status", "failureReason"],
+            "properties": {
+              "status": { "const": "negative" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "completed" }
+        }
+      },
+      "then": {
+        "required": ["erkanResult"],
+        "properties": {
+          "erkanResult": {
+            "required": ["status", "documentNo"],
+            "properties": {
+              "status": { "const": "positive" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": { "const": "completed" }
+        }
+      },
+      "then": {
+        "required": ["tanjaOutput"],
+        "properties": {
+          "tanjaOutput": {
+            "required": ["outcome", "documentType", "documentNo"],
+            "properties": {
+              "outcome": { "const": "success" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "rejected_by_ingo",
+              "failed_by_artika",
+              "failed_by_erkan",
+              "handover_tanja"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": ["tanjaOutput"],
+        "properties": {
+          "tanjaOutput": {
+            "required": ["outcome", "failureReason"],
+            "properties": {
+              "outcome": { "const": "failed" }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

@@ -33,28 +33,28 @@
               "type": "object",
               "properties": {
                 "text": {
-                  "description": "",
-                  "title": "NurKurznameTxt",
+                  "description": "FileName.txt",
+                  "title": "FileName",
                   "type": "string",
                   "x-ms-content-hint": "TEXT",
                   "x-ms-dynamically-added": true
                 },
                 "text_1": {
-                  "description": "",
-                  "title": "VollstaendigerProzesstext",
+                  "description": "Vertriebsmitarbeiter erstellt Streckenbestellung aus Verkaufsauftrag Ziel: Manuelle Anlage einer Streckenbestellung und automatische Verkn\u00FCpfung mit Verkaufsauftrag in Microsoft Dynamics 365 Business Central Kategorie: BC Prozesse Abteilungen: Vertrieb Trigger: Erstellung eines Verkaufsauftrags durch Vertriebsmitarbeiter Triggerkanal: Microsoft Dynamics 365 Business Central",
+                  "title": "Inhalt",
                   "type": "string",
                   "x-ms-content-hint": "TEXT",
                   "x-ms-dynamically-added": true
                 },
                 "text_2": {
-                  "description": "",
+                  "description": "BC Prozesse",
                   "title": "Kategorie",
                   "type": "string",
                   "x-ms-content-hint": "TEXT",
                   "x-ms-dynamically-added": true
                 },
                 "text_3": {
-                  "description": "",
+                  "description": "[{\u0022Value\u0022:\u0022Vertrieb\u0022}]",
                   "title": "Abteilung",
                   "type": "string",
                   "x-ms-content-hint": "TEXT",

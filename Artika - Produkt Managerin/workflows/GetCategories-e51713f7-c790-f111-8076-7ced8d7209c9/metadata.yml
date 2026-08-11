@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/GetCategories-e51713f7-c790-f111-8076-7ced8d7209c9/workflow.json
+workflowId: e51713f7-c790-f111-8076-7ced8d7209c9
+name: GetCategories
+type: 1
+description: This flow is triggered manually and connects to a SQL database to run a stored procedure that retrieves category data. Once the data is successfully obtained, the flow sends a response containing the results in a JSON format. The process ensures that the response is only sent if the database operation completes successfully.
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.kategorienavigation",
+  "name": "Kategorienavigation",
+  "category": "products",
+  "capabilities": [
+    "Produktkategorien und Hierarchien erklaeren",
+    "Passende Kategoriepfade fuer Suchanfragen bestimmen",
+    "Kategorie-zu-Artikel-Kontext herstellen"
+  ]
+}

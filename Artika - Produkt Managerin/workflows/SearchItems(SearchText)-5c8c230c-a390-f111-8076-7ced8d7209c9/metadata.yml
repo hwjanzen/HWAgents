@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/SearchItems(SearchText)-5c8c230c-a390-f111-8076-7ced8d7209c9/workflow.json
+workflowId: 5c8c230c-a390-f111-8076-7ced8d7209c9
+name: SearchItems(SearchText)
+type: 1
+description: This flow starts when it receives a manual input containing text. It checks if the input text is longer than three characters. If it is, the flow runs a database stored procedure using the input as a parameter and prepares a response with the results. If the input is too short, it creates a message indicating insufficient content. In both cases, a description message is set, and if the input was long enough, the flow returns the database results in its response.
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a

@@ -1,0 +1,19 @@
+{
+  "$id": "https://hwagents.local/schemas/v01-agent-case-contract-invalid-examples.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V0.1 Agent Case Contract Invalid Examples",
+  "type": "object",
+  "required": ["cases"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "cases": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "./v01-agent-case-contract.schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

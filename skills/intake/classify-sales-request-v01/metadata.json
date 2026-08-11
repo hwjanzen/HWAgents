@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "intake.classify_sales_request_v01",
+  "name": "Classify Sales Request V0.1",
+  "category": "intake",
+  "capabilities": [
+    "Kunden-E-Mail fuer V0.1 in genau eine von vier Klassen einordnen",
+    "Dokumentart Auftrag oder Angebot eindeutig ableiten",
+    "Unklare Artikel direkt als unklar klassifizieren"
+  ]
+}
