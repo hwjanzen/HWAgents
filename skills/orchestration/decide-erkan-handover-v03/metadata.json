@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.decide_erkan_handover_v03",
+  "name": "Decide Erkan Handover V0.3",
+  "category": "orchestration",
+  "capabilities": [
+    "Freigabe zur Erkan-Weitergabe auf Basis validierter Positionen treffen",
+    "Unvollstaendige Aufloesungen sicher in Human-in-the-Loop uebergeben",
+    "Go-NoGo Entscheidung mit nachvollziehbarer Begruendung liefern"
+  ]
+}

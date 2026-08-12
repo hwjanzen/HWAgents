@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.run_iterative_position_clarification_v03",
+  "name": "Run Iterative Position Clarification V0.3",
+  "category": "orchestration",
+  "capabilities": [
+    "Iterativen Dialog zwischen Ingo und Artika pro Position steuern",
+    "Pruefergebnisse je Hypothese bewerten und naechsten Check ableiten",
+    "Aufloesung oder geordneten Abbruch pro Position begruendet liefern"
+  ]
+}

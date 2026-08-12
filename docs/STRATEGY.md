@@ -257,6 +257,31 @@ Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
 - [ ] Runtime-Qualitaet: keine Web-Fallback-Antworten bei Ingo, Artika oder Erkan.
 - [ ] Publish-Checkliste (Sync, Apply, Publish) fuer alle betroffenen Agenten dokumentiert und verifiziert.
 
+## Entwicklungsstufe V0.3 (iterative Abstimmung Ingo + Artika)
+
+### Zielbild V0.3
+- Ingo validiert unklare Positionsdaten iterativ statt sie direkt weiterzuleiten.
+- Pro Position werden Hypothesen gebildet und mit Artika nacheinander geprueft.
+- Erst bei vollstaendiger eindeutiger Aufloesung aller Positionen erfolgt Handover zu Erkan.
+- Wenn mindestens eine Position nicht eindeutig aufloesbar ist: Handover an Human-in-the-Loop.
+
+### V0.3 Kernablauf
+1. Ingo extrahiert Kundenname, Positionen, Mengen und Referenzhinweise aus der Bestellung.
+2. Debitor wird mit Artika eindeutig bestimmt.
+3. Fuer jede Position erzeugt Ingo mehrere Bedeutungs-Hypothesen.
+4. Artika prueft die Hypothesen iterativ gegen Kundenreferenzen und internen Artikelstamm.
+5. Ingo bewertet pro Iteration die Ergebnisse und waehlt den naechsten Check.
+6. Go-NoGo Entscheidung:
+  - alle Positionen resolved -> Erkan
+  - mindestens eine unresolved -> Human-in-the-Loop
+
+### V0.3 Implementierungsstand (Foundation)
+- [x] Ingo-Skills fuer Hypothesenbildung, Iteration und Handover-Entscheidung angelegt.
+- [x] Ingo-Instruction auf V0.3-Fluss umgestellt.
+- [x] Artika-Instruction fuer positionierte Hypothesenpruefung erweitert.
+- [x] Contract um optionale Positions- und Iterationsfelder erweitert.
+- [ ] E2E-Testserie V0.3 fuer mehrdeutige Feldbedeutungen durchlaufen.
+
 ### Skalierung (Phase 2, 5-20 Agenten)
 - [ ] Manifest-Generator auf alle Agenten-Typen erweitern
 - [ ] Agent-Templates einfuehren (communication, process-manager, hr-agent)

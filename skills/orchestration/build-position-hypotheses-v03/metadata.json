@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.build_position_hypotheses_v03",
+  "name": "Build Position Hypotheses V0.3",
+  "category": "orchestration",
+  "capabilities": [
+    "Mehrdeutige Positionsangaben in pruefbare Hypothesen zerlegen",
+    "Feldbedeutungen wie Kundenreferenz oder interne Artikelnummer ableiten",
+    "Hypothesen pro Position mit Prioritaet fuer die Iteration ausgeben"
+  ]
+}

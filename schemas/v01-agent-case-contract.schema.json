@@ -32,6 +32,21 @@
       },
       "additionalProperties": false
     },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["positionId", "rawValue"],
+        "properties": {
+          "positionId": { "type": "string" },
+          "rawValue": { "type": "string" },
+          "quantity": { "type": "number" },
+          "price": { "type": "number" },
+          "unit": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
     "classification": {
       "type": "string",
       "enum": [
@@ -175,6 +190,24 @@
           },
           "additionalProperties": false
         },
+        "positionChecks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["positionId", "hypothesisType", "outcome"],
+            "properties": {
+              "positionId": { "type": "string" },
+              "hypothesisType": {
+                "type": "string",
+                "enum": ["customer_reference", "internal_item_no", "free_text_item_hint"]
+              },
+              "outcome": { "type": "string", "enum": ["unique", "ambiguous", "not_found"] },
+              "itemNo": { "type": "string" },
+              "notes": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
         "items": {
           "type": "array",
           "items": {
@@ -202,6 +235,20 @@
         "notes": { "type": "string" }
       },
       "additionalProperties": false
+    },
+    "positionResolution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["positionId", "status"],
+        "properties": {
+          "positionId": { "type": "string" },
+          "status": { "type": "string", "enum": ["resolved", "unresolved"] },
+          "resolvedItemNo": { "type": "string" },
+          "unresolvedReason": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
     },
     "erkanResult": {
       "type": "object",
