@@ -1,8 +1,17 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-12T09:23:21.176Z",
+  "generatedAt": "2026-08-12T10:08:31.521Z",
   "skills": [
+    {
+      "id": "orchestration.handle_sales_backoffice_case_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/handle-sales-backoffice-case-v01/skill.md",
+      "capabilities": [
+        "Vertriebsinnendienst-Faelle fuer V0.1 fachlich fuehren",
+        "Tanja-Handover und Rueckfragen deterministisch vorbereiten",
+        "Interne Artikelsuche ohne Webquellen erzwingen"
+      ]
+    },
     {
       "id": "orchestration.route_case_v01",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/route-case-v01/skill.md",

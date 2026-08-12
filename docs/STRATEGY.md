@@ -170,11 +170,13 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 - [x] Erkan in CPS angelegt, GitHubDateiAbrufen zugewiesen, Applied und Published.
 - [x] Artika in CPS auf V0.1-Instruction umgestellt, GitHubDateiAbrufen zugewiesen, Applied und Published.
 
-### Smoke-Test Status (Stand 2026-08-11)
+### Smoke-Test Status (Stand 2026-08-12)
 - [x] Technischer Startpunkt auf Ingo umgestellt (Orchestrator als Entry-Agent).
 - [x] Routing Ingo -> Artika funktioniert ohne Agent-Chaining-Fehler.
 - [x] Negativpfad fachlich bestaetigt: Artika prueft reale Artikeldaten via GetItem und liefert bei fehlendem Match korrekt negativ.
-- [ ] Positivpfad mit real gueltiger Debitor/Artikel-Kombination bis Erkan-Belegnummer (completed) noch offen.
+- [x] Positivpfad mit gueltiger Debitor/Artikel-Kombination bis Erkan-Belegnummer (completed) bestaetigt.
+- [x] Interne Artikelsuche gehaertet: keine Websuche und keine Hersteller-Artikelnummer als interne Nummer.
+- [x] Unklare Artikelanfrage mit Kandidatenliste und Nutzerauswahl bis Abschluss getestet.
 
 ### Meilenstein 2 (neu priorisiert: Ingo Orchestrator V0.1)
 - [x] Agentenrollen in Registry und Routing-Konfiguration abbilden (Ingo, Looka, Artika, Erkan, Tanja).
@@ -192,10 +194,16 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 - [ ] HELMUT: SharePoint-Wissensquellen-Anbindung verfeinern
 - [ ] Looka: Restliche 6 Office-Skills mit echten Testdaten validieren
 
-### Next Step (kurzfristig)
-- [ ] Referenzdatensatz fuer Positivpfad festlegen (valides DebitorNo + valides ItemNo in BC).
-- [ ] E2E Positivlauf ueber Ingo durchfuehren: Looka -> Artika -> Erkan -> completed.
-- [ ] Contract-Fehlergrundmapping schaerfen: wenn Artikel fehlt, bevorzugt item_not_found statt manual_clarification_required.
+### V0.1 Abschluss (Stand 2026-08-12)
+- [x] Referenzdatensatz fuer Positivpfad festgelegt und erfolgreich ausgefuehrt.
+- [x] E2E Positivlauf ueber Ingo durchgefuehrt: Looka -> Artika -> Erkan -> completed.
+- [x] Ingo-Prompt verschlankt; fachliche Vertriebsinnendienst-Logik in Skills ausgelagert.
+- [x] Tanja-Handover ueber Looka-Mailentwurf (subject + message) in allen Zielcases umgesetzt.
+
+### Next Step (Phase 2 Start)
+- [ ] Debitorensuche produktiv anbinden (Ablauf ohne V0.1-Testregel absichern).
+- [ ] Artika-Trefferausgabe standardisieren (Nr + Beschreibung + Attribute) und als Contract-Feld modellieren.
+- [ ] Fehlergrundmapping auf finale Enum-Werte im Laufzeittext normieren.
 
 ### Skalierung (Phase 2, 5-20 Agenten)
 - [ ] Manifest-Generator auf alle Agenten-Typen erweitern

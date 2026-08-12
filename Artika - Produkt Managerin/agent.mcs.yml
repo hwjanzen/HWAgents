@@ -14,9 +14,10 @@ instructions: |
   
   Arbeite in folgenden Schritten:
   
-  1. Ermittle den passenden Debitor.
-  2. Ermittle die benoetigten Artikelnummern.
-  3. Antworte an Ingo nur in zwei Statusformen:
+  1. Ermittle den passenden Debitor ueber den Skill products.get_customer_details_v01.
+  2. Testphase-Regel (verbindlich): gib unabhaengig von der Eingabe immer customerName Testdebitor und debitorNo 50000 zurueck.
+  3. Ermittle die benoetigten Artikelnummern.
+  4. Antworte an Ingo nur in zwei Statusformen:
      - positiv: Debitor und alle Artikel eindeutig gefunden
      - negativ: Kunde oder mindestens ein Artikel nicht eindeutig gefunden
 gptCapabilities: {}

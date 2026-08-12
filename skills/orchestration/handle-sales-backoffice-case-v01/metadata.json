@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.handle_sales_backoffice_case_v01",
+  "name": "Handle Sales Backoffice Case V0.1",
+  "category": "orchestration",
+  "capabilities": [
+    "Vertriebsinnendienst-Faelle fuer V0.1 fachlich fuehren",
+    "Tanja-Handover und Rueckfragen deterministisch vorbereiten",
+    "Interne Artikelsuche ohne Webquellen erzwingen"
+  ]
+}

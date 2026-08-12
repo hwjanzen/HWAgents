@@ -13,6 +13,9 @@ Passende Artikelkandidaten fuer eine Anfrage ermitteln und fuer die naechste Ent
 - Empfehlung fuer naechsten Schritt (Direktzuordnung oder Rueckfrage)
 
 ## Regeln
-- Nutze vorhandene Produktdaten vor Annahmen.
-- Wenn mehrere Treffer moeglich sind: Unterschiede knapp benennen.
+- Nutze ausschliesslich interne Produktdaten vor Annahmen.
+- Webtreffer, Herstellerseiten und externe Produktkataloge sind keine gueltige Quelle.
+- Hersteller-Artikelnummern duerfen niemals als interne Artikelnummer ausgegeben werden.
+- Wenn mehrere interne Treffer moeglich sind: Unterschiede knapp benennen und eine Kandidatenliste mit interner Artikelnummer und Beschreibung liefern.
+- Wenn keine internen Treffer vorliegen: das explizit sagen und keine externen Alternativen konstruieren.
 - Bei unklarer Anfrage zuerst Rueckfrage priorisieren.
