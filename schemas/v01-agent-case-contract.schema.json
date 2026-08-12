@@ -64,7 +64,10 @@
         "missing_required_information",
         "unusable_email_content",
         "customer_not_found",
+        "ambiguous_customer",
         "item_not_found",
+        "item_reference_not_found",
+        "ambiguous_item_reference",
         "bc_creation_failed",
         "manual_clarification_required"
       ]
@@ -106,6 +109,72 @@
       "properties": {
         "status": { "type": "string", "enum": ["positive", "negative"] },
         "debitorNo": { "type": "string" },
+        "debitorSearch": {
+          "type": "object",
+          "required": ["status", "matchCount"],
+          "properties": {
+            "status": { "type": "string", "enum": ["unique", "ambiguous", "not_found"] },
+            "queryName": { "type": "string" },
+            "matchCount": { "type": "integer", "minimum": 0 },
+            "selectedDebitor": {
+              "type": "object",
+              "required": ["debitorNo", "name"],
+              "properties": {
+                "debitorNo": { "type": "string" },
+                "name": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "candidates": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["debitorNo", "name"],
+                "properties": {
+                  "debitorNo": { "type": "string" },
+                  "name": { "type": "string" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "articleReferenceSearch": {
+          "type": "object",
+          "required": ["status", "matchCount"],
+          "properties": {
+            "status": { "type": "string", "enum": ["unique", "ambiguous", "not_found"] },
+            "queryText": { "type": "string" },
+            "matchCount": { "type": "integer", "minimum": 0 },
+            "selectedItem": {
+              "type": "object",
+              "required": ["itemNo"],
+              "properties": {
+                "itemNo": { "type": "string" },
+                "description": { "type": "string" },
+                "customerRefNo": { "type": "string" },
+                "variantCode": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "candidates": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["itemNo"],
+                "properties": {
+                  "itemNo": { "type": "string" },
+                  "description": { "type": "string" },
+                  "customerRefNo": { "type": "string" },
+                  "variantCode": { "type": "string" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
         "items": {
           "type": "array",
           "items": {
@@ -121,7 +190,14 @@
         },
         "failureReason": {
           "type": "string",
-          "enum": ["customer_not_found", "item_not_found", "manual_clarification_required"]
+          "enum": [
+            "customer_not_found",
+            "ambiguous_customer",
+            "item_not_found",
+            "item_reference_not_found",
+            "ambiguous_item_reference",
+            "manual_clarification_required"
+          ]
         },
         "notes": { "type": "string" }
       },
@@ -157,7 +233,10 @@
             "missing_required_information",
             "unusable_email_content",
             "customer_not_found",
+            "ambiguous_customer",
             "item_not_found",
+            "item_reference_not_found",
+            "ambiguous_item_reference",
             "bc_creation_failed",
             "manual_clarification_required"
           ]

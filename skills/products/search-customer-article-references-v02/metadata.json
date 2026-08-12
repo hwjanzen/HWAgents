@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.search_customer_article_references_v02",
+  "name": "Search Customer Article References V0.2",
+  "category": "products",
+  "capabilities": [
+    "Kundenartikelreferenzen und Referenztexte gegen ERP-Artikel aufloesen",
+    "Eindeutige und mehrdeutige Artikelreferenztreffer unterscheiden",
+    "Kandidatenliste mit interner Artikelnummer und Beschreibung liefern"
+  ]
+}

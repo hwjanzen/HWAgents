@@ -133,3 +133,54 @@ Hallo Ingo, bestellen Sie bitte 2x Artikel 1896-S für Debitor 10000.
 - Falls Informationen fehlen/unklar sind: Ingo sammelt weitere Infos oder beendet die Unterhaltung gemaess Prompt-Regeln.
 - Keine Websuche fuer Artikelfindung: nur interne Treffer ueber Artika sind erlaubt.
 - Keine Hersteller-Artikelnummer oder externer Webtreffer darf als interne Artikelnummer weiterverwendet werden.
+
+## Entwicklungsstufe V0.2 - Artika Recherchefaehigkeiten
+
+In V0.2 bleibt die Agentenkommunikation unveraendert.
+Neu ist die fachliche Recherche durch Artika:
+- Debitorensuche auf Basis eines Firmennamens
+- Suche in Kundenartikelreferenzen / Artikelreferenzdaten
+
+### V0.2 Test A - Debitor eindeutig, Artikel eindeutig
+
+```text
+Hallo Ingo, bitte bestelle 2x Kundenartikelreferenz KR-4711 fuer Firma Schueko.
+```
+
+Soll:
+- Artika liefert debitorSearch.status = unique.
+- Artika liefert articleReferenceSearch.status = unique.
+- Ingo darf an Erkan weitergeben.
+
+### V0.2 Test B - Debitor mehrdeutig
+
+```text
+Hallo Ingo, bitte bestelle 1x Kundenartikelreferenz KR-4711 fuer Firma Mueller.
+```
+
+Soll:
+- Artika liefert debitorSearch.status = ambiguous und Kandidatenliste mit debitorNo + name.
+- Keine automatische Auswahl durch Artika oder Ingo.
+- Ingo uebergibt an Tanja (Human-in-the-Loop).
+
+### V0.2 Test C - Artikelreferenz mehrdeutig
+
+```text
+Hallo Ingo, bitte bestelle 3x Referenz "Leiter 2,5m" fuer Firma Schueko.
+```
+
+Soll:
+- Artika liefert articleReferenceSearch.status = ambiguous und Kandidatenliste mit itemNo + description.
+- Keine automatische Auswahl.
+- Ingo uebergibt an Tanja.
+
+### V0.2 Test D - Kein Treffer
+
+```text
+Hallo Ingo, bitte bestelle 4x Referenz "XYZ-UNBEKANNT-999" fuer Firma Schueko.
+```
+
+Soll:
+- debitorSearch oder articleReferenceSearch = not_found.
+- Ingo uebergibt an Tanja.
+- Kein Webtreffer und keine Herstellernummer als interne Artikelnummer.

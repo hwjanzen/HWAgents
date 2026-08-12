@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.search_debitors_v02",
+  "name": "Search Debitors V0.2",
+  "category": "products",
+  "capabilities": [
+    "Debitoren anhand eines Firmennamens im Stammdatenbestand suchen",
+    "Eindeutige Treffer von Mehrdeutigkeiten und Nicht-Treffern trennen",
+    "Kandidatenliste mit Debitorennummer und Bezeichnung zurueckgeben"
+  ]
+}

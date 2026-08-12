@@ -163,6 +163,38 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 
 ---
 
+## Entwicklungsstufe V0.2 (fachliche Erweiterung Artika)
+
+In V0.2 bleibt die Agentenkommunikation zwischen Looka, Ingo, Artika, Erkan und Tanja unveraendert.
+Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
+
+### V0.2 Ziel
+- Artika recherchiert Debitoren auf Basis eines Firmennamens.
+- Artika loest Kundenartikelreferenzen auf interne ERP-Artikelnummern auf.
+- Artika liefert bei Mehrdeutigkeiten Kandidaten statt Entscheidungen.
+- Ingo bleibt schlanker Orchestrator ohne automatische Auswahl bei Mehrdeutigkeit.
+
+### V0.2 Scope
+- Neue Artika-Tools/Skills:
+  - products.search_debitors_v02
+  - products.search_customer_article_references_v02
+- Debitorensuche basiert in V0.2 nur auf Firmennamen.
+- Artikelsuche basiert auf Kundenreferenzen und Referenztexten in internen Daten.
+- Keine Websuche und keine Herstellernummern als interne Artikelnummer.
+
+### V0.2 Ergebnisregeln
+- Debitorensuche:
+  - genau ein Treffer -> unique
+  - mehrere Treffer -> ambiguous mit Kandidatenliste
+  - kein Treffer -> not_found
+- Artikelreferenzsuche:
+  - genau ein Treffer -> unique
+  - mehrere Treffer -> ambiguous mit Kandidatenliste
+  - kein Treffer -> not_found
+- Prozessentscheidung durch Ingo:
+  - beide Ergebnisse unique -> Weitergabe an Erkan
+  - sonst -> Human-in-the-Loop Uebergabe an Tanja
+
 ## Offene Punkte / Naechste Schritte
 
 ### CPS Deployment Status (Stand 2026-08-11)
@@ -200,10 +232,12 @@ Abteilung -> JSON-Array-String ([{"Value":"Vertrieb"}])
 - [x] Ingo-Prompt verschlankt; fachliche Vertriebsinnendienst-Logik in Skills ausgelagert.
 - [x] Tanja-Handover ueber Looka-Mailentwurf (subject + message) in allen Zielcases umgesetzt.
 
-### Next Step (Phase 2 Start)
-- [ ] Debitorensuche produktiv anbinden (Ablauf ohne V0.1-Testregel absichern).
-- [ ] Artika-Trefferausgabe standardisieren (Nr + Beschreibung + Attribute) und als Contract-Feld modellieren.
-- [ ] Fehlergrundmapping auf finale Enum-Werte im Laufzeittext normieren.
+### Next Step (V0.2 Umsetzung und Test)
+- [x] Debitorensuche als Skill products.search_debitors_v02 eingefuehrt.
+- [x] Kundenartikelreferenzsuche als Skill products.search_customer_article_references_v02 eingefuehrt.
+- [x] Contract um strukturierte Suchergebnisse (debitorSearch, articleReferenceSearch) erweitert.
+- [ ] E2E-Testfaelle fuer unique, ambiguous und not_found bei Debitor und Artikelreferenz durchfuehren.
+- [ ] Artika-Runtime-Ausgabe gegen den erweiterten Contract stabilisieren.
 
 ### Skalierung (Phase 2, 5-20 Agenten)
 - [ ] Manifest-Generator auf alle Agenten-Typen erweitern

@@ -21,6 +21,9 @@ Vertriebsinnendienst-Faelle in der V0.1-Teststrecke fachlich fuehren, ohne die O
 
 ## Fachregeln
 - Pruefe, ob ausreichend Informationen fuer die naechste Delegation vorliegen.
+- In V0.2 gilt fuer Artika: Ergebnis enthaelt debitorSearch und articleReferenceSearch mit unique, ambiguous oder not_found.
+- Nur wenn beide Suchergebnisse unique sind: nextBusinessAction = ask_erkan.
+- Wenn mindestens ein Suchergebnis ambiguous oder not_found ist: kein Auto-Entscheid, status = failed_by_artika oder handover_tanja vorbereiten.
 - Wenn Erkan positiv meldet:
   - nextBusinessAction = ask_looka_for_tanja_mail
   - Weise Looka an, Betreff und Mailtext fuer Tanja mit documentNo und Debitorenname zu formulieren.
@@ -33,8 +36,8 @@ Vertriebsinnendienst-Faelle in der V0.1-Teststrecke fachlich fuehren, ohne die O
   - Danach genau eine Folgeaktion: ask_user_for_clarification oder end_conversation.
 - Wenn Artika negativ meldet:
   - nextBusinessAction = ask_looka_for_tanja_mail
-  - Weise Looka an, Betreff und Mailtext fuer Tanja mit Hinweis auf nicht eindeutige Artikelidentifikation zu formulieren.
-  - Danach genau eine Folgeaktion: ask_user_for_clarification oder end_conversation.
+  - Weise Looka an, Betreff und Mailtext fuer Tanja mit Hinweis auf Mehrdeutigkeit oder fehlende Treffer zu formulieren.
+  - Keine automatische Auswahl oder Priorisierung durch Ingo.
 
 ## Artikelsuche
 - Keine Websuche oder Internetquellen fuer Artikelfindung verwenden.
@@ -46,3 +49,4 @@ Vertriebsinnendienst-Faelle in der V0.1-Teststrecke fachlich fuehren, ohne die O
 - Pro Schritt genau eine naechste Business-Aktion ableiten.
 - Fuer jede Information an Tanja zuerst Looka fuer subject und message einsetzen.
 - Nur vom Case-Contract und intern ermittelten Fakten ausgehen.
+- Bei Mehrdeutigkeiten liefert Artika Kandidaten; Ingo trifft daraus in V0.2 keine fachliche Auswahl.

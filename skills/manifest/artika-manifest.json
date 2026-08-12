@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-12T11:05:26.138Z",
+  "generatedAt": "2026-08-12T13:35:49.711Z",
   "skills": [
     {
       "id": "products.artikelanalyse",
@@ -75,6 +75,24 @@
         "Produktkandidaten aus Freitext ermitteln",
         "Alternativen und aehnliche Artikel auflisten",
         "Kategoriebasierte Produktauswahl unterstuetzen"
+      ]
+    },
+    {
+      "id": "products.search_customer_article_references_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/search-customer-article-references-v02/skill.md",
+      "capabilities": [
+        "Kundenartikelreferenzen und Referenztexte gegen ERP-Artikel aufloesen",
+        "Eindeutige und mehrdeutige Artikelreferenztreffer unterscheiden",
+        "Kandidatenliste mit interner Artikelnummer und Beschreibung liefern"
+      ]
+    },
+    {
+      "id": "products.search_debitors_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/search-debitors-v02/skill.md",
+      "capabilities": [
+        "Debitoren anhand eines Firmennamens im Stammdatenbestand suchen",
+        "Eindeutige Treffer von Mehrdeutigkeiten und Nicht-Treffern trennen",
+        "Kandidatenliste mit Debitorennummer und Bezeichnung zurueckgeben"
       ]
     },
     {
