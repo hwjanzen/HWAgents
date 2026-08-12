@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "erp.create_bc_documents_v01",
+  "name": "Create BC Documents V0.1",
+  "category": "erp",
+  "capabilities": [
+    "Verkaufsauftrag in Business Central anlegen",
+    "Verkaufsangebot in Business Central anlegen",
+    "Belegnummer fuer Ingo zurueckmelden"
+  ]
+}

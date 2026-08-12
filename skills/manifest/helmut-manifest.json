@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "helmut",
-  "generatedAt": "2026-08-11T20:18:42.915Z",
+  "generatedAt": "2026-08-12T09:23:21.174Z",
   "skills": [
     {
       "id": "processes.copilot_wissen_aufbauen",

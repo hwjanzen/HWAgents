@@ -143,10 +143,11 @@
     },
     "tanjaOutput": {
       "type": "object",
-      "required": ["recipient", "outcome", "message"],
+      "required": ["recipient", "outcome", "subject", "message"],
       "properties": {
         "recipient": { "type": "string", "const": "tanja" },
         "outcome": { "type": "string", "enum": ["success", "failed"] },
+        "subject": { "type": "string" },
         "message": { "type": "string" },
         "documentType": { "type": "string", "enum": ["sales_order", "sales_quote"] },
         "documentNo": { "type": "string" },

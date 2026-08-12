@@ -1,8 +1,17 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "erkan",
-  "generatedAt": "2026-08-11T20:18:42.920Z",
+  "generatedAt": "2026-08-12T09:23:21.178Z",
   "skills": [
+    {
+      "id": "erp.create_bc_documents_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/erp/create-bc-documents-v01/skill.md",
+      "capabilities": [
+        "Verkaufsauftrag in Business Central anlegen",
+        "Verkaufsangebot in Business Central anlegen",
+        "Belegnummer fuer Ingo zurueckmelden"
+      ]
+    },
     {
       "id": "shared.ask_clarification",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/ask-clarification/skill.md",

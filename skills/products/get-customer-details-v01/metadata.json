@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.get_customer_details_v01",
+  "name": "Get Customer Details V0.1",
+  "category": "products",
+  "capabilities": [
+    "Debitorendetails fuer V0.1 ermitteln",
+    "Kundenangaben auf DebitorNo abbilden",
+    "Testmodus mit festem Debitor rueckgeben"
+  ]
+}

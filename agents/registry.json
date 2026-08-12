@@ -11,7 +11,7 @@
       "cpsComponentName": "LOOKA",
       "systemPrompt": "agents/looka-agent/prompts/system.md",
       "skillCategories": ["intake"],
-      "additionalSkills": ["shared.ask_clarification"]
+      "additionalSkills": ["shared.ask_clarification", "communication.draft_mail"]
     },
     {
       "id": "helmut",
@@ -54,7 +54,7 @@
       "manifestFile": "skills/manifest/erkan-manifest.json",
       "cpsComponentName": "ERKAN",
       "systemPrompt": "agents/erkan-agent/prompts/system.md",
-      "skillCategories": ["shared"],
+      "skillCategories": ["erp", "shared"],
       "additionalSkills": ["shared.ask_clarification"]
     }
   ]

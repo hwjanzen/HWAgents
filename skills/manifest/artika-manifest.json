@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-11T20:18:42.919Z",
+  "generatedAt": "2026-08-12T09:23:21.177Z",
   "skills": [
     {
       "id": "products.artikelanalyse",
@@ -38,6 +38,15 @@
         "Vollstaendigkeit von Produktstammdaten bewerten",
         "Fehlende Pflichtinformationen identifizieren",
         "Qualitaetsrisiken fuer Folgeprozesse kennzeichnen"
+      ]
+    },
+    {
+      "id": "products.get_customer_details_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/get-customer-details-v01/skill.md",
+      "capabilities": [
+        "Debitorendetails fuer V0.1 ermitteln",
+        "Kundenangaben auf DebitorNo abbilden",
+        "Testmodus mit festem Debitor rueckgeben"
       ]
     },
     {

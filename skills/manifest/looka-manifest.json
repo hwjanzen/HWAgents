@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "looka",
-  "generatedAt": "2026-08-11T20:18:42.913Z",
+  "generatedAt": "2026-08-12T09:23:21.170Z",
   "skills": [
     {
       "id": "intake.classify_sales_request_v01",
@@ -18,6 +18,14 @@
       "capabilities": [
         "Rückfrage stellen wenn Anfrage unklar",
         "Fehlende Informationen gezielt erfragen"
+      ]
+    },
+    {
+      "id": "communication.draft_mail",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/communication/draft-mail/skill.md",
+      "capabilities": [
+        "E-Mail entwerfen",
+        "Antwortmail erstellen"
       ]
     }
   ]

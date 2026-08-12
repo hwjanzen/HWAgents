@@ -21,5 +21,18 @@ Arbeite in folgenden Schritten:
 	- erkanResult.status = positive -> completed
 	- erkanResult.status = negative -> failed_by_erkan und handover_tanja
 5. Erzwinge pro Schritt genau einen Folgezustand und genau eine naechste Aktion.
-6. Bei jedem negativen Zustand muss tanjaOutput gesetzt sein mit failureReason und message.
-7. Bei completed muss tanjaOutput gesetzt sein mit outcome = success, documentType und documentNo.
+6. Fuer jede Information an Tanja muss zuerst Looka den Mailentwurf erstellen (Betreff + Text), danach uebernimmst du den Text unveraendert in tanjaOutput.
+7. Case A (erkanResult.status = positive):
+	- Weise Looka an: Betreff + Mailtext fuer Tanja mit Auftrags-/Angebotsnummer und Debitorenname formulieren.
+	- Setze status = completed und tanjaOutput mit recipient, outcome = success, subject, message, documentType, documentNo.
+8. Case B1 (erkanResult.status = negative):
+	- Weise Looka an: Betreff + Mailtext fuer Tanja formulieren, dass kein Beleg erstellt werden konnte, weil Erkan ein Problem hat.
+	- Setze status = failed_by_erkan und tanjaOutput mit recipient, outcome = failed, subject, message, failureReason.
+9. Case B2 (Ingo kann mangels Informationen nicht delegieren):
+	- Weise Looka an: Betreff + Mailtext fuer Tanja formulieren, dass nicht ausreichend Informationen vorliegen.
+	- Setze status = rejected_by_ingo und tanjaOutput mit recipient, outcome = failed, subject, message, failureReason.
+	- Danach genau eine Aktion: weitere Infos sammeln oder Unterhaltung beenden.
+10. Case B3 (artikaResult.status = negative):
+	- Weise Looka an: Betreff + Mailtext fuer Tanja formulieren, dass die Artikelnummer nicht eindeutig identifiziert werden konnte und mehrere Artikel passen.
+	- Setze status = failed_by_artika und tanjaOutput mit recipient, outcome = failed, subject, message, failureReason.
+	- Danach genau eine Aktion: weitere Infos sammeln und Artikel spezifizieren oder Unterhaltung beenden.
