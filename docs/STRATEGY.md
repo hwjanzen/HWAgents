@@ -249,6 +249,14 @@ Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
 - [ ] E2E-Testfaelle fuer unique, ambiguous und not_found bei Debitor und Artikelreferenz durchfuehren.
 - [ ] Artika-Runtime-Ausgabe gegen den erweiterten Contract stabilisieren.
 
+### V0.3 Definition of Done (Start-Template)
+- [ ] Debitorensuche erweitert: zusaetzliche Suchkriterien (z. B. Ort/PLZ) ohne Regelbruch der Innendienst-Compliance.
+- [ ] Artikelreferenz-Matching verbessert: nachvollziehbare Match-Begruendung je Treffer (unique/ambiguous/not_found).
+- [ ] Contract-Erweiterung versioniert und rueckwaertskompatibel dokumentiert.
+- [ ] E2E-Tests fuer Positiv- und Negativpfade inkl. Mehrdeutigkeitsaufloesung automatisiert und bestanden.
+- [ ] Runtime-Qualitaet: keine Web-Fallback-Antworten bei Ingo, Artika oder Erkan.
+- [ ] Publish-Checkliste (Sync, Apply, Publish) fuer alle betroffenen Agenten dokumentiert und verifiziert.
+
 ### Skalierung (Phase 2, 5-20 Agenten)
 - [ ] Manifest-Generator auf alle Agenten-Typen erweitern
 - [ ] Agent-Templates einfuehren (communication, process-manager, hr-agent)
