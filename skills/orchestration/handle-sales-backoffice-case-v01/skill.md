@@ -22,6 +22,16 @@ Vertriebsinnendienst-Faelle in der V0.1-Teststrecke fachlich fuehren, ohne die O
 ## Fachregeln
 - Pruefe, ob ausreichend Informationen fuer die naechste Delegation vorliegen.
 - In V0.2 gilt fuer Artika: Ergebnis enthaelt debitorSearch und articleReferenceSearch mit unique, ambiguous oder not_found.
+- Wenn ein Firmenname vorliegt: zuerst zwingend Debitorensuche ueber Artika ausfuehren.
+- Kein Web-Fallback und keine allgemeine Internetsuche fuer Debitorenermittlung.
+- Bei debitorSearch.status = ambiguous:
+  - nur Kandidatenliste ausgeben (debitorNo, name, Adresse/PLZ falls vorhanden)
+  - genau eine Auswahlrueckfrage stellen
+  - keine weiteren Pflichtfelder (Liefertermin, Kommission, etc.) anfordern
+- Wenn der Nutzer eine Debitornummer nennt:
+  - nur akzeptieren, wenn sie exakt in der letzten Kandidatenliste enthalten ist
+  - andernfalls Rueckfrage mit gueltigen Kandidaten stellen
+- Nach gueltiger Debitorauswahl immer artikelbezogene Referenzsuche mit dem gewaehlten Debitor erneut ausfuehren.
 - Nur wenn beide Suchergebnisse unique sind: nextBusinessAction = ask_erkan.
 - Wenn mindestens ein Suchergebnis ambiguous oder not_found ist: kein Auto-Entscheid, status = failed_by_artika oder handover_tanja vorbereiten.
 - Wenn Erkan positiv meldet:
@@ -50,3 +60,4 @@ Vertriebsinnendienst-Faelle in der V0.1-Teststrecke fachlich fuehren, ohne die O
 - Fuer jede Information an Tanja zuerst Looka fuer subject und message einsetzen.
 - Nur vom Case-Contract und intern ermittelten Fakten ausgehen.
 - Bei Mehrdeutigkeiten liefert Artika Kandidaten; Ingo trifft daraus in V0.2 keine fachliche Auswahl.
+- Erkan wird nur aufgerufen, nachdem Debitor und Artikelreferenz fuer den gewaehlten Debitor jeweils unique bestaetigt sind.

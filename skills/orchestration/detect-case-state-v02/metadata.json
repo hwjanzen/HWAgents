@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.detect_case_state_v02",
+  "name": "Detect Case State V0.2",
+  "category": "orchestration",
+  "capabilities": [
+    "Naechsten Prozesszustand aus Contract und letzter Nutzernachricht ableiten",
+    "Mehrdeutigkeit, Treffer und Fehlerlagen als statusnahe Signale kennzeichnen",
+    "Eine konsistente Entscheidungsbasis fuer Folgeaktionen liefern"
+  ]
+}

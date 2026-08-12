@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-12T13:35:49.711Z",
+  "generatedAt": "2026-08-12T14:34:30.767Z",
   "skills": [
     {
       "id": "products.artikelanalyse",
@@ -101,6 +101,15 @@
       "capabilities": [
         "Rückfrage stellen wenn Anfrage unklar",
         "Fehlende Informationen gezielt erfragen"
+      ]
+    },
+    {
+      "id": "shared.innendienst_compliance_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/innendienst-compliance-v02/skill.md",
+      "capabilities": [
+        "No-Internet-Regel fuer Innendienst-Agenten erzwingen",
+        "Interne Datenwege und Kollegenabfrage priorisieren",
+        "Unzulaessige externe Recherche als Policy-Verstoss markieren"
       ]
     }
   ]

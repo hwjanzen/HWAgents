@@ -173,14 +173,22 @@ Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
 - Artika loest Kundenartikelreferenzen auf interne ERP-Artikelnummern auf.
 - Artika liefert bei Mehrdeutigkeiten Kandidaten statt Entscheidungen.
 - Ingo bleibt schlanker Orchestrator ohne automatische Auswahl bei Mehrdeutigkeit.
+- Ingo, Artika und Erkan arbeiten im Innendienst strikt ohne Online-Recherche.
 
 ### V0.2 Scope
 - Neue Artika-Tools/Skills:
   - products.search_debitors_v02
   - products.search_customer_article_references_v02
+- Neue Ingo-Orchestrierungs-Skills:
+  - orchestration.detect_case_state_v02
+  - orchestration.plan_next_action_v02
+  - orchestration.resolve_ambiguous_debitor_v02
+- Neue Shared-Compliance fuer Innendienst:
+  - shared.innendienst_compliance_v02
 - Debitorensuche basiert in V0.2 nur auf Firmennamen.
 - Artikelsuche basiert auf Kundenreferenzen und Referenztexten in internen Daten.
 - Keine Websuche und keine Herstellernummern als interne Artikelnummer.
+- Looka bleibt ausgenommen und darf fuer die Formulierung von Mailtexten netzoffen arbeiten.
 
 ### V0.2 Ergebnisregeln
 - Debitorensuche:
@@ -236,6 +244,8 @@ Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
 - [x] Debitorensuche als Skill products.search_debitors_v02 eingefuehrt.
 - [x] Kundenartikelreferenzsuche als Skill products.search_customer_article_references_v02 eingefuehrt.
 - [x] Contract um strukturierte Suchergebnisse (debitorSearch, articleReferenceSearch) erweitert.
+- [x] Ingo auf schlankes V0.2-Skill-Set fuer Zustand, Folgeaktion und Debitor-Klaerung umgestellt.
+- [x] Innendienst-Compliance als Shared-Kernregel eingefuehrt (nie online suchen, Kollegen befragen).
 - [ ] E2E-Testfaelle fuer unique, ambiguous und not_found bei Debitor und Artikelreferenz durchfuehren.
 - [ ] Artika-Runtime-Ausgabe gegen den erweiterten Contract stabilisieren.
 

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.plan_next_action_v02",
+  "name": "Plan Next Action V0.2",
+  "category": "orchestration",
+  "capabilities": [
+    "Aus dem erkannten Zustand genau eine Folgeaktion ableiten",
+    "Debitor- und Referenzkette deterministisch steuern",
+    "Unzulaessige Aktionen wie Web-Fallback verhindern"
+  ]
+}

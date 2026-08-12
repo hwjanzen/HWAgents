@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "erkan",
-  "generatedAt": "2026-08-12T09:23:21.178Z",
+  "generatedAt": "2026-08-12T14:34:30.817Z",
   "skills": [
     {
       "id": "erp.create_bc_documents_v01",
@@ -18,6 +18,15 @@
       "capabilities": [
         "Rückfrage stellen wenn Anfrage unklar",
         "Fehlende Informationen gezielt erfragen"
+      ]
+    },
+    {
+      "id": "shared.innendienst_compliance_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/innendienst-compliance-v02/skill.md",
+      "capabilities": [
+        "No-Internet-Regel fuer Innendienst-Agenten erzwingen",
+        "Interne Datenwege und Kollegenabfrage priorisieren",
+        "Unzulaessige externe Recherche als Policy-Verstoss markieren"
       ]
     }
   ]

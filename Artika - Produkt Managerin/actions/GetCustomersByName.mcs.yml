@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: GetCustomersByName
+kind: TaskDialog
+outputs:
+  - propertyName: filejson
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 69dab809-5196-f111-8075-7ced8d770dd9
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

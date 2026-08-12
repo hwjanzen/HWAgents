@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "orchestration.resolve_ambiguous_debitor_v02",
+  "name": "Resolve Ambiguous Debitor V0.2",
+  "category": "orchestration",
+  "capabilities": [
+    "Debitor-Kandidatenliste standardisiert an den Nutzer ausgeben",
+    "Nutzerauswahl streng gegen gueltige Kandidaten pruefen",
+    "Exakte Debitorauswahl fuer den Folgeschritt fixieren"
+  ]
+}

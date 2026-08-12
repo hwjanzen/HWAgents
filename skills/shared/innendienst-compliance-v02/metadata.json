@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "shared.innendienst_compliance_v02",
+  "name": "Innendienst Compliance V0.2",
+  "category": "shared",
+  "capabilities": [
+    "No-Internet-Regel fuer Innendienst-Agenten erzwingen",
+    "Interne Datenwege und Kollegenabfrage priorisieren",
+    "Unzulaessige externe Recherche als Policy-Verstoss markieren"
+  ]
+}

@@ -1,8 +1,17 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-12T10:08:31.521Z",
+  "generatedAt": "2026-08-12T14:34:30.717Z",
   "skills": [
+    {
+      "id": "orchestration.detect_case_state_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/detect-case-state-v02/skill.md",
+      "capabilities": [
+        "Naechsten Prozesszustand aus Contract und letzter Nutzernachricht ableiten",
+        "Mehrdeutigkeit, Treffer und Fehlerlagen als statusnahe Signale kennzeichnen",
+        "Eine konsistente Entscheidungsbasis fuer Folgeaktionen liefern"
+      ]
+    },
     {
       "id": "orchestration.handle_sales_backoffice_case_v01",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/handle-sales-backoffice-case-v01/skill.md",
@@ -10,6 +19,24 @@
         "Vertriebsinnendienst-Faelle fuer V0.1 fachlich fuehren",
         "Tanja-Handover und Rueckfragen deterministisch vorbereiten",
         "Interne Artikelsuche ohne Webquellen erzwingen"
+      ]
+    },
+    {
+      "id": "orchestration.plan_next_action_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/plan-next-action-v02/skill.md",
+      "capabilities": [
+        "Aus dem erkannten Zustand genau eine Folgeaktion ableiten",
+        "Debitor- und Referenzkette deterministisch steuern",
+        "Unzulaessige Aktionen wie Web-Fallback verhindern"
+      ]
+    },
+    {
+      "id": "orchestration.resolve_ambiguous_debitor_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/resolve-ambiguous-debitor-v02/skill.md",
+      "capabilities": [
+        "Debitor-Kandidatenliste standardisiert an den Nutzer ausgeben",
+        "Nutzerauswahl streng gegen gueltige Kandidaten pruefen",
+        "Exakte Debitorauswahl fuer den Folgeschritt fixieren"
       ]
     },
     {
@@ -27,6 +54,15 @@
       "capabilities": [
         "Rückfrage stellen wenn Anfrage unklar",
         "Fehlende Informationen gezielt erfragen"
+      ]
+    },
+    {
+      "id": "shared.innendienst_compliance_v02",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/shared/innendienst-compliance-v02/skill.md",
+      "capabilities": [
+        "No-Internet-Regel fuer Innendienst-Agenten erzwingen",
+        "Interne Datenwege und Kollegenabfrage priorisieren",
+        "Unzulaessige externe Recherche als Policy-Verstoss markieren"
       ]
     }
   ]
