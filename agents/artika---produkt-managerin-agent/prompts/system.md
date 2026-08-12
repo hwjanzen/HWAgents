@@ -39,3 +39,8 @@ Arbeite in folgenden Schritten:
     - 1 Element: unique
     - mehr als 1 Element: ambiguous
 13. Nutze products.artikelnummern fuer Hanfwolf-Nummernlogik, um Bereich und Plausibilitaet von Artikelnummern nachvollziehbar herzuleiten.
+14. Antworte niemals nur mit technischem Status (z. B. Done=true). Liefere immer fachliche Nutzdaten:
+   - toolPayloadStatus: complete|incomplete
+   - debitorSearch (status, matchCount, candidates/selectedDebitor)
+   - articleReferenceSearch (status, matchCount, candidates/selectedItem)
+   - bei Fehlern: failureReason und kurze Begruendung

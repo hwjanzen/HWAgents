@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-12T20:52:53.106Z",
+  "generatedAt": "2026-08-12T21:24:56.465Z",
   "skills": [
     {
       "id": "orchestration.build_position_hypotheses_v03",

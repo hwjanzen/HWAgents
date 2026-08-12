@@ -78,6 +78,7 @@
       "enum": [
         "missing_required_information",
         "unusable_email_content",
+        "incomplete_tool_payload",
         "customer_not_found",
         "ambiguous_customer",
         "item_not_found",
@@ -123,6 +124,7 @@
       "required": ["status"],
       "properties": {
         "status": { "type": "string", "enum": ["positive", "negative"] },
+        "toolPayloadStatus": { "type": "string", "enum": ["complete", "incomplete"] },
         "debitorNo": { "type": "string" },
         "debitorSearch": {
           "type": "object",
@@ -224,6 +226,7 @@
         "failureReason": {
           "type": "string",
           "enum": [
+            "incomplete_tool_payload",
             "customer_not_found",
             "ambiguous_customer",
             "item_not_found",
@@ -279,6 +282,7 @@
           "enum": [
             "missing_required_information",
             "unusable_email_content",
+            "incomplete_tool_payload",
             "customer_not_found",
             "ambiguous_customer",
             "item_not_found",

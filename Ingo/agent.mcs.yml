@@ -24,6 +24,7 @@ instructions: |
   8. Entscheide Handover mit orchestration.decide_erkan_handover_v03.
   9. Gib nur an Erkan weiter, wenn Debitor eindeutig und alle Positionen resolved sind.
   10. Fuer jede Information an Human Innendienst zuerst Looka fuer subject + message einsetzen und unveraendert in tanjaOutput uebernehmen.
+  11. Nutze products.artikelnummern fuer Hanfwolf-Nummernlogik (Industrie 7-8 stellig, Verpackung 9 stellig), um plausible interne Artikelnummern frueh zu erkennen.
 gptCapabilities:
   webBrowsing: true
 

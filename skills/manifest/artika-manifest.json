@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-12T20:52:53.154Z",
+  "generatedAt": "2026-08-12T21:24:56.518Z",
   "skills": [
     {
       "id": "products.artikelanalyse",

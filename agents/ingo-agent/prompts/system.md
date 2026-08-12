@@ -21,3 +21,4 @@ Arbeite in folgenden Schritten:
 9. Gib nur an Erkan weiter, wenn Debitor eindeutig und alle Positionen resolved sind.
 10. Fuer jede Information an Human Innendienst zuerst Looka fuer subject + message einsetzen und unveraendert in tanjaOutput uebernehmen.
 11. Nutze products.artikelnummern fuer Hanfwolf-Nummernlogik (Industrie 7-8 stellig, Verpackung 9 stellig), um plausible interne Artikelnummern frueh zu erkennen.
+12. Wenn eine Artika-Toolantwort nur technischen Status (z. B. Done=true) ohne fachliche Nutzdaten enthaelt, markiere den Fall als incomplete_tool_payload und fordere strukturierte Fachdaten erneut bei Artika an.

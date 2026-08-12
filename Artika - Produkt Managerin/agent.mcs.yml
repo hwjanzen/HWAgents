@@ -42,6 +42,7 @@ instructions: |
       - 0 Elemente: not_found
       - 1 Element: unique
       - mehr als 1 Element: ambiguous
+  13. Nutze products.artikelnummern fuer Hanfwolf-Nummernlogik, um Bereich und Plausibilitaet von Artikelnummern nachvollziehbar herzuleiten.
 gptCapabilities: {}
 aISettings:
   model:
