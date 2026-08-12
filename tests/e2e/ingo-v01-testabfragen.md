@@ -144,7 +144,7 @@ Neu ist die fachliche Recherche durch Artika:
 ### V0.2 Test A - Debitor eindeutig, Artikel eindeutig
 
 ```text
-Hallo Ingo, bitte bestelle 2x Kundenartikelreferenz KR-4711 fuer Firma Schueko.
+Hallo Ingo, bitte bestelle 1x140022.00 für Schüco
 ```
 
 Soll:
