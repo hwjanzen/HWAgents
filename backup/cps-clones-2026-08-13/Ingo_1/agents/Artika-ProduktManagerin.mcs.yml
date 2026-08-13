@@ -1,0 +1,11 @@
+mcs.metadata:
+  componentName: Artika - Produkt Managerin
+  description: Artika
+kind: TaskDialog
+modelDisplayName: Artika - Produkt Managerin
+modelDescription: Artika
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_ArtikaProduktManagerin
+  historyType:
+    kind: ConversationHistory

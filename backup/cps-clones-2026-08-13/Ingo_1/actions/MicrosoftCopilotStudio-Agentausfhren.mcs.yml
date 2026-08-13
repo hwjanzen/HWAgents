@@ -1,0 +1,27 @@
+mcs.metadata:
+  componentName: Microsoft Copilot Studio - Agent ausführen
+kind: TaskDialog
+response:
+  activity:
+  mode: Generated
+
+inputs:
+  - kind: ManualTaskInput
+    propertyName: Copilot
+    value: crb27_DoriDokumentAnalystin
+
+modelDisplayName: Agent Dori - Document Analysis
+modelDescription: Dori um Dokumentenanalyse bitten
+outputs:
+  - propertyName: ConversationId
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: crb27_Ingo.shared_microsoftcopilotstudio.shared-microsoftcopi-42274e00-285d-44ab-aea8-4f9744cfd2bc
+  connectionProperties:
+    usageDescription: Ingo muss vor diesem Aufruf den vollständigen lesbaren Dokumentinhalt des PDF beziehungsweise der Bestellung einlesen und als einen einzigen String im dynamischen Prompt übergeben. Übergebe niemals nur eine Zusammenfassung, Stichpunkte, Dateiname oder Metadaten. Dori extrahiert und strukturiert den vollständigen Inhalt und meldet das Ergebnis über das Rückgabe-Tool an Ingo.
+    mode: Invoker
+
+  operationId: ExecuteCopilot
+
+outputMode: All

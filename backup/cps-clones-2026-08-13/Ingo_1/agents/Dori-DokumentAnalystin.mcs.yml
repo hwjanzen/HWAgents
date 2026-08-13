@@ -1,0 +1,19 @@
+mcs.metadata:
+  componentName: Dori - Dokument Analystin
+  description: Dori ist Expertin für Dokumentenanalyse und Dokumentenverständnis.
+kind: TaskDialog
+response:
+  mode: Generated
+  activity:
+    text: >
+      Gib die strukturierte Analyse des Dori-Agenten mit documentModel an Ingo zurueck.
+      Erzeuge keine Rueckfrage und keine eigene Zusammenfassung.
+modelDisplayName: Dori - Dokument Analystin
+modelDescription: Dori ist Expertin für Dokumentenanalyse und Dokumentenverständnis.
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_DoriDokumentAnalystin
+  historyType:
+    kind: ConversationHistory
+
+  shouldSendStartConversation: true

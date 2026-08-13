@@ -1,0 +1,11 @@
+mcs.metadata:
+  componentName: Looka
+  description: Looka ist mein persönlicher e-Mail Entwurfsassistent. Er bekommt von mir Infos zur Mail, die zum Beantworten als Entwurf eingestellt werden soll und den Prozessnamen, zu dem er den Prozess bei Helmut beschaffen soll. Der Input von Helmut ist der Antwort-Body.
+kind: TaskDialog
+modelDisplayName: Looka
+modelDescription: Looka ist mein persönlicher e-Mail Entwurfsassistent. Er bekommt von mir Infos zur Mail, die zum Beantworten als Entwurf eingestellt werden soll und den Prozessnamen, zu dem er den Prozess bei Helmut beschaffen soll. Der Input von Helmut ist der Antwort-Body.
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_Looka
+  historyType:
+    kind: ConversationHistory

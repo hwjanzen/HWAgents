@@ -1,0 +1,17 @@
+mcs.metadata:
+  componentName: SearchItems(SearchText)
+  description: Letzter Fallback fuer offene Positionen. Erst ausfuehren, wenn CandidateTable, alle erlaubten GetItem-Pruefungen und der Kundenreferenzabgleich abgeschlossen sind. Nicht fuer Positionen mit ungeprueften GetItem-Kandidaten verwenden.
+kind: TaskDialog
+modelDescription: Letzter Fallback fuer offene Positionen. Erst ausfuehren, wenn CandidateTable, alle erlaubten GetItem-Pruefungen und der Kundenreferenzabgleich abgeschlossen sind. Nicht fuer Positionen mit ungeprueften GetItem-Kandidaten verwenden.
+outputs:
+  - propertyName: jsonsqlbody
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 5c8c230c-a390-f111-8076-7ced8d7209c9
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

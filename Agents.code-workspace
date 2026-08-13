@@ -4,5 +4,14 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"git commit": true,
+			"git push": true,
+			"/^cd c:/Agents ; New-Item -ItemType Directory -Path \"backup/cps-clones-2026-08-13\" -Force \\| Out-Null ; Move-Item -Path \"Ingo_1\" -Destination \"backup/cps-clones-2026-08-13/Ingo_1\" ; Move-Item -Path \"Dori - Dokument Analystin_1\" -Destination \"backup/cps-clones-2026-08-13/Dori - Dokument Analystin_1\" ; Get-ChildItem \"backup/cps-clones-2026-08-13\" -Name$/": {
+				"approve": true,
+				"matchCommandLine": true
+			}
+		}
+	}
 }

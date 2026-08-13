@@ -1,0 +1,3 @@
+﻿connectionReferences:
+  - connectionReferenceLogicalName: crb27_Ingo.shared_microsoftcopilotstudio.shared-microsoftcopi-42274e00-285d-44ab-aea8-4f9744cfd2bc
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio
