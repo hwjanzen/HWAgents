@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.customer_order_resolution_v04",
+  "name": "Customer Order Resolution V0.4",
+  "category": "documents",
+  "capabilities": [
+    "Kundenbestellungen als Dokumenttyp erkennen",
+    "Kundenartikelnummern und Herstellernummern als interne Kandidaten behandeln",
+    "Direkte Artikelpruefung und semantische Suche fuer offene Positionen steuern"
+  ]
+}

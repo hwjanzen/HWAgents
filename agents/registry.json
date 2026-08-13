@@ -22,7 +22,7 @@
       "cpsComponentName": "HELMUT",
       "systemPrompt": "agents/helmut-agent/prompts/system.md",
       "skillCategories": ["processes"],
-      "additionalSkills": ["shared.ask_clarification", "products.artikelnummern"]
+      "additionalSkills": ["shared.ask_clarification", "products.artikelnummern", "documents.customer_order_resolution_v04"]
     },
     {
       "id": "ingo",

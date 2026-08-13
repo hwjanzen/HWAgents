@@ -1,8 +1,17 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "dori",
-  "generatedAt": "2026-08-13T15:55:22.752Z",
+  "generatedAt": "2026-08-13T16:44:33.314Z",
   "skills": [
+    {
+      "id": "documents.customer_order_resolution_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/customer-order-resolution-v04/skill.md",
+      "capabilities": [
+        "Kundenbestellungen als Dokumenttyp erkennen",
+        "Kundenartikelnummern und Herstellernummern als interne Kandidaten behandeln",
+        "Direkte Artikelpruefung und semantische Suche fuer offene Positionen steuern"
+      ]
+    },
     {
       "id": "documents.interpret_document_v04",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/interpret-document-v04/skill.md",
