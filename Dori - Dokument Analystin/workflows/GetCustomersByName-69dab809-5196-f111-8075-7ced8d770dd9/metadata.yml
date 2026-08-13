@@ -2,7 +2,7 @@
 workflowId: 69dab809-5196-f111-8075-7ced8d770dd9
 name: GetCustomersByName
 type: 1
-description: 
+description:
 subprocess: false
 category: 5
 mode: 0
