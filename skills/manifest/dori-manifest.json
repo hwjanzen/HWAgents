@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "dori",
-  "generatedAt": "2026-08-13T15:10:51.574Z",
+  "generatedAt": "2026-08-13T15:55:22.752Z",
   "skills": [
     {
       "id": "documents.interpret_document_v04",

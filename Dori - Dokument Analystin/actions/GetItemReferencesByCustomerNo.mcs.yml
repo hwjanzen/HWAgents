@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: GetItemReferencesByCustomerNo
+  description: Laedt Kundenartikelreferenzen fuer eine eindeutig ermittelte Kundennummer. Nur offene Positionen gegen die Rueckgabe pruefen.
 kind: TaskDialog
 outputs:
   - propertyName: respondjson

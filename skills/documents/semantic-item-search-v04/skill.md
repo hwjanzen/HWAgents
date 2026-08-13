@@ -11,11 +11,12 @@ Artikelpositionen ohne bestaetigte interne Artikelnummer ueber mehrere gezielte 
 ## Suchloop
 Fuehre fuer eine Position hoechstens drei aufeinander aufbauende Aufrufe aus. Dieser Suchloop darf erst starten, wenn der vollstaendige Hanfwolf-Regelcheck und alle moeglichen `GetItem`- sowie Kundenreferenzpruefungen abgeschlossen sind. Er ist der letzte und teuerste Fallback:
 
-1. Bereinigte Produktbezeichnung, zum Beispiel `Minihandstretchfolie`.
-2. Verkuerztes Kernprodukt, zum Beispiel `handstretchfolie`, wenn der erste Aufruf keine Treffer oder nur unbrauchbare Treffer liefert.
-3. Technische Merkmale, zum Beispiel `100mmx150m`, wenn die vorherigen Treffer nicht eindeutig sind.
+1. Bereinigte Produktbezeichnung ohne Masse, zum Beispiel `Minihandstretchfolie`.
+2. Verkuerztes Kernprodukt ohne Masse, zum Beispiel `Handstretchfolie`, wenn der erste Aufruf keine Treffer oder nur unbrauchbare Treffer liefert.
+3. Exakte normalisierte technische Merkmale, zum Beispiel `100mmx150m`, wenn die vorherigen Treffer nicht eindeutig sind.
 
 Nicht als ersten Suchtext eine lange Kombination aus Produktname und allen Abmessungen verwenden. Entferne dabei Mengen, Preise, Artikelnummern, Herstellerbezeichnungen und Fuellwoerter. Vereinheitliche `x`, `×`, Leerzeichen und Dezimaltrennzeichen in Massangaben.
+Masse duerfen in c1 und c2 nicht an den Produktbegriff angehaengt werden. Ein Suchtext wie `Handstretchfolie 100mm 150m` ist kein Ersatz fuer c2. Fuer c3 entferne Leerzeichen und vereinheitliche `x` und `×` zu einer kompakten Form wie `100mmx150m`; beachte dabei die Schreibweise des Artikelstamms.
 
 ## Kandidatenbewertung
 Parse jedes Ergebnis aus `jsonsqlbody` und werte `Table1` aus. Vergleiche je Kandidat:
@@ -36,8 +37,10 @@ Ein Kandidat ist `candidate_found` mit `confidence = high`, wenn die Schnittmeng
 ## Beispiel
 Fuer `Minihandstretchfolie 100mm x 150m`:
 - `SearchItems("Minihandstretchfolie")`
-- `SearchItems("handstretchfolie")`
+- `SearchItems("Handstretchfolie")`
 - `SearchItems("100mmx150m")`
+
+Diese drei Aufrufe sind der fachliche Suchloop. Weitere Suchbegriffe duerfen nur als separat gekennzeichnete Diagnosesuche protokolliert werden und zaehlen nicht als Ersatz fuer einen fehlenden Loop-Schritt.
 
 Die zweite Suche darf etwa 20 Treffer liefern, die dritte Suche drei Treffer. Die Schnittmenge aus c2 und c3 entscheidet. Wenn sie genau einen Artikel enthaelt, wird dieser als Kandidat uebernommen; bei mehreren Treffern darf ohne weiteres unterscheidendes Merkmal keine automatische Auswahl getroffen werden.
 

@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: SearchItems(SearchText)
+  description: Letzter Fallback fuer offene Positionen. Erst ausfuehren, wenn CandidateTable, alle erlaubten GetItem-Pruefungen und der Kundenreferenzabgleich abgeschlossen sind. Nicht fuer Positionen mit ungeprueften GetItem-Kandidaten verwenden.
 kind: TaskDialog
 outputs:
   - propertyName: jsonsqlbody

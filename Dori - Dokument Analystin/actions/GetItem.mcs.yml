@@ -1,5 +1,6 @@
 mcs.metadata:
   componentName: GetItem
+  description: Prueft eine formal plausible Artikelnummer gegen den internen HANFWOLF-Artikelstamm. Fuer jede formal plausible Nummer aus jedem Herkunftsfeld muss dieses Tool vor SearchItems ausgefuehrt werden.
 kind: TaskDialog
 outputs:
   - propertyName: jsonsqlbody
