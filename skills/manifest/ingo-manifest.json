@@ -1,8 +1,26 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-12T14:34:30.717Z",
+  "generatedAt": "2026-08-13T08:15:29.791Z",
   "skills": [
+    {
+      "id": "orchestration.build_position_hypotheses_v03",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/build-position-hypotheses-v03/skill.md",
+      "capabilities": [
+        "Mehrdeutige Positionsangaben in pruefbare Hypothesen zerlegen",
+        "Feldbedeutungen wie Kundenreferenz oder interne Artikelnummer ableiten",
+        "Hypothesen pro Position mit Prioritaet fuer die Iteration ausgeben"
+      ]
+    },
+    {
+      "id": "orchestration.decide_erkan_handover_v03",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/decide-erkan-handover-v03/skill.md",
+      "capabilities": [
+        "Freigabe zur Erkan-Weitergabe auf Basis validierter Positionen treffen",
+        "Unvollstaendige Aufloesungen sicher in Human-in-the-Loop uebergeben",
+        "Go-NoGo Entscheidung mit nachvollziehbarer Begruendung liefern"
+      ]
+    },
     {
       "id": "orchestration.detect_case_state_v02",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/detect-case-state-v02/skill.md",
@@ -46,6 +64,33 @@
         "V0.1-Fallstatus zustandsbasiert fortschreiben",
         "Deterministisch zwischen Looka, Artika, Erkan und Tanja routen",
         "Fruehen Abbruch bei negativen Statusgruenden erzwingen"
+      ]
+    },
+    {
+      "id": "orchestration.run_iterative_position_clarification_v03",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/orchestration/run-iterative-position-clarification-v03/skill.md",
+      "capabilities": [
+        "Iterativen Dialog zwischen Ingo und Artika pro Position steuern",
+        "Pruefergebnisse je Hypothese bewerten und naechsten Check ableiten",
+        "Aufloesung oder geordneten Abbruch pro Position begruendet liefern"
+      ]
+    },
+    {
+      "id": "documents.interpret_document_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/interpret-document-v04/skill.md",
+      "capabilities": [
+        "PDF- und Fliesstextdokumente fachlich interpretieren",
+        "Bestellpositionen, Mengen, Preise und Referenzen erkennen",
+        "Kundendaten und Artikelkontexte strukturiert extrahieren",
+        "Unklarheiten und Mehrdeutigkeiten als Hypothesen dokumentieren"
+      ]
+    },
+    {
+      "id": "documents.summarize_document",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/summarize-document/skill.md",
+      "capabilities": [
+        "Dokument zusammenfassen",
+        "Kernaussagen extrahieren"
       ]
     },
     {

@@ -184,3 +184,68 @@ Soll:
 - debitorSearch oder articleReferenceSearch = not_found.
 - Ingo uebergibt an Tanja.
 - Kein Webtreffer und keine Herstellernummer als interne Artikelnummer.
+
+## Entwicklungsstufe V0.3 - Iterative Aufloesung pro Position
+
+### V0.3 Test A - Feldbedeutung unklar, iterative Aufloesung erfolgreich
+
+```text
+Hallo Ingo, bitte bestelle fuer Alulux GmbH:
+Position 1: 2x 175063
+Position 2: 1x 1200011
+```
+
+Soll:
+- Ingo bildet pro Position Hypothesen (Kundenreferenz vs interne Artikelnummer).
+- Artika prueft je Hypothese iterativ.
+- Beide Positionen werden resolved.
+- Handover zu Erkan erst nach kompletter Aufloesung aller Positionen.
+
+### V0.3 Test B - Eine Position bleibt unaufloesbar
+
+```text
+Hallo Ingo, bitte bestelle fuer Schueko:
+Position 1: 1x 140022.00
+Position 2: 3x REFERENZ-UNKLAR-ABC
+```
+
+Soll:
+- Position 1 kann resolved werden.
+- Position 2 bleibt unresolved nach Iteration.
+- Kein Handover zu Erkan.
+- Geordnete Uebergabe an Human-in-the-Loop.
+
+### V0.3 Test C - Mehrdeutigkeit wird durch Nutzerklaerung aufgeloest
+
+```text
+Hallo Ingo, bitte bestelle 1x 140022.00 fuer Schueko.
+```
+
+Folgeeingabe:
+```text
+Das ist Debitor BI19140.
+```
+
+Soll:
+- Debitor ambiguous -> Kandidatenliste.
+- Nach gueltiger Auswahl erneute Referenzpruefung nur fuer gewaehlten Debitor.
+- Bei unique Position -> resolved und Handover gemaess Prozessstatus.
+
+### V0.3 Test D - Label-Synonyme und Nummernlogik
+
+```text
+Hallo Ingo, bitte bestelle fuer Alpha Signs:
+Pos 10: your ref 108010053, Menge 2
+Pos 20: Ihre Nr. 107010041, Menge 2
+Pos 30: Referenznr. 106020004, Menge 40
+```
+
+Soll:
+- Ingo erkennt Label-Synonyme (your ref, Ihre Nr., Referenznr.).
+- Jeder nummernahe Wert wird gegen Hanfwolf-Logik geprueft.
+- Pro Position werden customer_reference und internal_item_no als Hypothesen angelegt.
+- Iterative Klaerung erfolgt ohne externe Recherche.
+- Bei fachlich auswertbaren not_found/ambiguous-Antworten ist toolPayloadStatus = complete.
+- Wenn customer_reference not_found ist, wird internal_item_no pro Position verpflichtend nachgeprueft, bevor unresolved final gesetzt wird.
+- Bei plausiblen 7-9 stelligen Nummern wird internal_item_no je Position zuerst ueber GetItem/GetItemDetails geprueft.
+- positionChecks enthaelt je Position beide Hypothesentypen (internal_item_no und customer_reference) mit getrenntem outcome.

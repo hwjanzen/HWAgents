@@ -1,0 +1,17 @@
+mcs.metadata:
+  componentName: Dori - Dokument Analystin
+  description: Dori ist Expertin für Dokumentenanalyse und Dokumentenverständnis.
+kind: TaskDialog
+response:
+  activity:
+  mode: Generated
+
+modelDisplayName: Dori - Dokument Analystin
+modelDescription: Dori ist Expertin für Dokumentenanalyse und Dokumentenverständnis.
+action:
+  kind: InvokeConnectedAgentTaskAction
+  botSchemaName: crb27_DoriDokumentAnalystin
+  historyType:
+    kind: ConversationHistory
+
+  shouldSendStartConversation: false

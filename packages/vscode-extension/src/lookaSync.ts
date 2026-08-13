@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import * as fs from "fs/promises";
+import * as fsSync from "fs";
 import * as path from "path";
 
 const CPS_APPLY = "microsoft-copilot-studio.applyChanges";
@@ -17,10 +18,34 @@ function extractComponentName(yaml: string): string | undefined {
   return m?.[1]?.trim();
 }
 
-// Maps componentName to the corresponding system.md path
+// Maps componentName to the corresponding system.md path.
+// Some cloned CPS agents use a component name like "Dori - Dokument Analystin",
+// which resolves to a folder name with multiple hyphens, while the repo currently
+// uses the normalized form "dori-agent". Support both layouts.
 function resolveSystemMdPath(workspaceRoot: string, componentName: string): string {
-  const agentId = componentName.toLowerCase().replace(/\s+/g, "-");
-  return path.join(workspaceRoot, "agents", `${agentId}-agent`, "prompts", "system.md");
+  const raw = componentName.toLowerCase();
+  const variants = [
+    raw.replace(/\s+/g, "-"),
+    raw.replace(/\s*[-_/]+\s*/g, "-"),
+    raw.replace(/\s+/g, "-").replace(/-+/g, "-")
+  ].map((v) => `${v}-agent`);
+
+  // Keep repo-style naming first, then CPS-derived variants.
+  const candidateDirs = [
+    ...variants,
+    "dori-agent",
+    "dori---dokument-analystin-agent",
+    "dori-dokument-analystin-agent"
+  ].filter((value, index, arr) => arr.indexOf(value) === index);
+
+  for (const dirName of candidateDirs) {
+    const candidate = path.join(workspaceRoot, "agents", dirName, "prompts", "system.md");
+    if (fsSync.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  return path.join(workspaceRoot, "agents", candidateDirs[0], "prompts", "system.md");
 }
 
 async function findAllAgentFiles(workspaceRoot: string): Promise<vscode.Uri[]> {

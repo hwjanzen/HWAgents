@@ -23,4 +23,5 @@ Aus dem Zustand des Falls genau eine naechste Business-Aktion ausgeben.
 - Nach gueltiger Debitorauswahl immer erst Referenzsuche ueber Artika.
 - Nur wenn Debitor und Referenz jeweils unique sind: ask_erkan.
 - Bei not_found oder unresolved ambiguous: ask_looka_for_tanja_mail oder ask_user_for_clarification gemaess Prozessstatus.
+- Bei reason = incomplete_tool_payload immer ask_artika mit strukturierter Nachforderung der fehlenden Fachdaten (Trefferliste, itemNo, Beschreibung, Begruendung).
 - Keine Websuche als Aktion erzeugen.

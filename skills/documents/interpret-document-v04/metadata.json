@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.interpret_document_v04",
+  "name": "Interpret Document V0.4",
+  "category": "documents",
+  "capabilities": [
+    "PDF- und Fliesstextdokumente fachlich interpretieren",
+    "Bestellpositionen, Mengen, Preise und Referenzen erkennen",
+    "Kundendaten und Artikelkontexte strukturiert extrahieren",
+    "Unklarheiten und Mehrdeutigkeiten als Hypothesen dokumentieren"
+  ]
+}

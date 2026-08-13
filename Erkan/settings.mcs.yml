@@ -8,9 +8,12 @@ configuration:
     GenerativeActionsEnabled: true
 
   isAgentConnectable: true
+  publishOnCreate: false
+  publishOnImport: true
   gPTSettings:
     defaultSchemaName: crb27_Erkan.gpt.default
 
+  isLightweightBot: false
   aISettings:
     useModelKnowledge: true
     isFileAnalysisEnabled: true
@@ -21,6 +24,8 @@ configuration:
   recognizer:
     kind: GenerativeAIRecognizer
 
-publishedOn: 2026-08-12T09:31:36.0000000Z
+  deferredProvisioning: false
+
+publishedOn: 2026-08-12T14:58:59.0000000Z
 template: default-2.1.0
 language: 1031
