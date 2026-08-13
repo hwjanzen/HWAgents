@@ -224,6 +224,16 @@ Nach Abschluss der Analyse übergibt Dori seine Ergebnisse an Ingo. Anstatt ein 
 - Artika konzentriert sich auf verbleibende Produktklaerungen und Produktmanagement; die initiale Kundenzuordnung und Bestellpositionsaufloesung erfolgt durch Dori.
 - Erkan übernimmt die Anlage von Angeboten und Aufträgen im ERP-System.
 
+### Agent-Tool-Modell V0.4
+
+Die Agentenkommunikation erfolgt ueber explizite Copilot-Agent-Tools mit definierten Eingaben und Ausgaben, nicht ueber einen synchronen Connected-Agent-Aufruf.
+
+- Ingo liest den vollstaendigen Dokumentinhalt, insbesondere PDF-Inhalte, und uebergibt ihn ueber `Agent Dori - Document Analysis` an Dori.
+- Ingo beendet diesen Verarbeitungsschritt nach dem Tool-Aufruf und wartet nicht synchron auf eine Dori-Antwort.
+- Dori verarbeitet das Dokument und meldet den Status ueber `Auftragsstatus an Ingo Melden` zurueck.
+- Die Rueckgabe von Dori ist strukturiertes JSON mit mindestens `CaseNo`, `Customer`, `Itemnumber`, `quantity` und `price`. Offene oder mehrdeutige Positionen muessen ebenfalls enthalten oder eindeutig markiert sein.
+- Ingo routet erst auf Basis dieser strukturierten Rueckgabe weiter, zum Beispiel an Looka oder bei vollstaendiger Aufloesung an Erkan.
+
 Die Zielarchitektur von V0.4 sieht somit eine klare Spezialisierung der Agenten vor. Dori entwickelt sich zum Experten für Dokumentenanalyse und Dokumentenverständnis. Er bildet die Brücke zwischen unstrukturierten Kundenunterlagen und den strukturierten Geschäftsprozessen des Systems. Durch diese Erweiterung wird die Gesamtarchitektur modularer, skalierbarer und besser auf zukünftige Anforderungen vorbereitet. Insbesondere die spätere Verarbeitung unterschiedlicher Dokumenttypen wie PDF, E-Mail-Texten, XML-Dateien oder weiterer elektronischer Belegformate kann dadurch umgesetzt werden, ohne den Orchestrator Ingo zusätzlich zu belasten.
 
 ### Technische Umsetzung im Repo

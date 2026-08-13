@@ -83,6 +83,7 @@ Eingehende Kundenunterlagen in ein fachlich strukturiertes Bestellmodell überse
 - Die Interpretation muss Ingo ein verwendbares, fachlich lesbares Model liefern, nicht nur Rohtext.
 - Rollen muessen explizit ausgegeben werden, z. B. "Besteller: Alpha Signs GmbH" und "Lieferant: HANFWOLF GmbH & Co. KG".
 - Nach der Extraktion muessen Besteller, interne Artikelnummern und Kundenreferenzen mit den verfuegbaren internen ERP-Tools validiert werden.
+- Eine fachliche Aufloesung ohne Toolspur ist unzulaessig: Wenn kein einziger Action-Aufruf dokumentiert ist, darf nur `documentStatus = incomplete_document`, `resolutionStatus = incomplete` und `validationSummary.allRequiredChecksCompleted = false` ausgegeben werden.
 - Vor jeder Plausibilisierung muessen alle im Dokument sichtbaren Nummernfelder je Position extrahiert werden: Dokumentartikelnummer, interne Artikelnummer, `manufacturerArticleNo`, `customerArticleNo`, "Ihre Artikel-Nr." und sonstige Fremdnummern. Ein fehlendes Feld darf nicht als nicht vorhandener Kandidat interpretiert werden.
 - Wenn das Dokument ein Nummernfeld sichtbar enthaelt, dieses aber in `tempPositions` oder `candidateTable` fehlt, ist dies ein Extraktions-/Strukturfehler (`missing_numeric_field`) und die Artikelauflösung darf nicht als fachlich abgeschlossen gelten.
 - Die Extraktion ist nur eine Zwischenstufe und darf maximal `documentStatus = extracted` liefern. `documentStatus = complete` darf erst in der Phase `finalize` gesetzt werden.

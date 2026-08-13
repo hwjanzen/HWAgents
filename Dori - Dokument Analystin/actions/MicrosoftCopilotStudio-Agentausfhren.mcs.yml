@@ -1,0 +1,22 @@
+mcs.metadata:
+  componentName: Microsoft Copilot Studio - Agent ausführen
+kind: TaskDialog
+inputs:
+  - kind: ManualTaskInput
+    propertyName: Copilot
+    value: crb27_Ingo
+
+modelDisplayName: Auftragsstatus an Ingo Melden
+modelDescription: Sendet einen Prompt an den angegebenen Agent zur Verarbeitung
+outputs:
+  - propertyName: ConversationId
+
+action:
+  kind: InvokeConnectorTaskAction
+  connectionReference: crb27_DoriDokumentAnalystin.shared_microsoftcopilotstudio.shared-microsoftcopi-754b5002-d460-4826-89f5-8bcc7d132c78
+  connectionProperties:
+    mode: Invoker
+
+  operationId: ExecuteCopilot
+
+outputMode: All

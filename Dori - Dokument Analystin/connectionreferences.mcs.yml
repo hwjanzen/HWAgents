@@ -1,3 +1,5 @@
 ﻿connectionReferences:
+  - connectionReferenceLogicalName: crb27_DoriDokumentAnalystin.shared_microsoftcopilotstudio.shared-microsoftcopi-754b5002-d460-4826-89f5-8bcc7d132c78
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio
   - connectionReferenceLogicalName: hw_sharedsql_7898a
     connectorId: /providers/Microsoft.PowerApps/apis/shared_sql
