@@ -203,6 +203,36 @@ Der Fokus liegt ausschliesslich auf Artikas produktiver Recherchefaehigkeit.
   - beide Ergebnisse unique -> Weitergabe an Erkan
   - sonst -> Human-in-the-Loop Uebergabe an Tanja
 
+## Entwicklungsstufe V0.4 - Dori (Document Request Interpreter)
+
+Mit der Entwicklungsstufe V0.4 wird die Agentenarchitektur um einen neuen spezialisierten Agenten erweitert: Dori (Document Request Interpreter). Die Einführung von Dori erfolgt vor dem Hintergrund, dass die Dokumentenanalyse zunehmend komplexer wird und nicht langfristig durch den Orchestrator Ingo übernommen werden sollte. Während Ingo für die Steuerung der Prozesse, die Koordination der Agenten und die Entscheidungsfindung verantwortlich bleibt, übernimmt Dori künftig die vollständige Interpretation eingehender Dokumente.
+
+Dori fungiert als zentrale Instanz für das Dokumentenverständnis innerhalb des Multi-Agenten-Systems. Seine Aufgabe besteht darin, eingehende Kundenunterlagen zu analysieren, relevante Geschäftsdaten zu erkennen und diese in eine strukturierte Form für die nachgelagerten Agenten aufzubereiten. In der ersten Ausbaustufe verarbeitet Dori insbesondere PDF-Dokumente und unstrukturierte Fließtexte aus E-Mails oder Dokumentanhängen. In späteren Entwicklungsstufen wird der Funktionsumfang auf strukturierte Formate wie XML-Dokumente erweitert.
+
+### Dori-Analyseprozess
+
+Der Analyseprozess von Dori gliedert sich in mehrere Schritte. Zunächst liest Dori das Dokument ein und identifiziert dessen grundlegende Struktur. Anschließend extrahiert er die relevanten Geschäftsinformationen wie Kundennamen, Bestellpositionen, Mengen, Preise, Referenzen und weitere auftragsrelevante Daten. Dabei beschränkt sich Dori nicht auf die reine Texterkennung, sondern interpretiert auch die Bedeutung der einzelnen Felder innerhalb des Dokuments. Ziel ist es, die fachliche Struktur einer Kundenbestellung unabhängig von deren Aufbau zu verstehen.
+
+Ein besonderer Schwerpunkt liegt auf der Identifikation und Klassifizierung von Artikelinformationen. Dori soll erkennen, welche Spalten Kundenreferenzen enthalten, welche Werte interne Artikelnummern darstellen und welche Informationen Mengen, Preise oder Beschreibungen repräsentieren. Hierdurch entsteht bereits vor der eigentlichen Auftragsbearbeitung ein strukturiertes Bestellmodell, das den weiteren Agenten zur Verfügung gestellt werden kann.
+
+### Rollenverteilung V0.4
+
+Nach Abschluss der Analyse übergibt Dori seine Ergebnisse an Ingo. Anstatt ein Rohdokument zu erhalten, arbeitet Ingo künftig mit einem fachlich interpretierten Datenmodell. Dadurch wird die Verantwortung klar getrennt:
+
+- Dori versteht und strukturiert Dokumente.
+- Ingo orchestriert den Gesamtprozess, koordiniert die Agenten und trifft Entscheidungen.
+- Artika validiert Kunden- und Artikeldaten.
+- Erkan übernimmt die Anlage von Angeboten und Aufträgen im ERP-System.
+
+Die Zielarchitektur von V0.4 sieht somit eine klare Spezialisierung der Agenten vor. Dori entwickelt sich zum Experten für Dokumentenanalyse und Dokumentenverständnis. Er bildet die Brücke zwischen unstrukturierten Kundenunterlagen und den strukturierten Geschäftsprozessen des Systems. Durch diese Erweiterung wird die Gesamtarchitektur modularer, skalierbarer und besser auf zukünftige Anforderungen vorbereitet. Insbesondere die spätere Verarbeitung unterschiedlicher Dokumenttypen wie PDF, E-Mail-Texten, XML-Dateien oder weiterer elektronischer Belegformate kann dadurch umgesetzt werden, ohne den Orchestrator Ingo zusätzlich zu belasten.
+
+### Technische Umsetzung im Repo
+
+- Dori erhält eine eigene Agent-Definition in der Registry und ein eigenes Systemprompt.
+- Dori nutzt einen dedizierten Document-Skill, der das eingehende Dokument in ein strukturiertes Bestellmodell übersetzt.
+- Ingo wird auf das neue Dokumentverständnis ausgerichtet: Ingo arbeitet mit dem interpretierten Modell, nicht mit Rohdaten.
+- Das Skill-Manifest für Ingo wird um Dokumentenverständnis erweitert, damit die neue Architektur in CPS konsistent abgebildet wird.
+
 ## Offene Punkte / Naechste Schritte
 
 ### CPS Deployment Status (Stand 2026-08-11)
