@@ -19,7 +19,7 @@ action:
   kind: InvokeConnectorTaskAction
   connectionReference: crb27_Ingo.shared_microsoftcopilotstudio.shared-microsoftcopi-42274e00-285d-44ab-aea8-4f9744cfd2bc
   connectionProperties:
-    usageDescription: An dieses Tool kann Ingo Die Kundenbestellung übergeben mit der Bitte diese auszulesen und zu strukturieren und  in strukturierter Form zurückzugeben. Die Ausgabe Wird an die Auftragserfassung weitergeleitet
+    usageDescription: Ingo muss vor diesem Aufruf den vollständigen lesbaren Dokumentinhalt des PDF beziehungsweise der Bestellung einlesen und als einen einzigen String im dynamischen Prompt übergeben. Übergebe niemals nur eine Zusammenfassung, Stichpunkte, Dateiname oder Metadaten. Dori extrahiert und strukturiert den vollständigen Inhalt und meldet das Ergebnis über das Rückgabe-Tool an Ingo.
     mode: Invoker
 
   operationId: ExecuteCopilot
