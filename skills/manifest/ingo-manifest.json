@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-12T21:24:56.465Z",
+  "generatedAt": "2026-08-13T08:15:29.791Z",
   "skills": [
     {
       "id": "orchestration.build_position_hypotheses_v03",
@@ -73,6 +73,24 @@
         "Iterativen Dialog zwischen Ingo und Artika pro Position steuern",
         "Pruefergebnisse je Hypothese bewerten und naechsten Check ableiten",
         "Aufloesung oder geordneten Abbruch pro Position begruendet liefern"
+      ]
+    },
+    {
+      "id": "documents.interpret_document_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/interpret-document-v04/skill.md",
+      "capabilities": [
+        "PDF- und Fliesstextdokumente fachlich interpretieren",
+        "Bestellpositionen, Mengen, Preise und Referenzen erkennen",
+        "Kundendaten und Artikelkontexte strukturiert extrahieren",
+        "Unklarheiten und Mehrdeutigkeiten als Hypothesen dokumentieren"
+      ]
+    },
+    {
+      "id": "documents.summarize_document",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/summarize-document/skill.md",
+      "capabilities": [
+        "Dokument zusammenfassen",
+        "Kernaussagen extrahieren"
       ]
     },
     {

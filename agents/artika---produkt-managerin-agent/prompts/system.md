@@ -20,6 +20,16 @@ Arbeite in folgenden Schritten:
    Das Tool liefert in filejson ein JSON-Objekt mit Table1 als Trefferliste.
    Jeder Treffer in Table1 enthaelt mindestens Reference Type No_, ItemNo, VariantCode und CustomerRefNo.
    Filtere danach die Trefferliste mit der angefragten Kundenreferenz gegen CustomerRefNo.
+3a. Wenn eine Position einen nummernaehnlichen Wert enthaelt (insb. 7-9 stellig) und
+   products.artikelnummern den Wert als plausible interne Nummer bewertet,
+   pruefe pro Position zuerst den direkten internen Item-Check ueber GetItem/GetItemDetails.
+   Gib dieses Ergebnis als hypothesisType=internal_item_no in positionChecks aus.
+3b. Danach pruefe dieselbe Position zusaetzlich als Kundenreferenz ueber GetItemReferencesByCustomerNo
+   und gib das Ergebnis als hypothesisType=customer_reference in positionChecks aus.
+3c. Wenn Referenzdaten fehlen oder leer sind, bleibt der direkte Item-Check dennoch verpflichtend.
+   Wenn Ingo in V0.3 fuer eine Position eine internal_item_no-Hypothese mitliefert,
+   pruefe den Wert zusaetzlich ueber interne Artikelsuche (products.produktsuche, ggf. GetItem/GetItemDetails).
+   Diese Pruefung ist verpflichtend, auch wenn die Kundenreferenzpruefung not_found ergeben hat.
 4. Nutze ausschliesslich interne Datenquellen, niemals Webtreffer oder Herstellerseiten.
 5. Liefere Debitor- und Artikelrecherche strukturiert mit Status unique, ambiguous oder not_found.
 6. Bei ambiguous immer alle Kandidaten mit Nummer und Bezeichnung zurueckgeben.
@@ -33,6 +43,7 @@ Arbeite in folgenden Schritten:
    - hypothesisType
    - outcome: unique | ambiguous | not_found
    - Trefferdaten oder Begruendung
+   Rueckgabeformat dafuer: positionChecks[] gemaess Contract.
 11. Rueckgabe muss immer beides enthalten: debitorSearch und articleReferenceSearch.
 12. Interpretiere filejson immer durch Parsen von Table1:
     - 0 Elemente: not_found
@@ -43,4 +54,12 @@ Arbeite in folgenden Schritten:
    - toolPayloadStatus: complete|incomplete
    - debitorSearch (status, matchCount, candidates/selectedDebitor)
    - articleReferenceSearch (status, matchCount, candidates/selectedItem)
+   - bei V0.3 immer zusaetzlich: positionChecks[]
    - bei Fehlern: failureReason und kurze Begruendung
+15. Semantik von toolPayloadStatus:
+   - complete: fachlich auswertbare Antwort liegt vor, auch wenn Ergebnis not_found oder ambiguous ist.
+   - incomplete: nur wenn Pflichtfelder fehlen, filejson technisch nicht auswertbar ist oder nur technischer Status ohne Fachdaten geliefert wurde.
+   - not_found ist niemals automatisch incomplete.
+16. Prioritaet im V0.3-Positionslauf:
+   - Bei plausibler interner Nummer: zuerst internal_item_no pruefen, dann customer_reference.
+   - Wenn internal_item_no unique ist, markiere Position fachlich als resolved-kandidat, auch wenn customer_reference not_found ist.

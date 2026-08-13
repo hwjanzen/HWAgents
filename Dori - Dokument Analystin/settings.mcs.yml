@@ -1,23 +1,16 @@
-displayName: Artika - Produkt Managerin
-schemaName: crb27_ArtikaProduktManagerin
+displayName: Dori - Dokument Analystin
+schemaName: crb27_DoriDokumentAnalystin
 accessControlPolicy: GroupMembership
 authenticationMode: Integrated
 authenticationTrigger: Always
 configuration:
-  channels:
-    - channelId: MsTeams
-
-    - channelId: Microsoft365Copilot
-
   settings:
     GenerativeActionsEnabled: true
 
   isAgentConnectable: true
-  publishOnImport: true
   gPTSettings:
-    defaultSchemaName: crb27_ArtikaProduktManagerin.gpt.default
+    defaultSchemaName: crb27_DoriDokumentAnalystin.gpt.default
 
-  isLightweightBot: false
   aISettings:
     useModelKnowledge: true
     isFileAnalysisEnabled: true
@@ -28,8 +21,6 @@ configuration:
   recognizer:
     kind: GenerativeAIRecognizer
 
-  deferredProvisioning: false
-
-publishedOn: 2026-08-12T21:52:04.0000000Z
+publishedOn: 2026-08-13T08:51:44.0000000Z
 template: default-2.1.0
 language: 1031

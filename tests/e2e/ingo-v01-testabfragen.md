@@ -230,3 +230,22 @@ Soll:
 - Debitor ambiguous -> Kandidatenliste.
 - Nach gueltiger Auswahl erneute Referenzpruefung nur fuer gewaehlten Debitor.
 - Bei unique Position -> resolved und Handover gemaess Prozessstatus.
+
+### V0.3 Test D - Label-Synonyme und Nummernlogik
+
+```text
+Hallo Ingo, bitte bestelle fuer Alpha Signs:
+Pos 10: your ref 108010053, Menge 2
+Pos 20: Ihre Nr. 107010041, Menge 2
+Pos 30: Referenznr. 106020004, Menge 40
+```
+
+Soll:
+- Ingo erkennt Label-Synonyme (your ref, Ihre Nr., Referenznr.).
+- Jeder nummernahe Wert wird gegen Hanfwolf-Logik geprueft.
+- Pro Position werden customer_reference und internal_item_no als Hypothesen angelegt.
+- Iterative Klaerung erfolgt ohne externe Recherche.
+- Bei fachlich auswertbaren not_found/ambiguous-Antworten ist toolPayloadStatus = complete.
+- Wenn customer_reference not_found ist, wird internal_item_no pro Position verpflichtend nachgeprueft, bevor unresolved final gesetzt wird.
+- Bei plausiblen 7-9 stelligen Nummern wird internal_item_no je Position zuerst ueber GetItem/GetItemDetails geprueft.
+- positionChecks enthaelt je Position beide Hypothesentypen (internal_item_no und customer_reference) mit getrenntem outcome.
