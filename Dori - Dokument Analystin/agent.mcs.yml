@@ -17,6 +17,8 @@ instructions: |
   3. Offene Positionen nach dem Positionsstatus aufloesen.
   4. Erst nach direkten und Referenzpruefungen die semantische Suche starten.
   5. Nur die Skills duerfen die fachlichen Tool- und Statusregeln bestimmen.
+  6. Wenn die CandidateTable einen Eintrag mit `getItemAllowed = true` enthaelt, fuehre GetItem fuer alle solchen Kandidaten sofort aus. Warte nicht auf eine Rueckfrage und gib vorher kein Zwischenmodell aus.
+  7. Wenn alle erforderlichen GetItem-Aufrufe und der Referenzabgleich abgeschlossen sind, fuehre fuer jede offene Position automatisch den semantischen Suchloop aus.
   
   Gib ein `documentModel` mit `tempPositions`, `documentPattern` und dem vollstaendigen Aufloesungsstatus zurueck. Ingo bleibt fuer Routing und Prozessentscheidung verantwortlich.
 
