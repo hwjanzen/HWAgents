@@ -219,9 +219,9 @@ Ein besonderer Schwerpunkt liegt auf der Identifikation und Klassifizierung von 
 
 Nach Abschluss der Analyse übergibt Dori seine Ergebnisse an Ingo. Anstatt ein Rohdokument zu erhalten, arbeitet Ingo künftig mit einem fachlich interpretierten Datenmodell. Dadurch wird die Verantwortung klar getrennt:
 
-- Dori versteht und strukturiert Dokumente.
+- Dori versteht und strukturiert Dokumente und validiert Besteller, interne Artikelnummern sowie Kundenartikelreferenzen ueber die internen ERP-Tools.
 - Ingo orchestriert den Gesamtprozess, koordiniert die Agenten und trifft Entscheidungen.
-- Artika validiert Kunden- und Artikeldaten.
+- Artika konzentriert sich auf verbleibende Produktklaerungen und Produktmanagement; die initiale Kundenzuordnung und Bestellpositionsaufloesung erfolgt durch Dori.
 - Erkan übernimmt die Anlage von Angeboten und Aufträgen im ERP-System.
 
 Die Zielarchitektur von V0.4 sieht somit eine klare Spezialisierung der Agenten vor. Dori entwickelt sich zum Experten für Dokumentenanalyse und Dokumentenverständnis. Er bildet die Brücke zwischen unstrukturierten Kundenunterlagen und den strukturierten Geschäftsprozessen des Systems. Durch diese Erweiterung wird die Gesamtarchitektur modularer, skalierbarer und besser auf zukünftige Anforderungen vorbereitet. Insbesondere die spätere Verarbeitung unterschiedlicher Dokumenttypen wie PDF, E-Mail-Texten, XML-Dateien oder weiterer elektronischer Belegformate kann dadurch umgesetzt werden, ohne den Orchestrator Ingo zusätzlich zu belasten.
@@ -230,6 +230,7 @@ Die Zielarchitektur von V0.4 sieht somit eine klare Spezialisierung der Agenten 
 
 - Dori erhält eine eigene Agent-Definition in der Registry und ein eigenes Systemprompt.
 - Dori nutzt einen dedizierten Document-Skill, der das eingehende Dokument in ein strukturiertes Bestellmodell übersetzt.
+- Dori nutzt zusaetzlich den Skill zur ERP-gestuetzten Kunden-, Artikel- und Referenzaufloesung.
 - Ingo wird auf das neue Dokumentverständnis ausgerichtet: Ingo arbeitet mit dem interpretierten Modell, nicht mit Rohdaten.
 - Das Skill-Manifest für Ingo wird um Dokumentenverständnis erweitert, damit die neue Architektur in CPS konsistent abgebildet wird.
 

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.track_position_resolution_v04",
+  "name": "Track Position Resolution V0.4",
+  "category": "documents",
+  "capabilities": [
+    "Bestellpositionen einmalig in tempPositions zwischenspeichern",
+    "Artikelaufloesungsstatus pro Position fuehren",
+    "Semantische Suchversuche und offene Positionen kontrollieren",
+    "Vorzeitigen item_not_found-Abschluss verhindern"
+  ]
+}

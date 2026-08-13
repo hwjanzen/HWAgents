@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.resolve_order_items_v04",
+  "name": "Resolve Order Items V0.4",
+  "category": "documents",
+  "capabilities": [
+    "Besteller gegen den internen Kundenstamm pruefen",
+    "Bestellpositionen gegen den internen Artikelstamm validieren",
+    "Kundenartikelreferenzen auf interne Artikelnummern aufloesen",
+    "Artikel ueber Beschreibung und interne Suche ermitteln",
+    "Aufloesungsmethode, Status und Konfidenz je Position dokumentieren"
+  ]
+}

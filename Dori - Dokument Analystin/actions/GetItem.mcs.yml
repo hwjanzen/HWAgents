@@ -1,0 +1,15 @@
+mcs.metadata:
+  componentName: GetItem
+kind: TaskDialog
+outputs:
+  - propertyName: jsonsqlbody
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 7ef0a3cf-3d92-f111-8075-e4fb1ef70549
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

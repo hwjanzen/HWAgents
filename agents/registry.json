@@ -44,7 +44,7 @@
       "cpsComponentName": "DORI",
       "systemPrompt": "agents/dori-agent/prompts/system.md",
       "skillCategories": ["documents", "shared"],
-      "additionalSkills": ["shared.ask_clarification"]
+      "additionalSkills": ["shared.ask_clarification", "products.artikelnummern"]
     },
     {
       "id": "artika",

@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.semantic_item_search_v04",
+  "name": "Semantic Item Search V0.4",
+  "category": "documents",
+  "capabilities": [
+    "Artikelbeschreibungen fuer die interne Suche normalisieren",
+    "Semantische Suchschritte mit bis zu drei SearchItems-Aufrufen ausfuehren",
+    "Suchkandidaten anhand von Material, Abmessungen, Einheit und Verpackung bewerten",
+    "Eindeutige, mehrdeutige und nicht gefundene Artikel unterscheiden"
+  ]
+}

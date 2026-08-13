@@ -1,0 +1,110 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "api": {
+          "name": "shared_sql"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "actions": {
+        "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "server": "SRV-SQL03",
+              "database": "Live",
+              "procedure": "[dbo].[GetItemReferencesByCustomerNo]",
+              "parameters/CustomerNo": "@triggerBody()?[\u0027text\u0027]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+              "operationId": "ExecuteProcedure_V2",
+              "connectionName": "shared_sql"
+            }
+          },
+          "runAfter": {}
+        },
+        "Dem_Agent_antworten": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "respondjson": {
+                  "title": "respondJSON",
+                  "description": "Artikelreferenzen des Kunden",
+                  "type": "string",
+                  "format": "byte",
+                  "x-ms-content-hint": "FILE",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "respondjson": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+            }
+          },
+          "runAfter": {
+            "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": [
+              "SUCCEEDED"
+            ]
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "50025",
+                  "title": "txtCustomerNo",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          },
+          "metadata": {
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          }
+        }
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "outputs": {},
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

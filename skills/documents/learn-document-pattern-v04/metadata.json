@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "documents.learn_document_pattern_v04",
+  "name": "Learn Document Pattern V0.4",
+  "category": "documents",
+  "capabilities": [
+    "Spaltenmuster aus den ersten Bestellpositionen erkennen",
+    "Ein Dokumentmodell fuer serielle Positionsverarbeitung ableiten",
+    "Strukturbrueche und fehlende Werte erkennen",
+    "Wiederholte Vollinterpretation grosser Bestellungen vermeiden"
+  ]
+}

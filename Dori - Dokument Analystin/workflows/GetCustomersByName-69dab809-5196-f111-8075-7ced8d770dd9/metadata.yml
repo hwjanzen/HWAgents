@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/GetCustomersByName-69dab809-5196-f111-8075-7ced8d770dd9/workflow.json
+workflowId: 69dab809-5196-f111-8075-7ced8d770dd9
+name: GetCustomersByName
+type: 1
+description:
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a
