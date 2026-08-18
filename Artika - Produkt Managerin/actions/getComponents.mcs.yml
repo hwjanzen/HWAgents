@@ -1,0 +1,16 @@
+mcs.metadata:
+  componentName: getComponents
+kind: TaskDialog
+modelDescription: "Das Tool liefert eine Montagestückliste eines Artikels. Die Montagestückliste enthält Artikelnummer, Artikelvariante und Menge der Komponenten. Der übergeordnete Artikel (auch Montageartikel) kann (muss nicht) eine Variante Enthalten. Das Tool wird mit der Artikelnr [und optional Variante] des Übergeordneten Artikels aufgerufen. "
+outputs:
+  - propertyName: jsonresult
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: bfa4a1e3-e59a-f111-b8db-000d3adf9cf9
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

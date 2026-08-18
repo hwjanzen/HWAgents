@@ -57,3 +57,35 @@ Aktueller Teststatus:
 - products.montageartikel
 - products.artikelnummern
 - products.datenqualitaet
+
+## V0.6 Runtime-Handoff
+
+Die V0.6-Suchlogik ist im Repository und im CPS-Export vorbereitet.
+
+### GitHub-Manifest
+
+Artika laedt weiterhin dieses Manifest:
+
+`https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/manifest/artika-manifest.json`
+
+Das Manifest enthaelt die neuen Skills:
+
+- `products.position_analyse_v01`
+- `products.composita_search_v01`
+- `products.article_hypothesis_generator_v01`
+
+### CPS-Schritte vor dem Publish
+
+1. [x] `Artika - Produkt Managerin/agent.mcs.yml` mit der V0.6-Instruction synchronisieren.
+2. [x] Manifest mit `npm run manifest:generate` regenerieren.
+3. [x] Repository mit `npm run validate:all` validieren.
+4. [ ] Agent in Copilot Studio importieren oder Instruction aktualisieren.
+5. [ ] `GitHubDateiAbrufen` und die ERP-Tools im Agent pruefen.
+6. [ ] Apply und Publish ausfuehren.
+7. [ ] Manueller Smoke-Test mit einer internen Artikelnummer, einer Kundenreferenz und einer Komponentensuche ausfuehren.
+
+### Erwartete Suchreihenfolge
+
+`position_analyse_v01` -> `composita_search_v01` -> `article_hypothesis_generator_v01` -> interne Artikel-/Referenztools.
+
+Bei einer plausiblen internen Artikelnummer muss `GetItem` vor `GetItemReferencesByCustomerNo` aufgerufen werden. Bei unbekannter Variante muss fuer `getComponents` und `getParentItems` ein leerer Variantenwert uebergeben werden.

@@ -18,6 +18,39 @@ Agenten sind schlank und manifest-gesteuert — Fachlogik lebt in Skills, nicht 
 - GitHub ist die einzige Source of Truth. SharePoint und CPS lesen von GitHub.
 - VS Code Extension ist die Verwaltungsoberflaeche fuer Agenten, Skills und Routing.
 
+## Artika V0.5: Bidirektionale Produktstrukturrecherche
+- Artika erweitert die bestehende Debitor-, Kundenreferenz- und Artikelerkennung um die Navigation in Stuecklistenstrukturen.
+- `getComponents` liefert Komponenten und hinterlegte Mengen zu Artikelnummer und Variante; bei unbekannter Variante wird ein leerer Variantenwert uebergeben.
+- `getParentItems` liefert die uebergeordneten Artikel zu Komponente und Variante; bei unbekannter Variante wird ein leerer Variantenwert uebergeben.
+- CPS-Flow-Guardrail: Beide Triggerparameter muessen an die jeweilige SQL-Prozedur gebunden sein. Im aktuellen Export fehlt diese Bindung noch bei `getComponents`.
+- Ingo kann Artika bei technischen Rueckfragen, Ersatzteilanfragen und unvollstaendigen Produktangaben einbeziehen.
+- Artika liefert bei Mehrdeutigkeit alle Kandidaten und trifft keine fachliche Auswahl; Ingo routet unaufloesbare Faelle weiter an Tanja.
+
+## Artika V0.6: Hypothesis-driven Product Search
+- Die naechste Suchstufe erweitert die V0.5-Produktstrukturlogik um ein breiteres, hypothesenbasiertes Produktsuchmodell.
+- Grundsatz: Eine Position wird nicht als einzelner String behandelt, sondern als mehrere parallele Hypothesen und Suchpfade bewertet.
+- Reihenfolge der Suche:
+  1. `internal_item_no` aus numerischer Interner-Nummer-Plausibilitaet
+  2. `customer_reference` aus Kundenartikel/Referenztext
+  3. `foreign_item_no` aus Hersteller- oder Fremdnummern
+  4. `description_search` aus Produktbeschreibung, Kategorie und Attributen
+- Die Suche ist breit und priorisiert, nicht linear und einengend.
+- Skills fuer diese Stufe:
+  - `products.position_analyse_v01` -> Text in Token, Merkmale, Masse und Suchhinweise zerlegen
+  - `products.composita_search_v01` -> Produktbezeichnungen in Teilkomposita und Suchbloecke aufteilen
+  - `products.article_hypothesis_generator_v01` -> Priorisierung und Bewertung der Suchhypothesen
+- Die Produktstrukturrecherche bleibt dabei weiterhin auf interne Daten begrenzt. Die Logik entscheidet zwischen `GetItem`, `GetItemReferencesByCustomerNo`, `getComponents` und `getParentItems`, aber nie per Webrecherche.
+
+### Zielbild V0.6
+- Die Agentenarbeit beginnt mit struktureller Textanalyse statt mit einem einzelnen Trefferpfad.
+- Ingo bleibt Orchestrator, aber Artika liefert bei Mehrdeutigkeit nicht nur Treffer, sondern auch eine nachvollziehbare Hypothesenreihenfolge und Suchbegruendung.
+- Typische Ablaufebene:
+  - Position analysieren
+  - Token/Begriffe normalisieren
+  - Teilkomposita bilden
+  - interne Artikel- und Referenzhypothesen priorisieren
+  - Produktstruktur aufloesen, falls Komponente oder Montageartikel genannt werden
+
 ## Naechste Ausbaustufe: Multi Agent Orchestrated Process (V0.1)
 
 ### Rollenmodell

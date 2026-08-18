@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "helmut",
-  "generatedAt": "2026-08-12T09:23:21.174Z",
+  "generatedAt": "2026-08-18T20:03:59.427Z",
   "skills": [
     {
       "id": "processes.copilot_wissen_aufbauen",
@@ -63,6 +63,24 @@
       "capabilities": [
         "Rückfrage stellen wenn Anfrage unklar",
         "Fehlende Informationen gezielt erfragen"
+      ]
+    },
+    {
+      "id": "products.artikelnummern",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelnummern/skill.md",
+      "capabilities": [
+        "Artikelnummernlogik plausibilisieren",
+        "Kategorierueckschluesse aus Nummern pruefen",
+        "Nummernbezogene Inkonsistenzen markieren"
+      ]
+    },
+    {
+      "id": "documents.customer_order_resolution_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/customer-order-resolution-v04/skill.md",
+      "capabilities": [
+        "Kundenbestellungen als Dokumenttyp erkennen",
+        "Kundenartikelnummern und Herstellernummern als interne Kandidaten behandeln",
+        "Direkte Artikelpruefung und semantische Suche fuer offene Positionen steuern"
       ]
     }
   ]

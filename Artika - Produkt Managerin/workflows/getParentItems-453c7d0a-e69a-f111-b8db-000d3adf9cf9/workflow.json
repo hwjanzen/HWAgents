@@ -1,0 +1,135 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_sql": {
+        "api": {
+          "name": "shared_sql"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Artikelnummer der Komponente",
+                  "title": "txtItemNo",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "text_1": {
+                  "description": "Variante der Komponente",
+                  "title": "txtVariantCode",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          },
+          "metadata": {
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "server": "SRV-SQL03",
+              "database": "Live",
+              "procedure": "[dbo].[getParentItems]",
+              "parameters/ComponentItemNo": "@triggerBody()?[\u0027text\u0027]",
+              "parameters/ComponentVariantCode": "@variables(\u0027txtVariantCode\u0027)"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
+              "operationId": "ExecuteProcedure_V2",
+              "connectionName": "shared_sql"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "SUCCEEDED"
+            ]
+          }
+        },
+        "Dem_Agent_antworten": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "jsonfile": {
+                  "title": "jsonFile",
+                  "description": "\u00DCbergordnete Artikel mit Beschreibung 1,2,3 in den die Komponente verbaut ist",
+                  "type": "string",
+                  "format": "byte",
+                  "x-ms-content-hint": "FILE",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "jsonfile": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+            }
+          },
+          "runAfter": {
+            "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "txtVariantCode",
+                "type": "string",
+                "value": "@if(empty(triggerBody()?[\u0027text_1\u0027]),string(\u0027\u0027),triggerBody()?[\u0027text_1\u0027])"
+              }
+            ]
+          },
+          "runAfter": {}
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

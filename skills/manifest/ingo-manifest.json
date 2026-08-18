@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "ingo",
-  "generatedAt": "2026-08-13T08:15:29.791Z",
+  "generatedAt": "2026-08-18T20:03:59.439Z",
   "skills": [
     {
       "id": "orchestration.build_position_hypotheses_v03",
@@ -76,6 +76,15 @@
       ]
     },
     {
+      "id": "documents.customer_order_resolution_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/customer-order-resolution-v04/skill.md",
+      "capabilities": [
+        "Kundenbestellungen als Dokumenttyp erkennen",
+        "Kundenartikelnummern und Herstellernummern als interne Kandidaten behandeln",
+        "Direkte Artikelpruefung und semantische Suche fuer offene Positionen steuern"
+      ]
+    },
+    {
       "id": "documents.interpret_document_v04",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/interpret-document-v04/skill.md",
       "capabilities": [
@@ -86,11 +95,52 @@
       ]
     },
     {
+      "id": "documents.learn_document_pattern_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/learn-document-pattern-v04/skill.md",
+      "capabilities": [
+        "Spaltenmuster aus den ersten Bestellpositionen erkennen",
+        "Ein Dokumentmodell fuer serielle Positionsverarbeitung ableiten",
+        "Strukturbrueche und fehlende Werte erkennen",
+        "Wiederholte Vollinterpretation grosser Bestellungen vermeiden"
+      ]
+    },
+    {
+      "id": "documents.resolve_order_items_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/resolve-order-items-v04/skill.md",
+      "capabilities": [
+        "Besteller gegen den internen Kundenstamm pruefen",
+        "Bestellpositionen gegen den internen Artikelstamm validieren",
+        "Kundenartikelreferenzen auf interne Artikelnummern aufloesen",
+        "Artikel ueber Beschreibung und interne Suche ermitteln",
+        "Aufloesungsmethode, Status und Konfidenz je Position dokumentieren"
+      ]
+    },
+    {
+      "id": "documents.semantic_item_search_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/semantic-item-search-v04/skill.md",
+      "capabilities": [
+        "Artikelbeschreibungen fuer die interne Suche normalisieren",
+        "Semantische Suchschritte mit bis zu drei SearchItems-Aufrufen ausfuehren",
+        "Suchkandidaten anhand von Material, Abmessungen, Einheit und Verpackung bewerten",
+        "Eindeutige, mehrdeutige und nicht gefundene Artikel unterscheiden"
+      ]
+    },
+    {
       "id": "documents.summarize_document",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/summarize-document/skill.md",
       "capabilities": [
         "Dokument zusammenfassen",
         "Kernaussagen extrahieren"
+      ]
+    },
+    {
+      "id": "documents.track_position_resolution_v04",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/documents/track-position-resolution-v04/skill.md",
+      "capabilities": [
+        "Bestellpositionen einmalig in tempPositions zwischenspeichern",
+        "Artikelaufloesungsstatus pro Position fuehren",
+        "Semantische Suchversuche und offene Positionen kontrollieren",
+        "Vorzeitigen item_not_found-Abschluss verhindern"
       ]
     },
     {

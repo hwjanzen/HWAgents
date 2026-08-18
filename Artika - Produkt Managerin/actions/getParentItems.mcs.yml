@@ -1,0 +1,16 @@
+mcs.metadata:
+  componentName: getParentItems
+kind: TaskDialog
+modelDescription: Das Tool liefert eine Liste von Artikeln [Parent Items] in den die Komponente verbaut ist.
+outputs:
+  - propertyName: jsonfile
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: 453c7d0a-e69a-f111-b8db-000d3adf9cf9
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Invoker
+
+outputMode: All

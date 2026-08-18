@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "erkan",
-  "generatedAt": "2026-08-12T14:34:30.817Z",
+  "generatedAt": "2026-08-18T20:03:59.457Z",
   "skills": [
     {
       "id": "erp.create_bc_documents_v01",

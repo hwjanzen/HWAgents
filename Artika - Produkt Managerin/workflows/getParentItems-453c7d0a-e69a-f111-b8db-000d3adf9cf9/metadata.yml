@@ -1,0 +1,32 @@
+﻿jsonFileName: workflows/getParentItems-453c7d0a-e69a-f111-b8db-000d3adf9cf9/workflow.json
+workflowId: 453c7d0a-e69a-f111-b8db-000d3adf9cf9
+name: getParentItems
+type: 1
+description: 
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- hw_sharedsql_7898a

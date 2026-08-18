@@ -210,6 +210,36 @@
             "additionalProperties": false
           }
         },
+        "productStructureSearch": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["direction", "status"],
+            "properties": {
+              "direction": { "type": "string", "enum": ["components", "parent_items"] },
+              "status": { "type": "string", "enum": ["complete", "not_found", "incomplete"] },
+              "sourceItemNo": { "type": "string" },
+              "sourceComponentNo": { "type": "string" },
+              "variantCode": { "type": "string" },
+              "candidates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["itemNo"],
+                  "properties": {
+                    "itemNo": { "type": "string" },
+                    "description": { "type": "string" },
+                    "variantCode": { "type": "string" },
+                    "quantity": { "type": "number" }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "failureReason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
         "items": {
           "type": "array",
           "items": {

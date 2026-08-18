@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.composita_search_v01",
+  "name": "Composita Search V0.1",
+  "category": "products",
+  "capabilities": [
+    "Produktbeschreibung in relevante Suchbausteine zerlegen",
+    "Teilkomposita, Kategorien und Attribute priorisieren",
+    "Breitensuche mit Ranking statt linearem Text-String-Search steuern"
+  ]
+}

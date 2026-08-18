@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.article_hypothesis_generator_v01",
+  "name": "Article Hypothesis Generator V0.1",
+  "category": "products",
+  "capabilities": [
+    "Artikelnummern und Referenzen als Hypothesen generieren",
+    "Prioritaet zwischen interner Nummer, Kundenreferenz und Fremdnummer differenzieren",
+    "GetItem vor GetItemReferences ausloesen, wenn die Plausibilitaet hoch ist"
+  ]
+}

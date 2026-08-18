@@ -1,8 +1,17 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-12T21:24:56.518Z",
+  "generatedAt": "2026-08-18T20:03:59.453Z",
   "skills": [
+    {
+      "id": "products.article_hypothesis_generator_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/article-hypothesis-generator-v01/skill.md",
+      "capabilities": [
+        "Artikelnummern und Referenzen als Hypothesen generieren",
+        "Prioritaet zwischen interner Nummer, Kundenreferenz und Fremdnummer differenzieren",
+        "GetItem vor GetItemReferences ausloesen, wenn die Plausibilitaet hoch ist"
+      ]
+    },
     {
       "id": "products.artikelanalyse",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelanalyse/skill.md",
@@ -29,6 +38,15 @@
         "Artikelnummernlogik plausibilisieren",
         "Kategorierueckschluesse aus Nummern pruefen",
         "Nummernbezogene Inkonsistenzen markieren"
+      ]
+    },
+    {
+      "id": "products.composita_search_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/composita-search-v01/skill.md",
+      "capabilities": [
+        "Produktbeschreibung in relevante Suchbausteine zerlegen",
+        "Teilkomposita, Kategorien und Attribute priorisieren",
+        "Breitensuche mit Ranking statt linearem Text-String-Search steuern"
       ]
     },
     {
@@ -64,7 +82,18 @@
       "capabilities": [
         "Stuecklisten und Komponenten einordnen",
         "Variantenlogik in Montageartikeln erklaeren",
-        "Rohstoff-Endprodukt-Beziehungen bewerten"
+        "Rohstoff-Endprodukt-Beziehungen bewerten",
+        "Komponenten eines Artikels mit getComponents ermitteln",
+        "Verwendende Artikel einer Komponente mit getParentItems ermitteln"
+      ]
+    },
+    {
+      "id": "products.position_analyse_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/position-analyse-v01/skill.md",
+      "capabilities": [
+        "Positionsdaten in Suchhypothesen umwandeln",
+        "Textbausteine, Maße und Produktmerkmale extrahieren",
+        "Produktbeschreibungen in Token und Normalformen zerlegen"
       ]
     },
     {

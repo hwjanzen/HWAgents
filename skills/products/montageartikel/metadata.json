@@ -6,6 +6,8 @@
   "capabilities": [
     "Stuecklisten und Komponenten einordnen",
     "Variantenlogik in Montageartikeln erklaeren",
-    "Rohstoff-Endprodukt-Beziehungen bewerten"
+    "Rohstoff-Endprodukt-Beziehungen bewerten",
+    "Komponenten eines Artikels mit getComponents ermitteln",
+    "Verwendende Artikel einer Komponente mit getParentItems ermitteln"
   ]
 }

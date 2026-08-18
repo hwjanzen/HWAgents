@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.position_analyse_v01",
+  "name": "Position Analyse V0.1",
+  "category": "products",
+  "capabilities": [
+    "Positionsdaten in Suchhypothesen umwandeln",
+    "Textbausteine, Maße und Produktmerkmale extrahieren",
+    "Produktbeschreibungen in Token und Normalformen zerlegen"
+  ]
+}

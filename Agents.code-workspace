@@ -5,13 +5,25 @@
 		}
 	],
 	"settings": {
+		"files.exclude": {
+			"**/backup/**": true
+		},
 		"chat.tools.terminal.autoApprove": {
 			"git commit": true,
 			"git push": true,
 			"/^cd c:/Agents ; New-Item -ItemType Directory -Path \"backup/cps-clones-2026-08-13\" -Force \\| Out-Null ; Move-Item -Path \"Ingo_1\" -Destination \"backup/cps-clones-2026-08-13/Ingo_1\" ; Move-Item -Path \"Dori - Dokument Analystin_1\" -Destination \"backup/cps-clones-2026-08-13/Dori - Dokument Analystin_1\" ; Get-ChildItem \"backup/cps-clones-2026-08-13\" -Name$/": {
 				"approve": true,
 				"matchCommandLine": true
-			}
+			},
+			"/^node -e \"const fs=require\\('fs'\\); const Ajv=require\\('ajv/dist/2020'\\)\\.default; const addFormats=require\\('ajv-formats'\\); const schema=JSON\\.parse\\(fs\\.readFileSync\\('schemas/v01-agent-case-contract\\.schema\\.json','utf8'\\)\\); const test=JSON\\.parse\\(fs\\.readFileSync\\('tests/contract/v01-agent-case-contract\\.reference-cases\\.json','utf8'\\)\\)\\.cases\\[0\\]; test\\.artikaResult\\.productStructureSearch=\\[\\{direction:'components',status:'complete',sourceItemNo:'10000001',variantCode:'BLUE',candidates:\\[\\{itemNo:'20000001',description:'Komponente',quantity:2\\}\\]\\}\\]; const ajv=new Ajv\\(\\{allErrors:true,strict:false\\}\\); addFormats\\(ajv\\); const valid=ajv\\.compile\\(schema\\)\\(test\\); if\\(!valid\\)\\{console\\.error\\(ajv\\.errorsText\\(ajv\\.errors\\)\\);process\\.exit\\(1\\)\\} console\\.log\\('PASS V0\\.5 productStructureSearch is valid\\.'\\);\"$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"/^git update-index --refresh; git status --short; git diff --check; git diff --stat$/": {
+				"approve": true,
+				"matchCommandLine": true
+			},
+			"Get-FileHash": true
 		}
 	}
 }
