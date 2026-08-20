@@ -162,6 +162,7 @@
           "required": ["status", "matchCount"],
           "properties": {
             "status": { "type": "string", "enum": ["unique", "ambiguous", "not_found"] },
+            "confidence": { "type": "number", "minimum": 0, "maximum": 100 },
             "queryText": { "type": "string" },
             "matchCount": { "type": "integer", "minimum": 0 },
             "selectedItem": {
@@ -171,7 +172,8 @@
                 "itemNo": { "type": "string" },
                 "description": { "type": "string" },
                 "customerRefNo": { "type": "string" },
-                "variantCode": { "type": "string" }
+                "variantCode": { "type": "string" },
+                "score": { "type": "number", "minimum": 0, "maximum": 100 }
               },
               "additionalProperties": false
             },
@@ -184,7 +186,8 @@
                   "itemNo": { "type": "string" },
                   "description": { "type": "string" },
                   "customerRefNo": { "type": "string" },
-                  "variantCode": { "type": "string" }
+                  "variantCode": { "type": "string" },
+                  "score": { "type": "number", "minimum": 0, "maximum": 100 }
                 },
                 "additionalProperties": false
               }
@@ -204,7 +207,12 @@
                 "enum": ["customer_reference", "internal_item_no", "free_text_item_hint"]
               },
               "outcome": { "type": "string", "enum": ["unique", "ambiguous", "not_found"] },
+              "score": { "type": "number", "minimum": 0, "maximum": 100 },
               "itemNo": { "type": "string" },
+              "missingAttributes": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
               "notes": { "type": "string" }
             },
             "additionalProperties": false

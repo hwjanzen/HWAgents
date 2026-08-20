@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "helmut",
-  "generatedAt": "2026-08-18T20:03:59.427Z",
+  "generatedAt": "2026-08-18T21:40:09.243Z",
   "skills": [
     {
       "id": "processes.copilot_wissen_aufbauen",
@@ -69,9 +69,9 @@
       "id": "products.artikelnummern",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelnummern/skill.md",
       "capabilities": [
-        "Artikelnummernlogik plausibilisieren",
-        "Kategorierueckschluesse aus Nummern pruefen",
-        "Nummernbezogene Inkonsistenzen markieren"
+        "Nummern als interne oder Referenz-Hypothesen mit Score bewerten",
+        "Hanfwolf-Muster 7-9 stellig gegen 6-stellig und alphanumerisch differenzieren",
+        "Priorisierte Kandidaten fuer GetItem/GetItemReferences ableiten"
       ]
     },
     {

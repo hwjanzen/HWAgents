@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.category_first_search_v01",
+  "name": "Category First Search V0.1",
+  "category": "products",
+  "capabilities": [
+    "Zuerst wahrscheinliche Produktkategorien bestimmen",
+    "Suchraum auf Kategorie eingrenzen",
+    "Artikelkandidaten innerhalb der Kategorie priorisieren"
+  ]
+}

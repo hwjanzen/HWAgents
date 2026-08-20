@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.artika_search_playbook_v061",
+  "name": "Artika Search Playbook V0.6.1",
+  "category": "products",
+  "capabilities": [
+    "V0.6.1 Orchestrierung fuer scorebasierte Artikelsuche",
+    "Fallback-Regeln zwischen GetItem, Category-First und Referenzsuche steuern",
+    "Tool-Output-Feldmapping und Ergebnisformat gemaess Contract erzwingen"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.customer_order_interpreter_v01",
+  "name": "Customer Order Interpreter V0.1",
+  "category": "products",
+  "capabilities": [
+    "Bestellfelder in Suchhypothesen uebersetzen",
+    "Feldsemantik fuer Nummernlogik anwenden",
+    "Interne Kandidaten aus Lieferanten-/Herstellerfeldern priorisieren"
+  ]
+}

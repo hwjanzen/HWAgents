@@ -31,6 +31,11 @@ Eine Produktbezeichnung in relevante Suchbestandteile zerlegen und in einer nach
 - Wenn Material, Abmessungen oder Einheit aus dem Text gelesen werden, nutze diese als zusätzliche Suchkriterien und nicht nur als Nebensatz.
 - Produziere keine externen Treffer; nur interne Produktdaten sind gültig.
 - Liefere die Suchpfade als strukturierte `candidateQueries[]` und nutze danach ein Ranking.
+- Nutze Hierarchie statt Single-String:
+  1. Oberklasse (z. B. `Stretchfolie`)
+  2. Unterklasse (z. B. `Handstretchfolie`)
+  3. Variante (z. B. `Ministretchfolie`)
+- Fuehre die Suche zuerst auf Oberklasse aus und verfeinere danach auf Unterklasse/Variante.
 
 ## Schema
 ```json
@@ -43,10 +48,10 @@ Eine Produktbezeichnung in relevante Suchbestandteile zerlegen und in einer nach
     "ministretchfolie"
   ],
   "candidateQueries": [
-    { "type": "exact", "value": "Minihandstretchfolie" },
-    { "type": "compound", "value": "Stretchfolie" },
-    { "type": "compound", "value": "Handstretchfolie" },
-    { "type": "compound", "value": "Ministretchfolie" }
+    { "type": "category_seed", "value": "Stretchfolie", "priority": 100 },
+    { "type": "subclass", "value": "Handstretchfolie", "priority": 85 },
+    { "type": "variant", "value": "Ministretchfolie", "priority": 75 },
+    { "type": "exact", "value": "Minihandstretchfolie", "priority": 70 }
   ],
   "rankingBasis": [
     "exact_match",

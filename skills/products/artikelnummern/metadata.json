@@ -4,8 +4,8 @@
   "name": "Artikelnummern",
   "category": "products",
   "capabilities": [
-    "Artikelnummernlogik plausibilisieren",
-    "Kategorierueckschluesse aus Nummern pruefen",
-    "Nummernbezogene Inkonsistenzen markieren"
+    "Nummern als interne oder Referenz-Hypothesen mit Score bewerten",
+    "Hanfwolf-Muster 7-9 stellig gegen 6-stellig und alphanumerisch differenzieren",
+    "Priorisierte Kandidaten fuer GetItem/GetItemReferences ableiten"
   ]
 }

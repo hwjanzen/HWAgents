@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.article_hypothesis_ranker_v01",
+  "name": "Article Hypothesis Ranker V0.1",
+  "category": "products",
+  "capabilities": [
+    "Hypothesen aus Nummern, Text und Attributen zusammenfuehren",
+    "Kandidaten mit Score priorisieren und Top-Kandidaten markieren",
+    "Ausfuehrungsreihenfolge fuer GetItem, Textsuche und Referenzsuche bestimmen"
+  ]
+}

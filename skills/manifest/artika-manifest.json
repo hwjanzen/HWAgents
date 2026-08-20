@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-18T20:03:59.453Z",
+  "generatedAt": "2026-08-18T21:40:09.250Z",
   "skills": [
     {
       "id": "products.article_hypothesis_generator_v01",
@@ -10,6 +10,24 @@
         "Artikelnummern und Referenzen als Hypothesen generieren",
         "Prioritaet zwischen interner Nummer, Kundenreferenz und Fremdnummer differenzieren",
         "GetItem vor GetItemReferences ausloesen, wenn die Plausibilitaet hoch ist"
+      ]
+    },
+    {
+      "id": "products.article_hypothesis_ranker_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/article-hypothesis-ranker-v01/skill.md",
+      "capabilities": [
+        "Hypothesen aus Nummern, Text und Attributen zusammenfuehren",
+        "Kandidaten mit Score priorisieren und Top-Kandidaten markieren",
+        "Ausfuehrungsreihenfolge fuer GetItem, Textsuche und Referenzsuche bestimmen"
+      ]
+    },
+    {
+      "id": "products.artika_search_playbook_v061",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artika-search-playbook-v061/skill.md",
+      "capabilities": [
+        "V0.6.1 Orchestrierung fuer scorebasierte Artikelsuche",
+        "Fallback-Regeln zwischen GetItem, Category-First und Referenzsuche steuern",
+        "Tool-Output-Feldmapping und Ergebnisformat gemaess Contract erzwingen"
       ]
     },
     {
@@ -35,9 +53,27 @@
       "id": "products.artikelnummern",
       "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artikelnummern/skill.md",
       "capabilities": [
-        "Artikelnummernlogik plausibilisieren",
-        "Kategorierueckschluesse aus Nummern pruefen",
-        "Nummernbezogene Inkonsistenzen markieren"
+        "Nummern als interne oder Referenz-Hypothesen mit Score bewerten",
+        "Hanfwolf-Muster 7-9 stellig gegen 6-stellig und alphanumerisch differenzieren",
+        "Priorisierte Kandidaten fuer GetItem/GetItemReferences ableiten"
+      ]
+    },
+    {
+      "id": "products.attribute_gap_analysis_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/attribute-gap-analysis-v01/skill.md",
+      "capabilities": [
+        "Fehlende Produktattribute fuer eindeutige Zuordnung erkennen",
+        "Ambiguous-Ergebnisse fachlich begruenden",
+        "Gezielte Rueckfragen fuer Innendienst vorbereiten"
+      ]
+    },
+    {
+      "id": "products.category_first_search_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/category-first-search-v01/skill.md",
+      "capabilities": [
+        "Zuerst wahrscheinliche Produktkategorien bestimmen",
+        "Suchraum auf Kategorie eingrenzen",
+        "Artikelkandidaten innerhalb der Kategorie priorisieren"
       ]
     },
     {
@@ -47,6 +83,15 @@
         "Produktbeschreibung in relevante Suchbausteine zerlegen",
         "Teilkomposita, Kategorien und Attribute priorisieren",
         "Breitensuche mit Ranking statt linearem Text-String-Search steuern"
+      ]
+    },
+    {
+      "id": "products.customer_order_interpreter_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/customer-order-interpreter-v01/skill.md",
+      "capabilities": [
+        "Bestellfelder in Suchhypothesen uebersetzen",
+        "Feldsemantik fuer Nummernlogik anwenden",
+        "Interne Kandidaten aus Lieferanten-/Herstellerfeldern priorisieren"
       ]
     },
     {
@@ -85,6 +130,15 @@
         "Rohstoff-Endprodukt-Beziehungen bewerten",
         "Komponenten eines Artikels mit getComponents ermitteln",
         "Verwendende Artikel einer Komponente mit getParentItems ermitteln"
+      ]
+    },
+    {
+      "id": "products.order_position_parser_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/order-position-parser-v01/skill.md",
+      "capabilities": [
+        "Positionszeilen in strukturierte Produktmerkmale zerlegen",
+        "Masse und Einheiten normalisieren",
+        "Produkt-, Varianten- und Materialhinweise extrahieren"
       ]
     },
     {

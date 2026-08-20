@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.order_position_parser_v01",
+  "name": "Order Position Parser V0.1",
+  "category": "products",
+  "capabilities": [
+    "Positionszeilen in strukturierte Produktmerkmale zerlegen",
+    "Masse und Einheiten normalisieren",
+    "Produkt-, Varianten- und Materialhinweise extrahieren"
+  ]
+}
