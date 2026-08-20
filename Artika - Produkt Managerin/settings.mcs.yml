@@ -9,10 +9,24 @@ configuration:
 
     - channelId: Microsoft365Copilot
 
+    - id: Telephony
+      channelId: Telephony
+
+    - channelId: MsTeamsPhone
+
   settings:
     GenerativeActionsEnabled: true
+    TelephonyInitialized: true
 
+  isTelephonyEnabled: true
   isAgentConnectable: true
+  voiceProcessingMode:
+    kind: ClassicVoiceProcessingMode
+
+  botSpeechSettings:
+    silenceDetectionTimeoutInMilliseconds: 0
+    isDomainLanguageModelEnabled: false
+
   publishOnImport: true
   gPTSettings:
     defaultSchemaName: crb27_ArtikaProduktManagerin.gpt.default
@@ -30,6 +44,6 @@ configuration:
 
   deferredProvisioning: false
 
-publishedOn: 2026-08-18T21:23:20.0000000Z
+publishedOn: 2026-08-20T17:26:18.0000000Z
 template: default-2.1.0
 language: 1031

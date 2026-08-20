@@ -2,14 +2,13 @@
   "properties": {
     "connectionReferences": {
       "shared_sql": {
-        "runtimeSource": "embedded",
-        "connection": {
-          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
-          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
-        },
         "api": {
           "name": "shared_sql"
-        }
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
@@ -160,7 +159,8 @@
           }
         }
       },
-      "outputs": {}
+      "outputs": {},
+      "description": "This flow starts when a manual trigger receives a text input. It checks if the input text is longer than three characters. If so, it prepares parameters and calls a stored procedure in a SQL database to retrieve category attributes based on the input. The results from the database are then returned as a response. If the input text does not meet the length requirement, the flow does not proceed further."
     }
   },
   "schemaVersion": "1.0.0.0"

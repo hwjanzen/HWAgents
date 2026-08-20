@@ -1,0 +1,7 @@
+mcs.metadata:
+  componentName: Ivr
+kind: IvrBotSettings
+latencySettings:
+  latencyMessage: Einen Moment bitte. Ich muss kurz darüber nachdenken.
+
+voiceFont: {}

@@ -2,14 +2,13 @@
   "properties": {
     "connectionReferences": {
       "shared_sql": {
-        "runtimeSource": "invoker",
-        "connection": {
-          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
-          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
-        },
         "api": {
           "name": "shared_sql"
-        }
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
       }
     },
     "definition": {

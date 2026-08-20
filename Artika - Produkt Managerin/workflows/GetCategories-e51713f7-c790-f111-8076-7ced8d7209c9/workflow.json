@@ -2,14 +2,13 @@
   "properties": {
     "connectionReferences": {
       "shared_sql": {
-        "runtimeSource": "invoker",
-        "connection": {
-          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
-          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
-        },
         "api": {
           "name": "shared_sql"
-        }
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
@@ -91,7 +90,11 @@
           }
         }
       },
-      "outputs": {}
+      "outputs": {},
+      "description": "This flow is triggered manually and connects to a SQL database to run a stored procedure that retrieves category data. Once the data is successfully obtained, the flow sends a response containing the results in a JSON format. The process ensures that the response is only sent if the database operation completes successfully.",
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      }
     }
   },
   "schemaVersion": "1.0.0.0"

@@ -29,11 +29,6 @@
       },
       "triggers": {
         "manual": {
-          "metadata": {
-            "flowSystemMetadata": {
-              "flowKind": "Stateless"
-            }
-          },
           "type": "Request",
           "kind": "Skills",
           "inputs": {
@@ -41,8 +36,8 @@
               "type": "object",
               "properties": {
                 "text": {
-                  "description": "50025",
-                  "title": "txtCustomerNo",
+                  "description": "Artikelnr f\u00FCr Verf\u00FCgbarkeitsabfrage",
+                  "title": "txtItemNo",
                   "type": "string",
                   "x-ms-content-hint": "TEXT",
                   "x-ms-dynamically-added": true
@@ -63,8 +58,8 @@
             "parameters": {
               "server": "SRV-SQL03",
               "database": "Live",
-              "procedure": "[dbo].[GetItemReferencesByCustomerNo]",
-              "parameters/CustomerNo": "@triggerBody()?[\u0027text\u0027]"
+              "procedure": "[dbo].[GetItemInventory]",
+              "parameters/ItemNo": "@triggerBody()?[\u0027text\u0027]"
             },
             "host": {
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_sql",
@@ -85,9 +80,9 @@
             "schema": {
               "type": "object",
               "properties": {
-                "respondjson": {
-                  "title": "respondJSON",
-                  "description": "Artikelreferenzen des Kunden",
+                "jsonresult": {
+                  "title": "jsonResult",
+                  "description": "Verf\u00FCgbarkeit des Angefragten Artikels",
                   "type": "string",
                   "format": "byte",
                   "x-ms-content-hint": "FILE",
@@ -98,7 +93,7 @@
             },
             "statusCode": 200,
             "body": {
-              "respondjson": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
+              "jsonresult": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
             }
           }
         }

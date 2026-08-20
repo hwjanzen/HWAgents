@@ -248,6 +248,33 @@
             "additionalProperties": false
           }
         },
+        "inventorySearch": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["itemNo", "status"],
+            "properties": {
+              "itemNo": { "type": "string" },
+              "status": { "type": "string", "enum": ["complete", "not_found", "incomplete"] },
+              "totalQuantity": { "type": "number" },
+              "byLocation": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["location", "quantity"],
+                  "properties": {
+                    "location": { "type": "string" },
+                    "locationName": { "type": "string" },
+                    "quantity": { "type": "number" }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "failureReason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
         "items": {
           "type": "array",
           "items": {

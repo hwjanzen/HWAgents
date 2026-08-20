@@ -12,10 +12,52 @@
       }
     },
     "definition": {
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      },
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "flowSystemMetadata": {
+              "flowKind": "Stateless"
+            }
+          },
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Contoso GmbH \u0026 Co. KG",
+                  "title": "txtCustomerName",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
       "actions": {
         "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": {
+          "runAfter": {},
           "type": "OpenApiConnection",
           "inputs": {
             "parameters": {
@@ -29,10 +71,14 @@
               "operationId": "ExecuteProcedure_V2",
               "connectionName": "shared_sql"
             }
-          },
-          "runAfter": {}
+          }
         },
         "Dem_Agent_antworten": {
+          "runAfter": {
+            "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": [
+              "Succeeded"
+            ]
+          },
           "type": "Response",
           "kind": "Skills",
           "inputs": {
@@ -54,56 +100,10 @@
             "body": {
               "filejson": "@{outputs(\u0027Gespeicherte_Prozedur_ausf\u00FChren_(V2)\u0027)?[\u0027body/resultsets\u0027]}"
             }
-          },
-          "runAfter": {
-            "Gespeicherte_Prozedur_ausf\u00FChren_(V2)": [
-              "SUCCEEDED"
-            ]
           }
         }
       },
-      "triggers": {
-        "manual": {
-          "type": "Request",
-          "kind": "Skills",
-          "inputs": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "description": "Contoso GmbH \u0026 Co. KG",
-                  "title": "txtCustomerName",
-                  "type": "string",
-                  "x-ms-content-hint": "TEXT",
-                  "x-ms-dynamically-added": true
-                }
-              },
-              "required": [
-                "text"
-              ]
-            }
-          },
-          "metadata": {
-            "flowSystemMetadata": {
-              "flowKind": "Stateless"
-            }
-          }
-        }
-      },
-      "parameters": {
-        "$authentication": {
-          "defaultValue": {},
-          "type": "SecureObject"
-        },
-        "$connections": {
-          "defaultValue": {},
-          "type": "Object"
-        }
-      },
-      "outputs": {},
-      "metadata": {
-        "defaultToEmbeddedConnections": true
-      }
+      "outputs": {}
     }
   },
   "schemaVersion": "1.0.0.0"

@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-18T21:40:09.250Z",
+  "generatedAt": "2026-08-20T17:19:26.007Z",
   "skills": [
     {
       "id": "products.article_hypothesis_generator_v01",
@@ -110,6 +110,15 @@
         "Debitorendetails fuer V0.1 ermitteln",
         "Kundenangaben auf DebitorNo abbilden",
         "Testmodus mit festem Debitor rueckgeben"
+      ]
+    },
+    {
+      "id": "products.inventory_availability_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/inventory-availability-v01/skill.md",
+      "capabilities": [
+        "Lagerbestand und Verfuegbarkeit je Artikelnummer ermitteln",
+        "Bestand ueber mehrere Lagerorte summieren und aufschluesseln",
+        "Verfuegbarkeitsauskunft fuer Kollegen und Ingo strukturieren"
       ]
     },
     {

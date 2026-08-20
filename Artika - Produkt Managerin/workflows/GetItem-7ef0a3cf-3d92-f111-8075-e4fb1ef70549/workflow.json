@@ -2,14 +2,13 @@
   "properties": {
     "connectionReferences": {
       "shared_sql": {
-        "runtimeSource": "embedded",
-        "connection": {
-          "name": "shared-sql-9c5f9f67-16a8-4bec-9cf8-64e5d8218cfa",
-          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
-        },
         "api": {
           "name": "shared_sql"
-        }
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "hw_sharedsql_7898a"
+        },
+        "runtimeSource": "embedded"
       }
     },
     "definition": {
@@ -131,7 +130,8 @@
           "type": "If"
         }
       },
-      "outputs": {}
+      "outputs": {},
+      "description": "This flow starts when a user submits a text input. It checks if the input is longer than three characters. If it is, the flow calls a stored procedure in a SQL database using the input as a parameter. The result from the database is then returned to the user in the response. If the input does not meet the length requirement, the flow does not proceed with the database call or response. The flow ensures only valid, sufficiently long inputs trigger the database operation and response."
     }
   },
   "schemaVersion": "1.0.0.0"

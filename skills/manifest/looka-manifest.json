@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "looka",
-  "generatedAt": "2026-08-18T21:40:09.241Z",
+  "generatedAt": "2026-08-20T17:19:25.998Z",
   "skills": [
     {
       "id": "intake.classify_sales_request_v01",

@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.inventory_availability_v01",
+  "name": "Inventory Availability V0.1",
+  "category": "products",
+  "capabilities": [
+    "Lagerbestand und Verfuegbarkeit je Artikelnummer ermitteln",
+    "Bestand ueber mehrere Lagerorte summieren und aufschluesseln",
+    "Verfuegbarkeitsauskunft fuer Kollegen und Ingo strukturieren"
+  ]
+}

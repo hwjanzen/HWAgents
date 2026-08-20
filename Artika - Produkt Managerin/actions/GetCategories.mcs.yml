@@ -10,6 +10,6 @@ action:
   connectionProperties:
     $kind: ConnectionProperties
     diagnostics:
-    mode: Invoker
+    mode: Maker
 
 outputMode: All

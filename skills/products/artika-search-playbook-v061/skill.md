@@ -33,6 +33,7 @@ Zentrale Orchestrierungslogik fuer Artika. Dieser Skill definiert die Reihenfolg
 - GetItem/GetItemDetails: jsonsqlbody
 - getComponents: jsonresult
 - getParentItems: jsonfile
+- GetItemInventory: jsonresult
 
 ## Ergebnisregeln
 - Status nur: unique | ambiguous | not_found

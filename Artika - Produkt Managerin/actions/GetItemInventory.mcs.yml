@@ -1,0 +1,16 @@
+mcs.metadata:
+  componentName: GetItemInventory
+kind: TaskDialog
+modelDescription: Liefert den Bestand Pro Artikel und Lagerort. Erwartet die eindeutige Artikelnr.
+outputs:
+  - propertyName: jsonresult
+
+action:
+  kind: InvokeFlowTaskAction
+  flowId: a94b42a9-ba9c-f111-b8db-7c1e52fa9ab0
+  connectionProperties:
+    $kind: ConnectionProperties
+    diagnostics:
+    mode: Maker
+
+outputMode: All
