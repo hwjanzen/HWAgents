@@ -1,3 +1,5 @@
 ﻿connectionReferences:
   - connectionReferenceLogicalName: hw_sharedsql_7898a
     connectorId: /providers/Microsoft.PowerApps/apis/shared_sql
+  - connectionReferenceLogicalName: new_sharedartika20business20central20api20v15fadb71e7916629db698d878_a941f
+    connectorId: /providers/Microsoft.PowerApps/apis/shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878

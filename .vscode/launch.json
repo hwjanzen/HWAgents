@@ -10,8 +10,12 @@
         "NODE_OPTIONS": "--no-deprecation"
       },
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/packages/vscode-extension"
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/vscode-extension",
+        "--new-window",
+        "${workspaceFolder}"
       ],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
       "outFiles": [
         "${workspaceFolder}/packages/vscode-extension/dist/**/*.js"
       ],

@@ -34,6 +34,7 @@ Zentrale Orchestrierungslogik fuer Artika. Dieser Skill definiert die Reihenfolg
 - getComponents: jsonresult
 - getParentItems: jsonfile
 - GetItemInventory: jsonresult
+- BC: Artikel anlegen (Create Item): requestPayload als Trigger-Feld; success, itemno und message auswerten
 
 ## Ergebnisregeln
 - Status nur: unique | ambiguous | not_found

@@ -275,6 +275,21 @@
             "additionalProperties": false
           }
         },
+        "itemCreation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["status"],
+            "properties": {
+              "status": { "type": "string", "enum": ["created", "failed", "incomplete"] },
+              "itemNo": { "type": "string" },
+              "description": { "type": "string" },
+              "requestPayload": { "type": "string" },
+              "failureReason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
         "items": {
           "type": "array",
           "items": {

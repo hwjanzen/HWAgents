@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-08-20T17:19:26.007Z",
+  "generatedAt": "2026-09-04T20:03:01.389Z",
   "skills": [
     {
       "id": "products.article_hypothesis_generator_v01",
@@ -119,6 +119,15 @@
         "Lagerbestand und Verfuegbarkeit je Artikelnummer ermitteln",
         "Bestand ueber mehrere Lagerorte summieren und aufschluesseln",
         "Verfuegbarkeitsauskunft fuer Kollegen und Ingo strukturieren"
+      ]
+    },
+    {
+      "id": "products.item_creation_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/item-creation-v01/skill.md",
+      "capabilities": [
+        "Neue Artikel mit BC: Artikel anlegen vorbereiten",
+        "requestPayload als einzeiligen JSON-String fuer Agent Flow erzeugen",
+        "Pflichtangaben pruefen und fehlende Artikelbeschreibung aktiv erfragen"
       ]
     },
     {

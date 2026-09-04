@@ -1,0 +1,118 @@
+﻿{
+  "properties": {
+    "connectionReferences": {
+      "shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878": {
+        "api": {
+          "name": "shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedartika20business20central20api20v15fadb71e7916629db698d878_a941f"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "actions": {
+        "Artika-Anfrage_verarbeiten_(z._B._Create_Item)": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "companyId": "2b0acd8a-5f40-eb11-b632-00155d6ad60a",
+              "body/requestPayload": "@triggerBody()?[\u0027text\u0027]"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878",
+              "operationId": "ProcessArtikaRequest",
+              "connectionName": "shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878"
+            }
+          },
+          "runAfter": {}
+        },
+        "Dem_Agent_antworten": {
+          "type": "Response",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "success",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "itemno": {
+                  "title": "itemNo",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                },
+                "message": {
+                  "title": "message",
+                  "description": "",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "additionalProperties": {}
+            },
+            "statusCode": 200,
+            "body": {
+              "success": "@{outputs(\u0027Artika-Anfrage_verarbeiten_(z._B._Create_Item)\u0027)?[\u0027body/success\u0027]}",
+              "itemno": "@{outputs(\u0027Artika-Anfrage_verarbeiten_(z._B._Create_Item)\u0027)?[\u0027body/createdRecordNo\u0027]}",
+              "message": "@{outputs(\u0027Artika-Anfrage_verarbeiten_(z._B._Create_Item)\u0027)?[\u0027body/message\u0027]}"
+            }
+          },
+          "runAfter": {
+            "Artika-Anfrage_verarbeiten_(z._B._Create_Item)": [
+              "SUCCEEDED"
+            ]
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Vollst\u00E4ndige Artikeldaten als EIN JSON-String (kein Objekt, sondern der String-Repr\u00E4sentation des JSON). Format:  {   \u0022schemaVersion\u0022: \u00221.0\u0022,   \u0022entityType\u0022: \u0022Item\u0022,   \u0022action\u0022: \u0022Create\u0022,   \u0022data\u0022: {     \u0022manufacturer\u0022: \u0022Hersteller (Text, optional)\u0022,     \u0022model\u0022: \u0022Modellbezeichnung (Text, optional)\u0022,     \u0022description\u0022: \u0022Artikelbeschreibung (Text, PFLICHTFELD, max. 100 Zeichen)\u0022,     \u0022description2\u0022: \u0022Zusatzbeschreibung Zeile 2 (Text, optional)\u0022,     \u0022description3\u0022: \u0022Zusatzbeschreibung Zeile 3 (Text, optional)\u0022,     \u0022category\u0022: \u0022Name oder Code der Artikelkategorie, z. B. \u0027Helm\u0027 (Text, optional)\u0022,     \u0022manufacturerItemNo\u0022: \u0022Herstellerartikelnummer (Text, optional)\u0022,     \u0022ean\u0022: \u0022EAN/Barcode (Text, optional)\u0022   },   \u0022attributes\u0022: [     { \u0022name\u0022: \u0022Attributname, z. B. Farbe\u0022, \u0022value\u0022: \u0022Wert (Text, Zahl oder true/false)\u0022 }   ],   \u0022texts\u0022: [     { \u0022type\u0022: \u0022Bezeichnung des Textes, z. B. Kurzbeschreibung\u0022, \u0022text\u0022: \u0022Volltext\u0022 }   ] }  Regeln: - \u0022description\u0022 ist zwingend erforderlich, alle anderen Felder optional. - \u0022attributes\u0022 und \u0022texts\u0022 sind optionale Arrays - weglassen oder leer lassen, wenn keine Angaben vorhanden. - Nicht existierende Attribute oder Kategorien werden von Business Central automatisch angelegt bzw. mit einer Warnung \u00FCbersprungen - kein Blocker. - Umlaute und Sonderzeichen normal verwenden (UTF-8), keine Escape-Zeichen n\u00F6tig. - Boolesche Attributwerte (true/false) werden automatisch in Ja/Nein \u00FCbersetzt.",
+                  "title": "requestPayload",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "outputs": {},
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

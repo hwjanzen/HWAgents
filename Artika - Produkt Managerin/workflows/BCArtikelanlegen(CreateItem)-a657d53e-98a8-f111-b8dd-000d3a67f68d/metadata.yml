@@ -1,0 +1,46 @@
+﻿jsonFileName: workflows/BCArtikelanlegen(CreateItem)-a657d53e-98a8-f111-b8dd-000d3a67f68d/workflow.json
+workflowId: a657d53e-98a8-f111-b8dd-000d3a67f68d
+name: 'BC: Artikel anlegen (Create Item)'
+type: 1
+description: >-
+  Legt einen neuen Artikel in Business Central an. Nutze dieses Tool, sobald du aus dem Gespräch mit dem Nutzer genügend Produktinformationen für einen NEUEN Artikel gesammelt hast (Hersteller, Modell, Beschreibung, Kategorie, Merkmale wie Farbe/Gewicht/Norm).
+
+
+  Business Central vergibt die Artikelnummer automatisch, validiert alle Daten und legt Artikelattribute sowie Texte an. Du musst KEINE internen IDs oder Nummernserien kennen - nur sprechende Werte (z. B. Kategoriename, Attributnamen).
+
+
+  Rufe dieses Tool NUR auf, wenn:
+
+  - eine Artikelbeschreibung vorhanden ist (Pflichtfeld),
+
+  - der Nutzer explizit einen neuen Artikel anlegen möchte (nicht bei reinen Rückfragen).
+
+
+  Das Ergebnis enthält success (true/false), die neue Artikelnummer (itemNo) und ggf. Warnungen (z. B. wenn eine Kategorie oder ein Attribut nicht gefunden und automatisch angelegt wurde). Melde dem Nutzer bei success=false den Grund aus "message" und schlage eine Korrektur vor, statt es erneut automatisch zu versuchen.
+subprocess: false
+category: 5
+mode: 0
+scope: 4
+onDemand: false
+triggerOnCreate: false
+triggerOnDelete: false
+asyncAutodelete: false
+syncWorkflowLogOnFailure: false
+stateCode: 1
+statusCode: 2
+runAs: 1
+isTransacted: true
+introducedVersion: 1.0
+isCustomizable:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: iscustomizableanddeletable
+businessProcessType: 0
+isCustomProcessingStepAllowedForOtherPublishers:
+  value: true
+  canBeChanged: true
+  managedPropertyLogicalName: canbedeleted
+modernFlowType: 1
+primaryEntity: none
+connectionReferences:
+- new_sharedartika20business20central20api20v15fadb71e7916629db698d878_a941f

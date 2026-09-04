@@ -18,6 +18,12 @@
       "problemMatcher": [
         "$tsc"
       ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true,
+        "close": false
+      },
       "group": "build"
     }
   ]

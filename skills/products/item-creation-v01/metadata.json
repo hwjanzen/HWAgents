@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.item_creation_v01",
+  "name": "Item Creation V0.1",
+  "category": "products",
+  "capabilities": [
+    "Neue Artikel mit BC: Artikel anlegen vorbereiten",
+    "requestPayload als einzeiligen JSON-String fuer Agent Flow erzeugen",
+    "Pflichtangaben pruefen und fehlende Artikelbeschreibung aktiv erfragen"
+  ]
+}
