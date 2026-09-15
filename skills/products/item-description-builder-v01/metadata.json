@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.item_description_builder_v01",
+  "name": "Item Description Builder V0.1",
+  "category": "products",
+  "capabilities": [
+    "Artikelbeschreibung aus Interviewbausteinen selbst konstruieren",
+    "Hersteller, Modell, Produktart und Kernattribute zu einer BC-konformen Beschreibung zusammenfuehren",
+    "Beschreibungsvorschlag dem Nutzer zur Bestaetigung vorlegen statt Freitext abzufragen"
+  ]
+}

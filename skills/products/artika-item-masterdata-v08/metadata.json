@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schemas/skill-metadata.schema.json",
+  "id": "products.artika_item_masterdata_v08",
+  "name": "Artika Item Masterdata V0.8",
+  "category": "products",
+  "capabilities": [
+    "Artikelneuanlage als kategoriegestuetztes Interview orchestrieren",
+    "Kategorieattribute, Referenzartikel und Textbausteine fuer neue Artikel nutzen",
+    "Duplikate vor der Anlage pruefen und vollstaendige Freigabezusammenfassung erstellen"
+  ]
+}

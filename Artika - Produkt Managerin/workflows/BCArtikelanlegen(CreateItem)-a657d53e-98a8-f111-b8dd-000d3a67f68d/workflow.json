@@ -6,7 +6,7 @@
           "name": "shared_artika-20business-20central-20api-20v1-5fadb71e-7916629db698d878"
         },
         "connection": {
-          "connectionReferenceLogicalName": "new_sharedartika20business20central20api20v15fadb71e7916629db698d878_a941f"
+          "connectionReferenceLogicalName": "new_sharedartika20business20central20api20v15fadb71e7916629db698d878_37023"
         },
         "runtimeSource": "embedded"
       }
@@ -14,6 +14,42 @@
     "definition": {
       "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
       "contentVersion": "1.0.0.0",
+      "metadata": {
+        "defaultToEmbeddedConnections": true
+      },
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Skills",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "description": "Vollst\u00E4ndige Artikeldaten als EIN JSON-String (kein Objekt, sondern der String-Repr\u00E4sentation des JSON). Format:  {   \u0022schemaVersion\u0022: \u00221.0\u0022,   \u0022entityType\u0022: \u0022Item\u0022,   \u0022action\u0022: \u0022Create\u0022,   \u0022data\u0022: {     \u0022manufacturer\u0022: \u0022Hersteller (Text, optional)\u0022,     \u0022model\u0022: \u0022Modellbezeichnung (Text, optional)\u0022,     \u0022description\u0022: \u0022Artikelbeschreibung (Text, PFLICHTFELD, max. 100 Zeichen)\u0022,     \u0022description2\u0022: \u0022Zusatzbeschreibung Zeile 2 (Text, optional)\u0022,     \u0022description3\u0022: \u0022Zusatzbeschreibung Zeile 3 (Text, optional)\u0022,     \u0022category\u0022: \u0022Name oder Code der Artikelkategorie, z. B. \u0027Helm\u0027 (Text, optional)\u0022,     \u0022manufacturerItemNo\u0022: \u0022Herstellerartikelnummer (Text, optional)\u0022,     \u0022ean\u0022: \u0022EAN/Barcode (Text, optional)\u0022   },   \u0022attributes\u0022: [     { \u0022name\u0022: \u0022Attributname, z. B. Farbe\u0022, \u0022value\u0022: \u0022Wert (Text, Zahl oder true/false)\u0022 }   ],   \u0022texts\u0022: [     { \u0022type\u0022: \u0022Bezeichnung des Textes, z. B. Kurzbeschreibung\u0022, \u0022text\u0022: \u0022Volltext\u0022 }   ] }  Regeln: - \u0022description\u0022 ist zwingend erforderlich, alle anderen Felder optional. - \u0022attributes\u0022 und \u0022texts\u0022 sind optionale Arrays - weglassen oder leer lassen, wenn keine Angaben vorhanden. - Nicht existierende Attribute oder Kategorien werden von Business Central automatisch angelegt bzw. mit einer Warnung \u00FCbersprungen - kein Blocker. - Umlaute und Sonderzeichen normal verwenden (UTF-8), keine Escape-Zeichen n\u00F6tig. - Boolesche Attributwerte (true/false) werden automatisch in Ja/Nein \u00FCbersetzt.",
+                  "title": "requestPayload",
+                  "type": "string",
+                  "x-ms-content-hint": "TEXT",
+                  "x-ms-dynamically-added": true
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
       "actions": {
         "Artika-Anfrage_verarbeiten_(z._B._Create_Item)": {
           "type": "OpenApiConnection",
@@ -70,48 +106,13 @@
           },
           "runAfter": {
             "Artika-Anfrage_verarbeiten_(z._B._Create_Item)": [
-              "SUCCEEDED"
+              "Succeeded"
             ]
           }
         }
       },
-      "triggers": {
-        "manual": {
-          "type": "Request",
-          "kind": "Skills",
-          "inputs": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "text": {
-                  "description": "Vollst\u00E4ndige Artikeldaten als EIN JSON-String (kein Objekt, sondern der String-Repr\u00E4sentation des JSON). Format:  {   \u0022schemaVersion\u0022: \u00221.0\u0022,   \u0022entityType\u0022: \u0022Item\u0022,   \u0022action\u0022: \u0022Create\u0022,   \u0022data\u0022: {     \u0022manufacturer\u0022: \u0022Hersteller (Text, optional)\u0022,     \u0022model\u0022: \u0022Modellbezeichnung (Text, optional)\u0022,     \u0022description\u0022: \u0022Artikelbeschreibung (Text, PFLICHTFELD, max. 100 Zeichen)\u0022,     \u0022description2\u0022: \u0022Zusatzbeschreibung Zeile 2 (Text, optional)\u0022,     \u0022description3\u0022: \u0022Zusatzbeschreibung Zeile 3 (Text, optional)\u0022,     \u0022category\u0022: \u0022Name oder Code der Artikelkategorie, z. B. \u0027Helm\u0027 (Text, optional)\u0022,     \u0022manufacturerItemNo\u0022: \u0022Herstellerartikelnummer (Text, optional)\u0022,     \u0022ean\u0022: \u0022EAN/Barcode (Text, optional)\u0022   },   \u0022attributes\u0022: [     { \u0022name\u0022: \u0022Attributname, z. B. Farbe\u0022, \u0022value\u0022: \u0022Wert (Text, Zahl oder true/false)\u0022 }   ],   \u0022texts\u0022: [     { \u0022type\u0022: \u0022Bezeichnung des Textes, z. B. Kurzbeschreibung\u0022, \u0022text\u0022: \u0022Volltext\u0022 }   ] }  Regeln: - \u0022description\u0022 ist zwingend erforderlich, alle anderen Felder optional. - \u0022attributes\u0022 und \u0022texts\u0022 sind optionale Arrays - weglassen oder leer lassen, wenn keine Angaben vorhanden. - Nicht existierende Attribute oder Kategorien werden von Business Central automatisch angelegt bzw. mit einer Warnung \u00FCbersprungen - kein Blocker. - Umlaute und Sonderzeichen normal verwenden (UTF-8), keine Escape-Zeichen n\u00F6tig. - Boolesche Attributwerte (true/false) werden automatisch in Ja/Nein \u00FCbersetzt.",
-                  "title": "requestPayload",
-                  "type": "string",
-                  "x-ms-content-hint": "TEXT",
-                  "x-ms-dynamically-added": true
-                }
-              },
-              "required": [
-                "text"
-              ]
-            }
-          }
-        }
-      },
-      "parameters": {
-        "$authentication": {
-          "defaultValue": {},
-          "type": "SecureObject"
-        },
-        "$connections": {
-          "defaultValue": {},
-          "type": "Object"
-        }
-      },
       "outputs": {},
-      "metadata": {
-        "defaultToEmbeddedConnections": true
-      }
+      "description": "Legt einen neuen Artikel in Business Central an. Nutze dieses Tool, sobald du aus dem Gespr\u00E4ch mit dem Nutzer gen\u00FCgend Produktinformationen f\u00FCr einen NEUEN Artikel gesammelt hast (Hersteller, Modell, Beschreibung, Kategorie, Merkmale wie Farbe/Gewicht/Norm).\n\nBusiness Central vergibt die Artikelnummer automatisch, validiert alle Daten und legt Artikelattribute sowie Texte an. Du musst KEINE internen IDs oder Nummernserien kennen - nur sprechende Werte (z. B. Kategoriename, Attributnamen).\n\nRufe dieses Tool NUR auf, wenn:\n- eine Artikelbeschreibung vorhanden ist (Pflichtfeld),\n- der Nutzer explizit einen neuen Artikel anlegen m\u00F6chte (nicht bei reinen R\u00FCckfragen).\n\nDas Ergebnis enth\u00E4lt success (true/false), die neue Artikelnummer (itemNo) und ggf. Warnungen (z. B. wenn eine Kategorie oder ein Attribut nicht gefunden und automatisch angelegt wurde). Melde dem Nutzer bei success=false den Grund aus \u0022message\u0022 und schlage eine Korrektur vor, statt es erneut automatisch zu versuchen."
     }
   },
   "schemaVersion": "1.0.0.0"

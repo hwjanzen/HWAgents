@@ -18,6 +18,25 @@
       "internalConsoleOptions": "openOnSessionStart",
       "outFiles": [
         "${workspaceFolder}/packages/vscode-extension/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Build & Run HW Agents Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "env": {
+        "NODE_OPTIONS": "--no-deprecation"
+      },
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/vscode-extension",
+        "--new-window",
+        "${workspaceFolder}"
+      ],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outFiles": [
+        "${workspaceFolder}/packages/vscode-extension/dist/**/*.js"
       ],
       "preLaunchTask": "build-hwagents-extension"
     }

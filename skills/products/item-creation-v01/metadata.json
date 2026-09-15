@@ -6,6 +6,7 @@
   "capabilities": [
     "Neue Artikel mit BC: Artikel anlegen vorbereiten",
     "requestPayload als einzeiligen JSON-String fuer Agent Flow erzeugen",
-    "Pflichtangaben pruefen und fehlende Artikelbeschreibung aktiv erfragen"
+    "Interview zu Produktart, Hersteller, Modell und Kategorieattributen fuehren statt Beschreibung direkt abzufragen",
+    "Kategorie und Kategorieattribute vor der Neuanlage klaeren"
   ]
 }

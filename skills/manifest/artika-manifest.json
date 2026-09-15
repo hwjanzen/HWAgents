@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/skill-manifest-list.schema.json",
   "manifestId": "artika",
-  "generatedAt": "2026-09-04T20:03:01.389Z",
+  "generatedAt": "2026-09-15T19:35:43.120Z",
   "skills": [
     {
       "id": "products.article_hypothesis_generator_v01",
@@ -19,6 +19,15 @@
         "Hypothesen aus Nummern, Text und Attributen zusammenfuehren",
         "Kandidaten mit Score priorisieren und Top-Kandidaten markieren",
         "Ausfuehrungsreihenfolge fuer GetItem, Textsuche und Referenzsuche bestimmen"
+      ]
+    },
+    {
+      "id": "products.artika_item_masterdata_v08",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/artika-item-masterdata-v08/skill.md",
+      "capabilities": [
+        "Artikelneuanlage als kategoriegestuetztes Interview orchestrieren",
+        "Kategorieattribute, Referenzartikel und Textbausteine fuer neue Artikel nutzen",
+        "Duplikate vor der Anlage pruefen und vollstaendige Freigabezusammenfassung erstellen"
       ]
     },
     {
@@ -127,7 +136,17 @@
       "capabilities": [
         "Neue Artikel mit BC: Artikel anlegen vorbereiten",
         "requestPayload als einzeiligen JSON-String fuer Agent Flow erzeugen",
-        "Pflichtangaben pruefen und fehlende Artikelbeschreibung aktiv erfragen"
+        "Interview zu Produktart, Hersteller, Modell und Kategorieattributen fuehren statt Beschreibung direkt abzufragen",
+        "Kategorie und Kategorieattribute vor der Neuanlage klaeren"
+      ]
+    },
+    {
+      "id": "products.item_description_builder_v01",
+      "file": "https://raw.githubusercontent.com/hwjanzen/HWAgents/main/skills/products/item-description-builder-v01/skill.md",
+      "capabilities": [
+        "Artikelbeschreibung aus Interviewbausteinen selbst konstruieren",
+        "Hersteller, Modell, Produktart und Kernattribute zu einer BC-konformen Beschreibung zusammenfuehren",
+        "Beschreibungsvorschlag dem Nutzer zur Bestaetigung vorlegen statt Freitext abzufragen"
       ]
     },
     {

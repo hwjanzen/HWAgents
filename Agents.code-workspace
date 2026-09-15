@@ -23,7 +23,8 @@
 				"approve": true,
 				"matchCommandLine": true
 			},
-			"Get-FileHash": true
+			"Get-FileHash": true,
+			"npm run build": true
 		}
 	}
 }

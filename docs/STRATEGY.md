@@ -51,6 +51,24 @@ Agenten sind schlank und manifest-gesteuert — Fachlogik lebt in Skills, nicht 
   - interne Artikel- und Referenzhypothesen priorisieren
   - Produktstruktur aufloesen, falls Komponente oder Montageartikel genannt werden
 
+## Artika V0.8: Intelligente Artikelstammdatenanlage
+- Artika wird zur Stammdatenexpertin fuer die regelkonforme Anlage neuer Artikel.
+- Der Ablauf startet mit Kategorieermittlung, Kategorieattributen und einem Referenzartikel.
+- Der Anwender beschreibt den Artikel frei in natuerlicher Sprache; Artika extrahiert daraus Produktmerkmale und ordnet sie den Kategorieattributen zu.
+- Fehlende Pflichtattribute werden iterativ und gebuendelt abgefragt. Artika fragt nie nach einer fertigen Artikelbeschreibung.
+- Artika konstruiert die Beschreibungsfelder selbst nach Kategorie- und Referenzartikelkonventionen.
+- Vor der Anlage erfolgt eine normalisierte Duplikatpruefung fuer Beschreibung, Kategorie, Attribute und Masseinheiten.
+- Vor dem Tool-Aufruf zeigt Artika eine vollstaendige Zusammenfassung und benoetigt die ausdrueckliche Freigabe des Anwenders.
+- Erst danach wird `BC: Artikel anlegen (Create Item)` mit einem strukturierten `requestPayload` aufgerufen.
+- Erfolg liefert die neue Artikelnummer; fachliche und technische Fehler werden getrennt behandelt.
+
+### V0.8-Skills
+- `products.artika_item_masterdata_v08` -> Gesamtprozess und Freigabe
+- `products.item_description_builder_v01` -> Beschreibung aus Interviewbausteinen
+- `products.item_creation_v01` -> Payload und BC-Agent-Flow
+- `products.artikelattribute` -> Kategorieattribute und Pflichtmerkmale
+- `products.kategorienavigation` -> Kategorie und Referenzartikel
+
 ## Naechste Ausbaustufe: Multi Agent Orchestrated Process (V0.1)
 
 ### Rollenmodell
